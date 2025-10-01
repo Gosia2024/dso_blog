@@ -1,43 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
-/* ===== FULL-BLEED SECTION (background spans entire viewport width) ===== */
+/* ===== FULL-BLEED SECTION (the background spans the full viewport width) ===== */
 .projectsSection{
   background:#266AD9;
   color:#fff;
-  /* make the section escape Docusaurus central container to go edge-to-edge */
+  /* make the section escape Docusaurus’ centered container so it goes edge-to-edge */
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:72px 0;                 /* vertical section padding */
+  padding:72px 0;                 /* vertical spacing for the section */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
 
-/* Inner wrapper — keeps 1440px content width and 110px horizontal padding */
+/* Inner wrapper — keeps content at 1440px with 110px side paddings */
 .inner{
   max-width:1440px;
   margin:0 auto;
-  padding:0 110px;                 /* 110px R/L per Figma */
+  padding:0 110px;                 /* matches Figma: 110px left/right */
   box-sizing:border-box;
 }
 
-/* Title (Quicksand 700 / 64 / 120%) */
+/* Section title (Quicksand 700 / 64 / 120%) */
 .sectionTitle{
   font-family:'Quicksand',system-ui,sans-serif;
   font-weight:700;
   font-size:64px;
   line-height:120%;
-  margin:0 0 64px 0;               /* section gap 64 */
+  margin:0 0 64px 0;               /* 64px gap below the title */
 }
 
-/* ===== LEFT/RIGHT CONTENT (gap 48) ===== */
+/* ===== MAIN CONTENT: left list + right card (48px gap) ===== */
 .content{
   display:flex;
   gap:48px;
   align-items:flex-start;
-  width:fit-content;               /* Hug */
+  width:fit-content;               /* “Hug” the content width */
 }
 
-/* LEFT LIST (vertical, gap 24) */
+/* LEFT: vertical list of project titles (24px gap) */
 .projectList{ width:256px; }
 .projectList ul{
   list-style:none; margin:0; padding:0;
@@ -46,34 +46,49 @@
 .projectList li{ font-size:22px; line-height:1.4; }
 .moreProjects{ margin-top:24px; opacity:.9; }
 
-/* ===== PROJECT CARD (vertical layout) ===== */
+/* ===== RIGHT: PROJECT CARD (vertical stack) ===== */
 .projectCard{
-  width:913px;                     /* Fixed (913px) */
+  width:913px;                     /* fixed width per Figma */
   background:#2F4563;
   border-radius:30px;
   padding:32px;
   box-sizing:border-box;
   display:flex;
-  flex-direction:column;           /* Vertical */
-  gap:32px;                        /* Gap 32 */
+  flex-direction:column;           /* vertical layout inside the card */
+  gap:32px;                        /* spacing between header and body */
 }
 
-/* Header — Frame 682: horizontal, height 44, gap 4, space-between */
+/* HEADER: keep title + tags in a single row */
 .header{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  height:44px;
-  gap:4px;
+  gap:12px;
+  flex-wrap:nowrap;                /* do NOT wrap to a second line on desktop */
 }
+
+/* Title: one line, pushes tags to the right */
 .cardTitle{
   margin:0;
   font-family:'Quicksand',system-ui,sans-serif;
   font-weight:700;
   font-size:40px;
-  line-height:120%;                /* ≈48px visual height (Figma) */
+  line-height:120%;                /* ≈48px visual height */
+  color:#fff;
+  white-space:nowrap;              /* keep on one line */
+  margin-right:auto;               /* push the tags container to the right */
+  flex:0 0 auto;                   /* prevent shrinking */
 }
-.tags{ display:flex; align-items:center; gap:4px; flex-wrap:nowrap; }
+
+/* Tags: single line of pill badges */
+.tags{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;                /* single line */
+  min-width:0;                     /* allow the container to shrink if needed */
+}
+
+/* Single tag pill */
 .tag{
   background:#FFFFFF;
   color:#2F4563;
@@ -85,24 +100,60 @@
   border:1px solid rgba(0,0,0,.08);
 }
 
-/* Content row — Frame 685: horizontal, width 849, auto height, space-between */
+/* BODY ROW: image on the left, text/buttons on the right */
 .row{
   display:flex;
   align-items:flex-start;
-  justify-content:space-between;   /* matches Figma */
+  justify-content:space-between;   /* matches Figma spacing */
   width:849px;
   gap:32px;
 }
 
-/* Image — Frame 655: 355 x 240 */
-.thumb{
-  width:355px;
-  height:240px;
-  object-fit:cover;
-  border-radius:16px;
+/* IMAGE WRAPPER (used so we can overlay text/logo and clip rounding) */
+.media{
+  position: relative;
+  width: 355px;                    /* Figma: 355 × 240 */
+  height: 240px;
+  border-radius: 16px;
+  overflow: hidden;                /* keep overlays inside rounded corners */
+  isolation: isolate;              /* own stacking context for safe z-indexing */
 }
 
-/* Right column — Frame 684: vertical, fixed 456, gap 24 */
+/* The image itself */
+.thumb{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Watermark/heading “MINECRAFT” drawn on top of the image */
+.watermark{
+  position: absolute;
+  top: 8px;                        /* tweak to match Figma */
+  left: 16px;
+  font-weight: 800;
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: rgba(0,0,0,.5);           /* subtle dark overlay look */
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Centered logo overlay (inside the image) */
+.logo{
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  left: 134px;                     /* Figma offsets; adjust if needed */
+  top: 133px;
+  border-radius: 30px;
+  z-index: 3;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+}
+
+/* RIGHT COLUMN: copy and buttons (vertical stack) */
 .info{
   width:456px;
   display:flex;
@@ -110,7 +161,7 @@
   gap:24px;
 }
 
-/* Body text — Quicksand 400 / 20 / 125% */
+/* Body copy (Quicksand 400 / 20 / 125%) */
 .desc{
   margin:0;
   font-family:'Quicksand',system-ui,sans-serif;
@@ -120,7 +171,7 @@
   color:rgba(255,255,255,.9);
 }
 
-/* Buttons row — horizontal, visual height 52, gap 16 */
+/* Buttons row */
 .buttons{ display:flex; gap:16px; }
 .buttons a{
   display:inline-flex; align-items:center; justify-content:center;
@@ -132,17 +183,23 @@
   color:#fff; text-decoration:none; font-weight:600;
 }
 
-/* ===== Mobile ===== */
+/* ===== MOBILE OVERRIDES ===== */
 @media (max-width: 768px){
   .projectsSection{ padding:32px 0; }
   .inner{ padding:0 20px; max-width:100%; }
   .sectionTitle{ font-size:36px; margin-bottom:24px; }
+
   .content{ flex-direction:column; gap:20px; width:100%; }
   .projectList{ display:none; }
 
   .projectCard{ width:100%; padding:0; background:transparent; gap:16px; }
-  .header{ height:auto; }
+
+  /* On mobile allow the header to wrap so tags can drop below the title */
+  .header{ flex-wrap:wrap; }
+
   .cardTitle{ font-size:24px; }
+  .tags{ flex-wrap:wrap; }
+
   .row{ width:100%; gap:16px; flex-direction:column; }
   .thumb{ width:100%; max-width:320px; height:auto; }
   .info{ width:100%; gap:16px; }
