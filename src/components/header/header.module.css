@@ -105,7 +105,7 @@
 
 /* ===== Close (X) button inside mobile menu ===== */
 .closeButton {
-  position: absolute;                /* position relative to overlay */
+  position: absolute;                /* position relative to the overlay */
   top: 20px;
   right: 20px;
   font-size: 28px;
@@ -127,27 +127,25 @@
   }
 }
 
-
-
-/* Upewniamy się, że header jest kotwicą do pozycjonowania */
+/* Make sure the header is the anchor for absolute positioning */
 .header {
-  position: relative; /* ważne */
+  position: relative; /* important */
 }
 
-/* Domyślnie burger ukryty na desktopie */
+/* Burger hidden by default on desktop */
 .menuButton {
   display: none;
 }
 
 /* --- MOBILE --- */
 @media (max-width: 768px) {
-  /* chowamy nawigację i przełącznik języka */
+  /* hide navigation and language switcher */
   .nav,
   .langSwitcher {
     display: none !important;
   }
 
-  /* burger zawsze w prawym górnym rogu headera */
+  /* burger always in the top-right corner of the header */
   .menuButton {
     display: block !important;
     position: absolute !important;
@@ -162,17 +160,4 @@
     cursor: pointer;
   }
 }
-/* ===== Desktop header container ===== */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;        /* Use gap instead of space-between */
-  background-color: #266AD9;          /* Blue background */
-  padding: 50px 106px 30px 110px;     /* From Figma: top, right, bottom, left */
-  /* height: 80px;  <-- remove fixed height */
-  min-height: 115px;                  /* Approx. “Hug 115px” from Figma (optional) */
-  width: 100%;
-  position: relative;
-  z-index: 1000;                      /* Keep header above page content */
-  gap: 471px;                         /* Figma: space between nav and language switcher */
-}
+
