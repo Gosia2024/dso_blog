@@ -6,6 +6,14 @@ function Contact() {
     <section className={styles.contactSection} id="contact">
       <div className={styles.inner}>
         {/* Headlines (one line) */}
+        {/* Mobile-only helper text */}
+<p className={styles.mobileHint}>
+  Write some information about your other projects. What other projects have you been working on so far?
+</p>
+{/* CTA tylko na mobile */}
+<a href="#projects" className={styles.mobileCta}>
+  See more projects
+</a>
         <div className={styles.headlines}>
           <p role="heading" aria-level={2} className={styles.title}>
             Contact me

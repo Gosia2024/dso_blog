@@ -189,3 +189,47 @@
   .content { flex-direction: column; gap: 24px; margin-top: 40px; max-width: 100%; }
   .left, .right { flex: 1 1 auto; }
 }
+
+/* Hidden by default (desktop/tablet) */
+.mobileHint { display: none; }
+
+/* Mobile 390px (Figma) – show and style */
+@media (max-width: 420px) {
+  .mobileHint {
+    display: block;
+    max-width: 335px;
+    margin: 24px 0 32px;      /* spacing above/below, per design */
+    font-family: Quicksand, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #ffffff;
+  }
+}
+
+/* Hidden by default (desktop/tablet) */
+.mobileCta { display: none; }
+
+/* Mobile 390px – Figma spec (Hug 180px, 47px height, radius 30px) */
+@media (max-width: 420px) {
+  .mobileCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;       /* Top/Bottom 14, Left/Right 20 */
+    height: 47px;
+    border-radius: 30px;
+    background: #266ad9;
+    color: #fff;
+    text-decoration: none;
+    width: fit-content;       /* “Hug” width */
+    font-family: Quicksand, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;           /* as in Figma */
+    margin: 16px 0 32px;      /* spacing below the text block */
+  }
+  .mobileCta:hover  { filter: brightness(1.05); }
+  .mobileCta:active { transform: translateY(1px); }
+}
