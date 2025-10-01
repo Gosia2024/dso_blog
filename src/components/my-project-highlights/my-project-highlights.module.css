@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+/* ===== FULL-BLEED SECTION (background spans entire viewport width) ===== */
+.projectsSection{
+  background:#266AD9;
+  color:#fff;
+  /* make the section escape Docusaurus central container to go edge-to-edge */
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:72px 0;                 /* vertical section padding */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* Inner wrapper — keeps 1440px content width and 110px horizontal padding */
+.inner{
+  max-width:1440px;
+  margin:0 auto;
+  padding:0 110px;                 /* 110px R/L per Figma */
+  box-sizing:border-box;
+}
+
+/* Title (Quicksand 700 / 64 / 120%) */
+.sectionTitle{
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:700;
+  font-size:64px;
+  line-height:120%;
+  margin:0 0 64px 0;               /* section gap 64 */
+}
+
+/* ===== LEFT/RIGHT CONTENT (gap 48) ===== */
+.content{
+  display:flex;
+  gap:48px;
+  align-items:flex-start;
+  width:fit-content;               /* Hug */
+}
+
+/* LEFT LIST (vertical, gap 24) */
+.projectList{ width:256px; }
+.projectList ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; gap:24px;
+}
+.projectList li{ font-size:22px; line-height:1.4; }
+.moreProjects{ margin-top:24px; opacity:.9; }
+
+/* ===== PROJECT CARD (vertical layout) ===== */
+.projectCard{
+  width:913px;                     /* Fixed (913px) */
+  background:#2F4563;
+  border-radius:30px;
+  padding:32px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;           /* Vertical */
+  gap:32px;                        /* Gap 32 */
+}
+
+/* Header — Frame 682: horizontal, height 44, gap 4, space-between */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:44px;
+  gap:4px;
+}
+.cardTitle{
+  margin:0;
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:700;
+  font-size:40px;
+  line-height:120%;                /* ≈48px visual height (Figma) */
+}
+.tags{ display:flex; align-items:center; gap:4px; flex-wrap:nowrap; }
+.tag{
+  background:#FFFFFF;
+  color:#2F4563;
+  border-radius:12px;
+  padding:8px 12px;
+  font-size:13px;
+  line-height:1;
+  white-space:nowrap;
+  border:1px solid rgba(0,0,0,.08);
+}
+
+/* Content row — Frame 685: horizontal, width 849, auto height, space-between */
+.row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;   /* matches Figma */
+  width:849px;
+  gap:32px;
+}
+
+/* Image — Frame 655: 355 x 240 */
+.thumb{
+  width:355px;
+  height:240px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+/* Right column — Frame 684: vertical, fixed 456, gap 24 */
+.info{
+  width:456px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* Body text — Quicksand 400 / 20 / 125% */
+.desc{
+  margin:0;
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:400;
+  font-size:20px;
+  line-height:125%;
+  color:rgba(255,255,255,.9);
+}
+
+/* Buttons row — horizontal, visual height 52, gap 16 */
+.buttons{ display:flex; gap:16px; }
+.buttons a{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:52px;
+  padding:0 18px;
+  border-radius:20px;
+  background:#1E2E43;
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff; text-decoration:none; font-weight:600;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  .projectsSection{ padding:32px 0; }
+  .inner{ padding:0 20px; max-width:100%; }
+  .sectionTitle{ font-size:36px; margin-bottom:24px; }
+  .content{ flex-direction:column; gap:20px; width:100%; }
+  .projectList{ display:none; }
+
+  .projectCard{ width:100%; padding:0; background:transparent; gap:16px; }
+  .header{ height:auto; }
+  .cardTitle{ font-size:24px; }
+  .row{ width:100%; gap:16px; flex-direction:column; }
+  .thumb{ width:100%; max-width:320px; height:auto; }
+  .info{ width:100%; gap:16px; }
+  .desc{ font-size:16px; line-height:150%; }
+  .buttons a{ height:44px; padding:0 16px; border-radius:16px; }
+}
