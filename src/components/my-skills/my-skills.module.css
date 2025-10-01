@@ -1,0 +1,92 @@
+/* --- SECTION BACKGROUND & COLORS --- */
+.skillsSection {
+  background: #1f252e;            /* dark background */
+  color: #ffffff;                  /* white text */
+  padding: 72px 144px 72px 120px;  /* spacing as in Figma */
+}
+
+/* --- CENTERED INNER CONTAINER --- */
+.inner {
+  max-width: 1176px;               /* content width */
+  margin: 0 auto;                  /* center horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;                       /* space between headline and cards */
+}
+
+/* --- HEADLINE --- */
+.headline {
+  max-width: 504px;                /* block width for the title */
+}
+.headline h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+/* --- CARD LIST (FLEX instead of grid) --- */
+.content {
+  display: flex;
+  flex-wrap: wrap;                  /* wrap to new rows */
+  gap: 24px;                        /* space between cards (both row/column) */
+  justify-content: center;          /* keep rows centered */
+}
+
+/* --- SINGLE SKILL CARD --- */
+.skillCard {
+  flex: 0 0 376px;                  /* fixed column width: 376px */
+  height: 200px;
+  background: #2a303b;              /* card color */
+  border-radius: 30px;
+  padding: 42px 71px;               /* inner spacing */
+  box-sizing: border-box;
+
+  display: flex;                    /* center inner stack */
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.15s ease; /* simple hover animation */
+}
+.skillCard:hover {
+  transform: translateY(-4px);      /* slight lift on hover */
+}
+
+/* --- INNER STACK: ICON ABOVE LABEL --- */
+.skillStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;                         /* space between icon and label */
+  height: 105px;                    /* matches Figma */
+}
+
+/* --- ICON --- */
+.skillIcon {
+  height: 56px;                     /* default icon height */
+  width: auto;                      /* keep aspect ratio */
+  object-fit: contain;              /* no distortion */
+  display: block;
+}
+
+/* --- LABEL UNDER ICON (if used) --- */
+.skillName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* --- RESPONSIVE --- */
+/* medium screens: 2 columns */
+@media (max-width: 900px) {
+  .skillsSection { padding: 56px 48px; }                 /* smaller outer spacing */
+  .inner { max-width: 100%; }                            /* allow full width */
+  .skillCard { flex: 0 0 calc((100% - 24px) / 2); }      /* two cards per row */
+}
+
+/* small screens: 1 column */
+@media (max-width: 600px) {
+  .headline h2 { font-size: 32px; }                      /* smaller title */
+  .skillCard { flex: 0 0 100%; }                          /* one card per row */
+}
+
