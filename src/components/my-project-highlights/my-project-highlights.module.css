@@ -184,238 +184,172 @@
 }
 
 /* ===== MOBILE OVERRIDES ===== */
+/* ===== MOBILE: layout like in the screenshot (≤768px) ===== */
 @media (max-width: 768px){
-  .projectsSection{ padding:32px 0; }
-  .inner{ padding:0 20px; max-width:100%; }
-  .sectionTitle{ font-size:36px; margin-bottom:24px; }
 
-  .content{ flex-direction:column; gap:20px; width:100%; }
-  .projectList{ display:none; }
+  .projectsSection{ padding:32px 0 !important; }
+  .inner{ padding:0 20px !important; max-width:100% !important; }
 
-  .projectCard{ width:100%; padding:0; background:transparent; gap:16px; }
+  .sectionTitle{
+    font-size:36px !important;
+    line-height:1.2 !important;
+    margin:0 0 24px !important;
+  }
 
-  /* On mobile allow the header to wrap so tags can drop below the title */
-  .header{ flex-wrap:wrap; }
+  /* Single column, everything LEFT-aligned */
+  .content{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:20px !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
 
-  .cardTitle{ font-size:24px; }
-  .tags{ flex-wrap:wrap; }
+  /* Hide the project list on mobile */
+  .projectList{ display:none !important; }
 
-  .row{ width:100%; gap:16px; flex-direction:column; }
-  .thumb{ width:100%; max-width:320px; height:auto; }
-  .info{ width:100%; gap:16px; }
-  .desc{ font-size:16px; line-height:150%; }
-  .buttons a{ height:44px; padding:0 16px; border-radius:16px; }
-}
+  /* Card without extra background — the section already has one */
+  .projectCard{
+    width:100% !important;
+    max-width:100% !important;
+    background:transparent !important;
+    padding:0 !important;
+    gap:16px !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+  }
 
-/* text+buttons container */
-.info{
-  width:456px;
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
+  /* Header: title above tags, LEFT-aligned */
+  .header{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    text-align:left !important;
+    gap:12px !important;
+    padding:0 !important;
+  }
 
-/* buttons row — center and 16px gap */
-.buttons{
-  display:flex;
-  gap:16px;
-  justify-content:center;   /* centered */
-  align-items:center;
-}
+  .cardTitle{
+    font-size:24px !important;
+    line-height:1.2 !important;
+    margin:0 !important;
+    white-space:normal !important;
+    color:#fff !important;
+  }
 
-/* single button appearance */
-.buttons a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:52px;
-  padding:0 18px;
-  border-radius:20px;
-  background:#1E2E43;
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-}
+  /* Pills/tags like in the screenshot */
+  .tags{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:flex-start !important;
+    gap:8px !important;
+    margin:0 0 8px 0 !important;
+  }
+  .tag{
+    padding:10px 14px !important;
+    border-radius:12px !important;
+    background:#4A77C7 !important;                 /* blue background */
+    color:#fff !important;
+    border:1px solid rgba(255,255,255,.18) !important;
+  }
+  .icon{ width:20px !important; height:20px !important; display:block !important; }
 
-/* === CONTENT: fit to container, do not overflow === */
-.content{
-  display:flex;
-  gap:48px;
-  align-items:flex-start;
-  width:100%;          /* instead of width: fit-content */
-  max-width:100%;
-  flex-wrap:nowrap;
-}
+  /* Row: image above the text */
+  .row{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    gap:16px !important;
+  }
 
-/* left column — fixed width */
-.projectList{ flex:0 0 256px; }
+  /* Image 355×240 with large radius */
+  .media{
+    position:relative !important;
+    width:355px !important;
+    height:240px !important;
+    border-radius:24px !important;
+    overflow:hidden !important;
+  }
+  .thumb{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+  }
 
-/* right column — flexible, takes remaining space */
-.projectCard{
-  flex:1 1 0;          /* grows/shrinks */
-  width:auto;          /* don’t force 913px on narrow screens */
-  min-width:0;         /* allow shrink instead of overflow */
-}
+  /* “MINECRAFT” in the top-left corner of the image */
+  .watermark{
+    position:absolute !important;
+    top:12px !important;
+    left:16px !important;
+    font-weight:800 !important;
+    letter-spacing:2px !important;
+    font-size:40px !important;
+    color:rgba(0,0,0,.5) !important;
+    pointer-events:none !important;
+    user-select:none !important;
+  }
 
-/* row inside card — flexible too */
-.row{
-  width:auto;          /* instead of 849px */
-}
+  /* Logo centered on the image */
+  .logo{
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-50%) !important;
+    width:82px !important;
+    height:82px !important;
+    border-radius:30px !important;
+    box-shadow:0 4px 16px rgba(0,0,0,.25) !important;
+  }
 
-/* keep exact Figma widths only on ≥1440px */
-@media (min-width: 1440px){
-  .projectCard{ width:913px; flex:none; }
-  .row{ width:849px; }
-}
+  /* Description below the image */
+  .info{
+    width:100% !important;
+    max-width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:16px !important;
+  }
+  .desc{
+    font-size:16px !important;
+    line-height:1.5 !important;
+    color:rgba(255,255,255,.9) !important;
+    text-align:left !important;
+    margin:0 !important;
+  }
 
-/* optional: on 1024–1439px card fills remaining space next to left list */
-@media (max-width: 1439px){
-  .projectCard{ width:calc(100% - 256px - 48px); }
-}
-
-/* card should never paint outside its rounded corners */
-.projectCard{
-  max-width: 100%;
-  overflow: hidden;          /* clip inside border-radius */
-  box-sizing: border-box;
-}
-
-/* header should not force a second row unless needed */
-.header{
-  display: flex;
-  align-items: flex-start;
-  column-gap: 16px;
-  row-gap: 12px;             /* vertical spacing when it wraps */
-  flex-wrap: wrap;           /* allow wrapping if space is tight */
-  max-width: 100%;
-}
-
-/* title takes only its content width */
-.cardTitle{
-  flex: 0 0 auto;
-  white-space: nowrap;
-  min-width: 0;
-  margin-right: 0;
-}
-
-/* badges: single line when room, otherwise wrap */
-.tags{
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;           /* key: don’t overflow */
-  justify-content: flex-start;
-  min-width: 0;
-  max-width: 100%;
-}
-
-/* badges should not grow */
-.tag{ flex: 0 0 auto; }
-
-/* on very wide screens (≥1440) you can force single row */
-@media (min-width: 1440px){
-  .header{ flex-wrap: nowrap; row-gap: 0; }
-  .tags{ flex-wrap: nowrap; }
-}
-
-/* — 1) card: keep content inside rounded corners — */
-.projectCard{
-  max-width:100%;
-  box-sizing:border-box;
-  overflow:hidden;             /* keep content inside the card */
-}
-
-/* — 2) header: title left, badges right in ONE row (desktop) — */
-.header{
-  display:flex;
-  flex-direction:row;
-  align-items:baseline;
-  gap:16px;
-  width:100%;
-  flex-wrap:nowrap;            /* single row on desktop */
-  padding-right:32px;          /* offset from rounded corner */
-  box-sizing:border-box;
-}
-
-/* title may reduce/wrap to free space for badges */
-.cardTitle{
-  flex:1 1 auto;               /* takes remaining space but can shrink */
-  min-width:0;
-  margin:0;
-  white-space:normal;          /* no nowrap here */
-  line-height:120%;
-}
-
-/* badges on the right — single row when room */
-.tags{
-  display:flex;
-  flex:0 0 auto;               /* don’t stretch */
-  gap:12px;                    /* slightly tighter helps fitting */
-  flex-wrap:nowrap;
-  min-width:0;
-  max-width:100%;
-  margin-left:0;               /* ensure no extra push right */
-}
-
-/* badges slightly narrower than before (Figma-friendly) */
-.tag{
-  flex:0 0 auto;
-  padding:8px 10px;            /* was 8px 12px */
-}
-
-/* row with image + text shouldn’t enforce width */
-.row{
-  width:auto;                  /* not fixed 849px */
-  gap:32px;
-  min-width:0;
-}
-
-/* when narrower, allow wrapping instead of overflow */
-@media (max-width: 1280px){
-  .header{ flex-wrap:wrap; padding-right:0; row-gap:12px; }
-  .tags{ flex-wrap:wrap; }
-}
-
-/* desktop 1440+ — restore Figma numbers */
-@media (min-width: 1440px){
-  .projectCard{ width:913px; }
-  .row{ width:849px; }
-}
-
-/* === FINAL DESKTOP BEHAVIOR (title in one line, tags on the same row) === */
-.header {
-  display: flex !important;
-  align-items: baseline !important;
-  gap: 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  padding-right: 32px !important;   /* keep badges away from the rounded corner */
-  flex-wrap: nowrap !important;     /* single row on desktop */
-}
-
-/* The title never wraps on desktop */
-.cardTitle {
-  margin: 0 !important;
-  flex: 0 0 auto !important;        /* don’t grow/shrink */
-  white-space: nowrap !important;   /* <-- key: keep on one line */
-}
-
-/* Badges on the right, same row (as long as there’s room) */
-.tags {
-  display: flex !important;
-  flex: 1 1 auto !important;        /* take remaining space */
-  gap: 12px !important;
-  flex-wrap: nowrap !important;
-  min-width: 0 !important;
-  margin-left: 0 !important;
-}
-
-/* Slightly narrower pills so they fit more easily */
-.tag { padding: 8px 10px !important; }
-
-/* === NARROW VIEWPORTS: allow wrapping instead of overflowing === */
-@media (max-width: 1200px) {
-  .header { flex-wrap: wrap !important; padding-right: 0 !important; row-gap: 12px !important; }
-  .tags { flex-basis: 100% !important; flex-wrap: wrap !important; }
-  .cardTitle { white-space: nowrap !important; }  /* title stays one line; badges wrap below */
+  /* Buttons: left-aligned, first white, second outlined */
+  .buttons{
+    display:flex !important;
+    gap:16px !important;
+    justify-content:flex-start !important;
+    align-items:center !important;
+  }
+  .buttons a{
+    height:44px !important;
+    padding:0 18px !important;
+    border-radius:16px !important;
+    font-weight:700 !important;
+    text-decoration:none !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border:1px solid rgba(255,255,255,.6) !important;
+    background:transparent !important;
+    color:#fff !important;
+  }
+  /* “Documentation” — solid white */
+  .buttons a:first-child{
+    background:#fff !important;
+    color:#1E2E43 !important;
+    border:1px solid #fff !important;
+  }
+  /* “GitHub” — outlined */
+  .buttons a:last-child{
+    background:transparent !important;
+    color:#fff !important;
+    border:1px solid rgba(255,255,255,.6) !important;
+  }
 }
