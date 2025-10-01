@@ -206,3 +206,216 @@
   .desc{ font-size:16px; line-height:150%; }
   .buttons a{ height:44px; padding:0 16px; border-radius:16px; }
 }
+
+/* text+buttons container */
+.info{
+  width:456px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* buttons row — center and 16px gap */
+.buttons{
+  display:flex;
+  gap:16px;
+  justify-content:center;   /* centered */
+  align-items:center;
+}
+
+/* single button appearance */
+.buttons a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:52px;
+  padding:0 18px;
+  border-radius:20px;
+  background:#1E2E43;
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* === CONTENT: fit to container, do not overflow === */
+.content{
+  display:flex;
+  gap:48px;
+  align-items:flex-start;
+  width:100%;          /* instead of width: fit-content */
+  max-width:100%;
+  flex-wrap:nowrap;
+}
+
+/* left column — fixed width */
+.projectList{ flex:0 0 256px; }
+
+/* right column — flexible, takes remaining space */
+.projectCard{
+  flex:1 1 0;          /* grows/shrinks */
+  width:auto;          /* don’t force 913px on narrow screens */
+  min-width:0;         /* allow shrink instead of overflow */
+}
+
+/* row inside card — flexible too */
+.row{
+  width:auto;          /* instead of 849px */
+}
+
+/* keep exact Figma widths only on ≥1440px */
+@media (min-width: 1440px){
+  .projectCard{ width:913px; flex:none; }
+  .row{ width:849px; }
+}
+
+/* optional: on 1024–1439px card fills remaining space next to left list */
+@media (max-width: 1439px){
+  .projectCard{ width:calc(100% - 256px - 48px); }
+}
+
+/* card should never paint outside its rounded corners */
+.projectCard{
+  max-width: 100%;
+  overflow: hidden;          /* clip inside border-radius */
+  box-sizing: border-box;
+}
+
+/* header should not force a second row unless needed */
+.header{
+  display: flex;
+  align-items: flex-start;
+  column-gap: 16px;
+  row-gap: 12px;             /* vertical spacing when it wraps */
+  flex-wrap: wrap;           /* allow wrapping if space is tight */
+  max-width: 100%;
+}
+
+/* title takes only its content width */
+.cardTitle{
+  flex: 0 0 auto;
+  white-space: nowrap;
+  min-width: 0;
+  margin-right: 0;
+}
+
+/* badges: single line when room, otherwise wrap */
+.tags{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;           /* key: don’t overflow */
+  justify-content: flex-start;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* badges should not grow */
+.tag{ flex: 0 0 auto; }
+
+/* on very wide screens (≥1440) you can force single row */
+@media (min-width: 1440px){
+  .header{ flex-wrap: nowrap; row-gap: 0; }
+  .tags{ flex-wrap: nowrap; }
+}
+
+/* — 1) card: keep content inside rounded corners — */
+.projectCard{
+  max-width:100%;
+  box-sizing:border-box;
+  overflow:hidden;             /* keep content inside the card */
+}
+
+/* — 2) header: title left, badges right in ONE row (desktop) — */
+.header{
+  display:flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:16px;
+  width:100%;
+  flex-wrap:nowrap;            /* single row on desktop */
+  padding-right:32px;          /* offset from rounded corner */
+  box-sizing:border-box;
+}
+
+/* title may reduce/wrap to free space for badges */
+.cardTitle{
+  flex:1 1 auto;               /* takes remaining space but can shrink */
+  min-width:0;
+  margin:0;
+  white-space:normal;          /* no nowrap here */
+  line-height:120%;
+}
+
+/* badges on the right — single row when room */
+.tags{
+  display:flex;
+  flex:0 0 auto;               /* don’t stretch */
+  gap:12px;                    /* slightly tighter helps fitting */
+  flex-wrap:nowrap;
+  min-width:0;
+  max-width:100%;
+  margin-left:0;               /* ensure no extra push right */
+}
+
+/* badges slightly narrower than before (Figma-friendly) */
+.tag{
+  flex:0 0 auto;
+  padding:8px 10px;            /* was 8px 12px */
+}
+
+/* row with image + text shouldn’t enforce width */
+.row{
+  width:auto;                  /* not fixed 849px */
+  gap:32px;
+  min-width:0;
+}
+
+/* when narrower, allow wrapping instead of overflow */
+@media (max-width: 1280px){
+  .header{ flex-wrap:wrap; padding-right:0; row-gap:12px; }
+  .tags{ flex-wrap:wrap; }
+}
+
+/* desktop 1440+ — restore Figma numbers */
+@media (min-width: 1440px){
+  .projectCard{ width:913px; }
+  .row{ width:849px; }
+}
+
+/* === FINAL DESKTOP BEHAVIOR (title in one line, tags on the same row) === */
+.header {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding-right: 32px !important;   /* keep badges away from the rounded corner */
+  flex-wrap: nowrap !important;     /* single row on desktop */
+}
+
+/* The title never wraps on desktop */
+.cardTitle {
+  margin: 0 !important;
+  flex: 0 0 auto !important;        /* don’t grow/shrink */
+  white-space: nowrap !important;   /* <-- key: keep on one line */
+}
+
+/* Badges on the right, same row (as long as there’s room) */
+.tags {
+  display: flex !important;
+  flex: 1 1 auto !important;        /* take remaining space */
+  gap: 12px !important;
+  flex-wrap: nowrap !important;
+  min-width: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Slightly narrower pills so they fit more easily */
+.tag { padding: 8px 10px !important; }
+
+/* === NARROW VIEWPORTS: allow wrapping instead of overflowing === */
+@media (max-width: 1200px) {
+  .header { flex-wrap: wrap !important; padding-right: 0 !important; row-gap: 12px !important; }
+  .tags { flex-basis: 100% !important; flex-wrap: wrap !important; }
+  .cardTitle { white-space: nowrap !important; }  /* title stays one line; badges wrap below */
+}
