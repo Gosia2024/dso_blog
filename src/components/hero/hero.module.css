@@ -1,0 +1,121 @@
+/* --- Desktop (default) --- */
+.hero {
+  display: flex;                     /* Lay out text + image side-by-side */
+  justify-content: space-between;    /* Space between the two columns */
+  align-items: center;               /* Vertically center content in the row */
+  background-color: #266ad9;         /* Hero background */
+  padding: 60px 110px;               /* Outer spacing (top/bottom, left/right) */
+  color: white;                      /* Default text color inside the hero */
+  gap: 80px;                         /* Gap between text and image sections */
+}
+
+.textSection {
+  flex: 1;                           /* Take available width */
+  max-width: 600px;                  /* Keep readable line length */
+  text-align: left;                  /* Left-align text on desktop */
+  display: flex;                     /* Enable vertical centering with column */
+  flex-direction: column;            /* Stack children vertically */
+  justify-content: center;           /* Center text block within the section */
+}
+
+.imageSection img,
+.imageInline img {
+  border-radius: 16px;               /* Rounded corners for profile image */
+  width: 340px;                      /* Fixed image width on desktop */
+  height: auto;                      /* Keep aspect ratio */
+  object-fit: cover;                 /* Crop to fill without distortion */
+}
+
+/* Visibility helpers */
+.desktopOnly { display: block; }     /* Shown on desktop */
+.mobileOnly  { display: none; }      /* Hidden on desktop */
+
+/* Call-to-action button */
+.contactButton {
+  background: white;                 /* Button background */
+  color: #266ad9;                    /* Button text color matches brand */
+  border: none;                      /* No border */
+  border-radius: 20px;               /* Pill-ish shape */
+  padding: 12px 25px;                /* Clickable area */
+  font-size: 15px;                   /* Readable size */
+  font-weight: 500;                  /* Medium weight */
+  cursor: pointer;                   /* Pointer on hover */
+  align-self: flex-start;            /* Align left within text column */
+  transition: background 0.2s, color 0.2s; /* Smooth hover transitions */
+  max-width: fit-content;            /* Button wraps to its content */
+}
+
+/* ---  Mobile --- */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;          /* Stack text and image vertically */
+    text-align: center;              /* Center text on mobile */
+    padding: 30px 20px;              /* Tighter spacing on small screens */
+    align-items: center;             /* Center items horizontally */
+  }
+
+  .textSection { 
+    max-width: 100%;                 /* Use full width on mobile */
+    align-items: center;             /* Center inner items */
+  }
+
+  /* Show inline image inside text; hide the side image */
+  .desktopOnly { display: none; }    /* Hide desktop-only blocks */
+  .mobileOnly  { display: block; }   /* Show mobile-only blocks */
+
+  .imageInline img { 
+    width: 250px;                    /* Smaller image on mobile */
+    margin: 20px 0;                  /* Space above/below image */
+  }
+
+  .contactButton { 
+    align-self: center;              /* Center the CTA on mobile */
+  }
+}
+
+/* Ensure the header is a positioning context (anchor for absolute children) */
+.header { position: relative; }
+
+/* Desktop header layout (already OK) */
+.header {
+  display: flex;                     /* Lay out header items in a row */
+  align-items: center;               /* Vertically center header items */
+  width: 100%;                       /* Full width header */
+}
+
+/* Duplicate: sets the same as above */
+.header { position: relative; }
+
+/* Ensure header uses flex (duplicate of earlier flex declaration) */
+.header {
+  display: flex;
+  align-items: center;
+}
+
+/* By default, hide the burger/menu button on desktop */
+.menuButton {
+  display: none;
+}
+
+/* Reassert header as positioning anchor (duplicate) */
+.header {
+  position: relative; /* important */
+}
+
+/* By default, hide burger on desktop (duplicate) */
+.menuButton {
+  display: none;
+}
+
+.heroTitle{
+  font-family: "Quicksand", sans-serif; /* Headline font */
+  font-weight: 700;                     /* Bold */
+  font-size: 88px;                      /* From Figma spec */
+  line-height: 1.2;                     /* 120% line height */
+  letter-spacing: 0;                    /* No extra tracking */
+  color: #fff;                          /* White title on blue bg */
+}
+
+/* Responsive title sizing (optional) */
+@media (max-width: 992px){ .heroTitle{ font-size: 56px; } } /* Tablets */
+@media (max-width: 576px){ .heroTitle{ font-size: 40px; } } /* Small phones */
