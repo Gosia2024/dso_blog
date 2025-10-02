@@ -353,3 +353,82 @@
     border:1px solid rgba(255,255,255,.6) !important;
   }
 }
+/* Hide .mobileOnly on desktop, show everywhere else */
+@media (min-width: 769px){
+  .mobileOnly { display: none !important; }
+}
+
+/* (opcjonalnie) Hide .desktopOnly on mobile */
+@media (max-width: 768px){
+  .desktopOnly { display: none !important; }
+}
+/* show on mobile/tablet, hide on desktop */
+.mobileOnly { display: block; }
+
+@media (min-width: 769px){
+  .mobileOnly { display: none !important; }
+}
+
+/* (opcjonalnie) odwrotność, gdybyś chciała wersję tylko desktop */
+@media (max-width: 768px){
+  .desktopOnly { display: none !important; }
+}
+.mobileHidden { display: block; }
+@media (max-width: 768px){
+  .mobileHidden { display: none !important; }
+}
+/* Visibility utils */
+.mobileOnly { display: none; }
+.desktopOnly { display: block; }
+.mobileHidden { display: block; }
+
+@media (max-width: 768px){
+  .mobileOnly { display: block !important; }
+  .desktopOnly { display: none !important; }
+  .mobileHidden { display: none !important; }
+}
+/* Image 355×240 with large radius */
+.media{
+  position:relative !important;
+  width:355px !important;
+  height:240px !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+}
+
+/* === Visibility utils: exactly once, no duplicates === */
+.mobileOnly { display: none; }
+.desktopOnly { display: block; }
+.mobileHidden { display: block; }
+
+@media (max-width: 768px){
+  .sep{
+    width:355px;                 /* jak obrazek */
+    height:12px;
+    background:rgba(255,255,255,.18);
+    border-radius:12px;
+    margin:12px auto 0;          /* odstęp OD góry, wyśrodkowany */
+  }
+}
+/* Top & bottom grey bars for the whole card (mobile) */
+@media (max-width: 768px){
+  .cardBars{
+    position: relative;
+    padding-top: 20px;    /* miejsce na górny pasek */
+    padding-bottom: 20px; /* miejsce na dolny pasek */
+  }
+  .cardBars::before,
+  .cardBars::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:355px;                 /* szerokość jak obraz */
+    height:12px;
+    background:rgba(255,255,255,.18);
+    border-radius:12px;
+    pointer-events:none;
+  }
+  .cardBars::before{ top:0; }     /* PRZED tytułem (na górze karty) */
+  .cardBars::after{ bottom:0; }   /* PO przyciskach (na dole karty) */
+}

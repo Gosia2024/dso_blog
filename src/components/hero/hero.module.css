@@ -1,131 +1,102 @@
 /* --- Desktop (default) --- */
 .hero {
-  display: flex;                     /* Lay out text + image side-by-side */
-  justify-content: space-between;    /* Space between the two columns */
-  align-items: center;               /* Vertically center content in the row */
-  background-color: #266ad9;         /* Hero background */
-  padding: 60px 110px;               /* Outer spacing (top/bottom, left/right) */
-  color: white;                      /* Default text color inside the hero */
-  gap: 80px;                         /* Gap between text and image sections */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #266ad9;
+  color: #fff;
+  padding: 60px 117px 72px;
+  gap: 115px;
 }
 
+/* ⬇️ Fixed text column size on desktop */
 .textSection {
-  flex: 1;                           /* Take available width */
-  max-width: 600px;                  /* Keep readable line length */
-  text-align: left;                  /* Left-align text on desktop */
-  display: flex;                     /* Enable vertical centering with column */
-  flex-direction: column;            /* Stack children vertically */
-  justify-content: center;           /* Center text block within the section */
+  flex: 0 0 600px;          /* fixed 600px (no flex grow) */
+  width: 600px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.heroTitle{
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1.2;
+  margin: 8px 0 12px;
+}
+
+.heroSubtitle{
+  font-weight: 700;
+  font-size: clamp(20px, 3.2vw, 32px);
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.textSection p{
+  font-size: clamp(14px, 2.1vw, 18px);
+  line-height: 1.6;
+  margin: 8px 0 16px;
 }
 
 .imageSection img,
 .imageInline img {
-  border-radius: 16px;               /* Rounded corners for profile image */
-  width: 340px;                      /* Fixed image width on desktop */
-  height: auto;                      /* Keep aspect ratio */
-  object-fit: cover;                 /* Crop to fill without distortion */
+  width: 340px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
 }
+
+.contactButton {
+  background: #fff;
+  color: #266ad9;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 20px;
+  height: 47px;            /* Figma spec */
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;   /* left-aligned on desktop */
+  max-width: fit-content;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.contactButton:hover { transform: translateY(-1px); }
+.contactButton:active { transform: translateY(0); opacity: .9; }
 
 /* Visibility helpers */
-.desktopOnly { display: block; }     /* Shown on desktop */
-.mobileOnly  { display: none; }      /* Hidden on desktop */
+.desktopOnly { display: block; }
+.mobileOnly  { display: none; }
 
-/* Call-to-action button */
-.contactButton {
-  background: white;                 /* Button background */
-  color: #266ad9;                    /* Button text color matches brand */
-  border: none;                      /* No border */
-  border-radius: 20px;               /* Pill-ish shape */
-  padding: 12px 25px;                /* Clickable area */
-  font-size: 15px;                   /* Readable size */
-  font-weight: 500;                  /* Medium weight */
-  cursor: pointer;                   /* Pointer on hover */
-  align-self: flex-start;            /* Align left within text column */
-  transition: background 0.2s, color 0.2s; /* Smooth hover transitions */
-  max-width: fit-content;            /* Button wraps to its content */
-}
-
-/* ---  Mobile --- */
-@media (max-width: 768px) {
+/* --- Mobile (Figma frame ~390px) --- */
+@media (max-width: 430px) {
   .hero {
-    flex-direction: column;          /* Stack text and image vertically */
-    text-align: center;              /* Center text on mobile */
-    padding: 30px 20px;              /* Tighter spacing on small screens */
-    align-items: center;             /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 39px 40px 26px;  /* top/right/bottom/left */
   }
 
-  .textSection { 
-    max-width: 100%;                 /* Use full width on mobile */
-    align-items: center;             /* Center inner items */
+  /* ⬇️ Fixed width 325px on mobile */
+  .textSection {
+    flex: 0 0 325px;
+    width: 325px;
+    max-width: 325px;
+    align-items: flex-start;
+    text-align: left;
   }
 
-  /* Show inline image inside text; hide the side image */
-  .desktopOnly { display: none; }    /* Hide desktop-only blocks */
-  .mobileOnly  { display: block; }   /* Show mobile-only blocks */
+  .desktopOnly { display: none; }
+  .mobileOnly  { display: block; }
 
-  .imageInline img { 
-    width: 250px;                    /* Smaller image on mobile */
-    margin: 20px 0;                  /* Space above/below image */
+  .imageInline img {
+    width: 325px;
+    border-radius: 16px;
+    margin: 16px 0;
   }
 
-  .contactButton { 
-    align-self: center;              /* Center the CTA on mobile */
-  }
+  .contactButton { align-self: center; }
 }
 
-/* Ensure the header is a positioning context (anchor for absolute children) */
-.header { position: relative; }
-
-/* Desktop header layout (already OK) */
-.header {
-  display: flex;                     /* Lay out header items in a row */
-  align-items: center;               /* Vertically center header items */
-  width: 100%;                       /* Full width header */
-}
-
-/* Duplicate: sets the same as above */
-.header { position: relative; }
-
-/* Ensure header uses flex (duplicate of earlier flex declaration) */
-.header {
-  display: flex;
-  align-items: center;
-}
-
-/* By default, hide the burger/menu button on desktop */
-.menuButton {
-  display: none;
-}
-
-/* Reassert header as positioning anchor (duplicate) */
-.header {
-  position: relative; /* important */
-}
-
-/* By default, hide burger on desktop (duplicate) */
-.menuButton {
-  display: none;
-}
-
-.heroTitle{
-  font-family: "Quicksand", sans-serif; /* Headline font */
-  font-weight: 700;                     /* Bold */
-  font-size: 88px;                      /* From Figma spec */
-  line-height: 1.2;                     /* 120% line height */
-  letter-spacing: 0;                    /* No extra tracking */
-  color: #fff;                          /* White title on blue bg */
-}
-
-/* Responsive title sizing (optional) */
-@media (max-width: 992px){ .heroTitle{ font-size: 56px; } } /* Tablets */
-@media (max-width: 576px){ .heroTitle{ font-size: 40px; } } /* Small phones */
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #266ad9;
-  padding: 60px 117px 72px 117px; /* Figma: top 60, right 117, bottom 72, left 117 */
-  gap: 115px;                      /* Figma: Gap between columns */
-  color: white;
-}

@@ -55,10 +55,10 @@ function Header() {
       {/* Desktop language switcher with Docusaurus <Link> for internal routing */}
       <div className={styles.langSwitcher}>
         {/* data-noBrokenLink tells Docusaurus to skip broken-link validation for these */}
-        <Link to="/en/" data-noBrokenLink>EN</Link>
+        <Link to="/" data-noBrokenLink>EN</Link>
         <Link to="/de/" data-noBrokenLink>DE</Link>
         {/* Root ("/") is the default language (PL) in this setup */}
-        <Link to="/" data-noBrokenLink>PL</Link>
+        <Link to="/pl/" data-noBrokenLink>PL</Link>
       </div>
 
       {/* Hamburger button visible on mobile; opens the mobile menu */}

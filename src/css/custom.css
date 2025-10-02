@@ -65,7 +65,7 @@ html, body {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(-360deg); /* 👈 odwrotna strona */
+    transform: rotate(-360deg); /* odwrotna strona */
   }
 }
 
@@ -77,27 +77,16 @@ html, body {
   position: relative;
   z-index: 2;
 }
-.navbar {
-  display: none !important;
-}
-.footer {
-  display: none !important;
-}
-/*test nie dziala*/
 
-/* TEST globalny */
+.navbar { display: none !important; }  /* usuń */
+.footer { display: none !important; }  /* usuń */
+
+:global(.slick-slide) { padding: 0 12px; }  /* gutter */
+:global(.slick-slider) { overflow: hidden; }
+
+
+
+
+
+
 body { outline: 4px solid magenta !important; }
-/* DEBUG: obejmij wszystkie możliwe warianty wrappera strony kategorii */
-html .theme-doc-category-generated-index-page,
-html .theme-doc-category-index-page,
-html .theme-doc-category-items,
-html .docPage--categoryGeneratedIndex {
-  outline: 4px solid magenta !important;
-}
-
-/* Dodatkowo: spróbuj złapać same karty */
-html .theme-doc-category-generated-index-page .card,
-html .theme-doc-category-index-page .card,
-html .theme-doc-category-items .card {
-  border: 3px dashed magenta !important;
-}
