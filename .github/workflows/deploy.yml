@@ -1,0 +1,34 @@
+name: Deploy Docusaurus site to Pages
+
+on:
+  push:
+    branches: [ "portfolio" ]  # 🔹 Run this workflow only when code is pushed to the "portfolio" branch
+permissions:
+  contents: write
+  pages: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest      # 🔹 Use the latest Ubuntu virtual machine as the build environment
+    steps:
+      - uses: actions/checkout@v4
+        # 🔹 Step 1: Check out the repository code into the runner so it can be built
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        # 🔹 Step 2: Install Node.js version 20 (required to run Docusaurus)
+
+      - run: npm ci
+        # 🔹 Step 3: Install all project dependencies using a clean install
+
+      - run: npm run build
+        # 🔹 Step 4: Build the Docusaurus site into static files (output goes to /build)
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
+        # 🔹 Step 5: Deploy the contents of the /build folder to GitHub Pages
+        #    This action pushes the build output to the branch set in your docusaurus.config.ts (deploymentBranch)
+
