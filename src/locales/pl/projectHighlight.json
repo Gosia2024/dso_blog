@@ -1,0 +1,29 @@
+{
+  "sectionTitle": "Moje najciekawsze projekty",
+  "seeMore": "↳ zobacz więcej projektów",
+  "list": [
+    "1. Baby Tools",
+    "2. Truck Signs API",
+    "3. Juice Shop Meister",
+    "4. Minecraft",
+    "5. Hosting WordPressa"
+  ],
+  "firstCard": {
+    "title": "1. Minecraft",
+    "h3": "Projekt Minecraft",
+    "desc": "Napisz kilka informacji o projekcie. Np.: z czego jesteś dumna, co udało się tu zaimplementować, jaką architekturę/algorytmy zastosowałaś i dlaczego ten projekt był dla Ciebie interesujący."
+  },
+  "secondCard": { "title": "2. Klon (Container)" },
+  "thirdCard":  { "title": "3. Hosting WordPressa" },
+  "buttons": { "docs": "Dokumentacja", "github": "GitHub" },
+  "alts": {
+    "yaml": "YAML",
+    "shell": "Skrypty powłoki",
+    "security": "Bezpieczeństwo IT",
+    "container": "Kontener",
+    "minecraft": "Projekt Minecraft",
+    "wp": "Hosting WordPressa",
+    "minecraftLogo": "Logo Minecraft"
+  },
+  "watermark": "MINECRAFT"
+}

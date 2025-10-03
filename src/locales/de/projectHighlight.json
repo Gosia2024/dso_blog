@@ -1,0 +1,29 @@
+{
+  "sectionTitle": "Meine Projekt-Highlights",
+  "seeMore": "↳ weitere Projekte ansehen",
+  "list": [
+    "1. Baby Tools",
+    "2. Truck Signs API",
+    "3. Juice Shop Meister",
+    "4. Minecraft",
+    "5. WordPress hosten"
+  ],
+  "firstCard": {
+    "title": "1. Minecraft",
+    "h3": "Projekt Minecraft",
+    "desc": "Schreibe einige Infos über das Projekt. Z. B.: Worauf bist du stolz? Was konntest du hier umsetzen? Welche Algorithmen bzw. Serverarchitektur hast du verwendet? Warum fandest du das Projekt besonders interessant?"
+  },
+  "secondCard": { "title": "2. Clone (Container)" },
+  "thirdCard":  { "title": "3. WordPress hosten" },
+  "buttons": { "docs": "Dokumentation", "github": "GitHub" },
+  "alts": {
+    "yaml": "YAML",
+    "shell": "Shell-Skripte",
+    "security": "IT-Sicherheit",
+    "container": "Container",
+    "minecraft": "Projekt Minecraft",
+    "wp": "WordPress hosten",
+    "minecraftLogo": "Minecraft-Logo"
+  },
+  "watermark": "MINECRAFT"
+}

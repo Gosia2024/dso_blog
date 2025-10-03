@@ -1,0 +1,22 @@
+{
+  "mobileHint": "Write some information about your other projects. What other projects have you been working on so far?",
+  "mobileCta": "See more projects",
+  "title": "Contact me",
+  "subtitle": "Looking forward to hearing from you!",
+  "bodyIntro": "Include the information like:",
+  "bullets": [
+    "Feel free to reach out with job offers or opportunities like...",
+    "What role are you looking for?",
+    "How you will contribute to the new team.",
+    "Are you open for remote work or even relocate?"
+  ],
+  "links": {
+    "emailLabel": "info@malgorzata-lingenfelder.de",
+    "emailHref": "mailto:info@malgorzata-lingenfelder.de",
+    "profileLabel": "Profile Page",
+    "profileHref": "#"
+  },
+  "backToTopAria": "Back to top",
+  "legal": "Legal notice",
+  "copyright": "© Gosia 2025"
+}

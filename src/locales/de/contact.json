@@ -1,0 +1,22 @@
+{
+  "mobileHint": "Schreibe etwas über weitere Projekte. Woran hast du bisher gearbeitet?",
+  "mobileCta": "Mehr Projekte ansehen",
+  "title": "Kontaktiere mich",
+  "subtitle": "Ich freue mich auf deine Nachricht!",
+  "bodyIntro": "Füge Informationen wie folgt hinzu:",
+  "bullets": [
+    "Gerne auch Jobangebote oder ähnliche Möglichkeiten...",
+    "Welche Rolle suchst du?",
+    "Wie kannst du das neue Team unterstützen?",
+    "Offen für Remote oder Umzug?"
+  ],
+  "links": {
+    "emailLabel": "info@malgorzata-lingenfelder.de",
+    "emailHref": "mailto:info@malgorzata-lingenfelder.de",
+    "profileLabel": "Profilseite",
+    "profileHref": "#"
+  },
+  "backToTopAria": "Nach oben",
+  "legal": "Impressum",
+  "copyright": "© Gosia 2025"
+}

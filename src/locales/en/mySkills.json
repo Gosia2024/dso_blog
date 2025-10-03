@@ -1,0 +1,85 @@
+{
+  "sectionTitle": "My skills",
+  "skills": {
+    "html": {
+      "name": "HTML",
+      "desc": [
+        "User-friendly navigation menus",
+        "Responsive web design",
+        "Contact forms and login pages",
+        "Transitions, animations and hover effect"
+      ]
+    },
+    "css": {
+      "name": "CSS",
+      "desc": [
+        "User-friendly navigation menus",
+        "Responsive web design",
+        "Contact forms and login pages",
+        "Transitions, animations and hover effect"
+      ]
+    },
+    "static": {
+      "name": "Static site",
+      "desc": [
+        "search functionality",
+        "static website and customization",
+        "tags, categories, and RSS feeds",
+        "translation"
+      ]
+    },
+    "python": {
+      "name": "Python",
+      "desc": [
+        "Build APIs",
+        "Spam filtering, recommendation systems",
+        "Automate software testing",
+        "Using libraries like Tkinter, PyQt, or Kivy"
+      ]
+    },
+    "shell": {
+      "name": "Shell scripting",
+      "desc": [
+        "Automated builds and tests",
+        "Pre-built actions for common tasks",
+        "Push, pull request, or schedule",
+        "Automated deployments"
+      ]
+    },
+    "yaml": {
+      "name": "YAML",
+      "desc": [
+        "Kubernetes deployment",
+        "Store settings like database connections",
+        "Environment-specific variables",
+        "Complex data structures with lists and maps"
+      ]
+    },
+    "container": {
+      "name": "Container",
+      "desc": [
+        "CI/CD pipelines",
+        "Automate building, testing, deploying applications",
+        "Build microservices-based applications"
+      ]
+    },
+    "cicd": {
+      "name": "CI/CD",
+      "desc": [
+        "Automated builds and tests",
+        "Pre-built actions for common tasks",
+        "Push, pull request, or schedule",
+        "Automated deployments"
+      ]
+    },
+    "security": {
+      "name": "IT Security",
+      "desc": [
+        "Simulate attacks and identify vulnerabilities",
+        "Set up multi-factor authentication",
+        "Login security",
+        "Implement authentication and authorization"
+      ]
+    }
+  }
+}

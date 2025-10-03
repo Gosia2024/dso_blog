@@ -1,0 +1,22 @@
+{
+  "mobileHint": "Napisz coś o innych projektach. Nad czym pracowałaś do tej pory?",
+  "mobileCta": "Zobacz więcej projektów",
+  "title": "Skontaktuj się ze mną",
+  "subtitle": "Z niecierpliwością czekam na wiadomość!",
+  "bodyIntro": "Uwzględnij informacje takie jak:",
+  "bullets": [
+    "Oferty pracy lub inne możliwości, np....",
+    "Jakiej roli szukasz?",
+    "Jak możesz wesprzeć nowy zespół.",
+    "Czy rozważasz pracę zdalną lub relokację?"
+  ],
+  "links": {
+    "emailLabel": "info@malgorzata-lingenfelder.de",
+    "emailHref": "mailto:info@malgorzata-lingenfelder.de",
+    "profileLabel": "Profil",
+    "profileHref": "#"
+  },
+  "backToTopAria": "Do góry",
+  "legal": "Informacje prawne",
+  "copyright": "© Gosia 2025"
+}

@@ -1,0 +1,85 @@
+{
+  "sectionTitle": "Meine Fähigkeiten",
+  "skills": {
+    "html": {
+      "name": "HTML",
+      "desc": [
+        "Benutzerfreundliche Navigationsmenüs",
+        "Responsives Webdesign",
+        "Kontakt- und Login-Formulare",
+        "Transitions, Animationen und Hover-Effekte"
+      ]
+    },
+    "css": {
+      "name": "CSS",
+      "desc": [
+        "Benutzerfreundliche Navigationsmenüs",
+        "Responsives Webdesign",
+        "Kontakt- und Login-Formulare",
+        "Transitions, Animationen und Hover-Effekte"
+      ]
+    },
+    "static": {
+      "name": "Statische Seite",
+      "desc": [
+        "Suchfunktion",
+        "statische Website und Anpassung",
+        "Tags, Kategorien und RSS-Feeds",
+        "Übersetzungen"
+      ]
+    },
+    "python": {
+      "name": "Python",
+      "desc": [
+        "APIs bauen",
+        "Spamfilter, Empfehlungssysteme",
+        "Automatisierte Softwaretests",
+        "Bibliotheken wie Tkinter, PyQt oder Kivy"
+      ]
+    },
+    "shell": {
+      "name": "Shell-Skripte",
+      "desc": [
+        "Automatisierte Builds und Tests",
+        "Vorgefertigte Aktionen für gängige Aufgaben",
+        "Auslösen per Push, PR oder Zeitplan",
+        "Automatisierte Deployments"
+      ]
+    },
+    "yaml": {
+      "name": "YAML",
+      "desc": [
+        "Kubernetes-Deployments",
+        "Einstellungen speichern (z. B. DB)",
+        "Umgebungsspezifische Variablen",
+        "Komplexe Datenstrukturen mit Listen und Maps"
+      ]
+    },
+    "container": {
+      "name": "Container",
+      "desc": [
+        "CI/CD-Pipelines",
+        "Build/Test/Deploy automatisieren",
+        "Mikroservice-Anwendungen erstellen"
+      ]
+    },
+    "cicd": {
+      "name": "CI/CD",
+      "desc": [
+        "Automatisierte Builds und Tests",
+        "Vorgefertigte Aktionen für gängige Aufgaben",
+        "Auslösen per Push, PR oder Zeitplan",
+        "Automatisierte Deployments"
+      ]
+    },
+    "security": {
+      "name": "IT-Sicherheit",
+      "desc": [
+        "Angriffe simulieren, Schwachstellen finden",
+        "Multi-Faktor-Authentifizierung einrichten",
+        "Login-Sicherheit",
+        "Authentifizierung und Autorisierung umsetzen"
+      ]
+    }
+  }
+}

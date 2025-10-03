@@ -1,8 +1,10 @@
+// src/components/my-skills/MySkills.tsx  (dostosuj ścieżkę do Twojego pliku)
 import React, { useEffect, useState } from "react";
 import styles from "./my-skills.module.css";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from "react-i18next";
 
 /* Hook w tym pliku – zero importów zewnętrznych */
 function useIsMobile(breakpoint = 600) {
@@ -17,56 +19,44 @@ function useIsMobile(breakpoint = 600) {
   return isMobile;
 }
 
-type Skill = {
-  name: string;
+type SkillId =
+  | "html"
+  | "css"
+  | "static"
+  | "python"
+  | "shell"
+  | "yaml"
+  | "container"
+  | "cicd"
+  | "security";
+
+type SkillData = {
+  id: SkillId;
   icon: string;
   iconW: number;
   iconH: number;
-  description: string[];
 };
 
-/* === PEŁNY ZESTAW (desktop bez zmian) === */
-const skillsAll: Skill[] = [
-  { name: "HTML", icon: "./img/html.png", iconW: 22.19, iconH: 49.9, description: [
-    "User-friendly navigation menus","Responsive web design","Contact forms and login pages","Transitions, animations and hover effect",
-  ]},
-  { name: "CSS", icon: "./img/css.png", iconW: 22.19, iconH: 49.9, description: [
-    "User-friendly navigation menus","Responsive web design","Contact forms and login pages","Transitions, animations and hover effect",
-  ]},
-  { name: "Static site", icon: "./img/static.png", iconW: 22.19, iconH: 49.9, description: [
-    "search functionality","static website and customization","tags, categories, and RSS feeds","translation",
-  ]},
-  { name: "Python", icon: "./img/python.png", iconW: 22.19, iconH: 49.9, description: [
-    "Build APIs","Spam filtering, recommendation systems","Automate software testing","Using libraries like Tkinter, PyQt, or Kivy",
-  ]},
-  { name: "Shell scripting", icon: "./img/shell.png", iconW: 22.19, iconH: 49.9, description: [
-    "Automated builds and tests","Pre-built actions for common tasks","Push, pull request, or schedule","Automated deployments",
-  ]},
-  { name: "YAML", icon: "./img/yaml.png", iconW: 22.19, iconH: 49.9, description: [
-    "Kubernetes deployment","Store settings like database connections","Environment-specific variables","Complex data structures with lists and maps",
-  ]},
-  { name: "Container", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9, description: [
-    "CI/CD pipelines","Automate building, testing, deploying applications","Build microservices-based applications",
-  ]},
-  { name: "CI/CD", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9, description: [
-    "Automated builds and tests","Pre-built actions for common tasks","Push, pull request, or schedule","Automated deployments",
-  ]},
-  { name: "IT Security", icon: "./img/sec.png", iconW: 22.19, iconH: 49.9, description: [
-    "Simulate attacks and identify vulnerabilities","Set up multi-factor authentication","Login security","Implement authentication and authorization",
-  ]},
-];
-/* === MOBILE: 3 karty w sliderze (po 3 sekcje każda) === */
-const groupsMobile: Skill[][] = [
-  // Slajd 1
-  skillsAll.filter((s) => ["HTML", "CSS", "Static site"].includes(s.name)),
-  // Slajd 2
-  skillsAll.filter((s) => ["Python", "Shell scripting", "YAML"].includes(s.name)),
-  // Slajd 3  ⬇️ (NOWA KARTA)
-  skillsAll.filter((s) => ["Container", "CI/CD", "IT Security"].includes(s.name)),
+// ikony i wymiary zostają w kodzie
+const skillsBase: SkillData[] = [
+  { id: "html",      icon: "./img/html.png",   iconW: 22.19, iconH: 49.9 },
+  { id: "css",       icon: "./img/css.png",    iconW: 22.19, iconH: 49.9 },
+  { id: "static",    icon: "./img/static.png", iconW: 22.19, iconH: 49.9 },
+  { id: "python",    icon: "./img/python.png", iconW: 22.19, iconH: 49.9 },
+  { id: "shell",     icon: "./img/shell.png",  iconW: 22.19, iconH: 49.9 },
+  { id: "yaml",      icon: "./img/yaml.png",   iconW: 22.19, iconH: 49.9 },
+  { id: "container", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9 },
+  { id: "cicd",      icon: "./img/docker.png", iconW: 22.19, iconH: 49.9 },
+  { id: "security",  icon: "./img/sec.png",    iconW: 22.19, iconH: 49.9 }
 ];
 
+// grupy na mobile po ID — niezależne od tłumaczeń
+const groupsMobileIds: SkillId[][] = [
+  ["html", "css", "static"],
+  ["python", "shell", "yaml"],
+  ["container", "cicd", "security"]
+];
 
-/* Slider tylko na mobile; bez overflow */
 const mobileSettings: Settings = {
   dots: true,
   arrows: false,
@@ -76,20 +66,36 @@ const mobileSettings: Settings = {
   touchThreshold: 8,
   speed: 350,
   slidesToShow: 1,
-  adaptiveHeight: true,
+  adaptiveHeight: true
 };
 
 export default function MySkills() {
   const isMobile = useIsMobile(600);
+  const { t } = useTranslation("mySkills");
 
-  const list = (arr: Skill[]) =>
+  // z tłumaczeń bierzemy nazwę i listę opisów
+  const skillsAll = skillsBase.map((s) => ({
+    ...s,
+    name: t(`skills.${s.id}.name`) as string,
+    description: t(`skills.${s.id}.desc`, { returnObjects: true }) as string[]
+  }));
+
+  // helper: znajdź obiekt po ID
+  const byId = (id: SkillId) => skillsAll.find((s) => s.id === id)!;
+
+  const list = (arr: typeof skillsAll) =>
     arr.map((s) => (
-      <article key={s.icon} className={styles.skillCard} tabIndex={0}>
+      <article key={s.id} className={styles.skillCard} tabIndex={0}>
         <div className={styles.skillStack}>
-          <img className={styles.skillIcon} src={s.icon} alt={s.name} width={s.iconW} height={s.iconH} />
-          <span className={styles.skillName}>{s.name}</span>
+          <img
+            className={styles.skillIcon}
+            src={s.icon}
+            alt={s.name}
+            width={s.iconW}
+            height={s.iconH}
+          />
+        <span className={styles.skillName}>{s.name}</span>
         </div>
-        {/* desktop: overlay po Twojemu (hover); mobile: CSS pokazuje listę stale */}
         <div className={styles.skillOverlay}>
           <ul>{s.description.map((line, i) => <li key={i}>{line}</li>)}</ul>
         </div>
@@ -100,32 +106,40 @@ export default function MySkills() {
     <section className={styles.skillsSection} id="skills" aria-labelledby="skills-heading">
       <div className={styles.inner}>
         <header className={styles.headline}>
-          <h2 id="skills-heading">My skills</h2>
+          <h2 id="skills-heading">{t("sectionTitle")}</h2>
         </header>
 
         <div className={styles.content}>
           {isMobile ? (
-  <Slider {...mobileSettings}>
-    {groupsMobile.map((group, gi) => (
-      <div key={gi} className={styles.mobileCard}>
-        {group.map((s) => (
-          <div key={s.name} className={styles.mobileItem}>
-            <div className={styles.mobileIconCol}>
-              <img className={styles.mobileIcon} src={s.icon} alt={s.name} width={s.iconW} height={s.iconH} />
-              <span className={styles.mobileName}>{s.name}</span>
-            </div>
-            <ul className={styles.mobileList}>
-              {s.description.map((line, i) => (<li key={i}>{line}</li>))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    ))}
-  </Slider>
-) : (
-  list(skillsAll)   // desktop bez zmian
-)}
-
+            <Slider {...mobileSettings}>
+              {groupsMobileIds.map((group, gi) => (
+                <div key={gi} className={styles.mobileCard}>
+                  {group.map((id) => {
+                    const s = byId(id);
+                    return (
+                      <div key={s.id} className={styles.mobileItem}>
+                        <div className={styles.mobileIconCol}>
+                          <img
+                            className={styles.mobileIcon}
+                            src={s.icon}
+                            alt={s.name}
+                            width={s.iconW}
+                            height={s.iconH}
+                          />
+                          <span className={styles.mobileName}>{s.name}</span>
+                        </div>
+                        <ul className={styles.mobileList}>
+                          {s.description.map((line, i) => (<li key={i}>{line}</li>))}
+                        </ul>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            list(skillsAll)
+          )}
         </div>
       </div>
     </section>

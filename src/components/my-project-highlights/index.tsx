@@ -1,27 +1,28 @@
+// src/components/my-project-highlights/index.tsx  (lub Twój aktualny path)
 import React from "react";
 import styles from "./my-project-highlights.module.css";
+import { useTranslation } from "react-i18next";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-const projects = [
-  "1. Baby Tools",
-  "2. Truck Signs API",
-  "3. Juice Shop Meister",
-  "4. Minecraft",
-  "5. WordPress hosten",
-];
-
 const MyProjectHighlights: React.FC = () => {
+  const { t } = useTranslation("projectHighlight");
+
+  // lista z JSON (tablica stringów)
+  const projects = t("list", { returnObjects: true }) as string[];
+
   return (
     <section className={styles.projectsSection} id="projects">
       <div className={styles.inner}>
         {/* Desktop title */}
         <h2 className={`${styles.sectionTitle} ${styles.mobileHidden}`}>
-          My project highlights
+          {t("sectionTitle")}
         </h2>
 
         {/* Mobile-only title for first card */}
-        <h3 className={`${styles.cardTitle} ${styles.mobileOnly}`}>1.Minecraft</h3>
+        <h3 className={`${styles.cardTitle} ${styles.mobileOnly}`}>
+          {t("firstCard.title")}
+        </h3>
 
         <div className={styles.content}>
           {/* LEFT – LIST */}
@@ -31,28 +32,44 @@ const MyProjectHighlights: React.FC = () => {
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <div className={styles.moreProjects}>↳ see more projects</div>
+            <div className={styles.moreProjects}>{t("seeMore")}</div>
           </nav>
 
           {/* RIGHT – CARD (Minecraft) */}
-          <article className={`${styles.projectCard} `}>
+          <article className={styles.projectCard}>
             <div className={styles.header}>
               <h3 className={`${styles.cardTitle} ${styles.desktopOnly}`}>
-                Project Minecraft
+                {t("firstCard.h3")}
               </h3>
 
               <div className={styles.tags}>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("./img/myaml.png")} alt="YAML" className={styles.icon} />
+                  <img
+                    src={useBaseUrl("/img/myaml.png")}
+                    alt={t("alts.yaml")}
+                    className={styles.icon}
+                  />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("./img/mshell.png")} alt="Shell scripting" className={styles.icon} />
+                  <img
+                    src={useBaseUrl("/img/mshell.png")}
+                    alt={t("alts.shell")}
+                    className={styles.icon}
+                  />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("./img/msec.png")} alt="IT Security" className={styles.icon} />
+                  <img
+                    src={useBaseUrl("/img/msec.png")}
+                    alt={t("alts.security")}
+                    className={styles.icon}
+                  />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("./img/mcontainer.png")} alt="Container" className={styles.icon} />
+                  <img
+                    src={useBaseUrl("/img/mcontainer.png")}
+                    alt={t("alts.container")}
+                    className={styles.icon}
+                  />
                 </span>
               </div>
             </div>
@@ -61,26 +78,30 @@ const MyProjectHighlights: React.FC = () => {
               <div className={styles.media}>
                 <img
                   className={styles.thumb}
-                  src={useBaseUrl("./img/minecraft.png")}
-                  alt="Project Minecraft"
+                  src={useBaseUrl("/img/minecraft.png")}
+                  alt={t("alts.minecraft")}
                   width={355}
                   height={240}
                 />
-                <span className={styles.watermark}>MINECRAFT</span>
-                <img className={styles.logo} src={useBaseUrl("./img/mlogo.png")} alt="Minecraft logo" />
+                <span className={styles.watermark}>{t("watermark")}</span>
+                <img
+                  className={styles.logo}
+                  src={useBaseUrl("/img/mlogo.png")}
+                  alt={t("alts.minecraftLogo")}
+                />
               </div>
 
               <div className={styles.info}>
-                <p className={styles.desc}>
-                  Write some information about the project. For example: Why are you proud of it? What were you
-                  able to implement here? What different algorithms, server architecture did you use? Why did you
-                  find this project so interesting?
-                </p>
+                <p className={styles.desc}>{t("firstCard.desc")}</p>
 
                 <div className={styles.buttons}>
-                  <Link to={useBaseUrl("docs/projects")}>Documentation</Link>
-                  <a href="https://github.com/Gosia2024/dso_blog" target="_blank" rel="noopener noreferrer">
-                    GitHub
+                  <Link to={useBaseUrl("docs/projects")}>{t("buttons.docs")}</Link>
+                  <a
+                    href="https://github.com/Gosia2024/dso_blog"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("buttons.github")}
                   </a>
                 </div>
 
@@ -95,8 +116,8 @@ const MyProjectHighlights: React.FC = () => {
         {/* 2) Clone (Container) — only mobile, z paskiem */}
         <article className={`${styles.projectCard} ${styles.mobileOnly}`}>
           <div className={styles.header}>
-            <h3 className={styles.cardTitle}>2. Clone (Container)</h3>
-            <div className={styles.tags}>{/* opcjonalne tagi */}</div>
+            <h3 className={styles.cardTitle}>{t("secondCard.title")}</h3>
+            <div className={styles.tags} />
           </div>
 
           <div className={styles.row}>
@@ -113,13 +134,16 @@ const MyProjectHighlights: React.FC = () => {
             <div className={styles.info}>
               <p className={styles.desc}>...</p>
               <div className={styles.buttons}>
-                <Link to={useBaseUrl("docs/projects")}>Documentation</Link>
-                <a href="https://github.com/Gosia2024/dso_blog" target="_blank" rel="noopener noreferrer">
-                  GitHub
+                <Link to={useBaseUrl("docs/projects")}>{t("buttons.docs")}</Link>
+                <a
+                  href="https://github.com/Gosia2024/dso_blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("buttons.github")}
                 </a>
               </div>
 
-              {/* pasek pod przyciskami */}
               <div className={styles.sepBar} aria-hidden="true" />
             </div>
           </div>
@@ -128,19 +152,35 @@ const MyProjectHighlights: React.FC = () => {
         {/* 3) WordPress hosten — only mobile (bez paska) */}
         <article className={`${styles.projectCard} ${styles.mobileOnly}`}>
           <div className={styles.header}>
-            <h3 className={styles.cardTitle}>3. WordPress hosten</h3>
+            <h3 className={styles.cardTitle}>{t("thirdCard.title")}</h3>
             <div className={styles.tags}>
               <span className={styles.tag}>
-                <img src={useBaseUrl("/img/myaml.png")} alt="YAML" className={styles.icon} />
+                <img
+                  src={useBaseUrl("/img/myaml.png")}
+                  alt={t("alts.yaml")}
+                  className={styles.icon}
+                />
               </span>
               <span className={styles.tag}>
-                <img src={useBaseUrl("/img/mshell.png")} alt="Shell scripting" className={styles.icon} />
+                <img
+                  src={useBaseUrl("/img/mshell.png")}
+                  alt={t("alts.shell")}
+                  className={styles.icon}
+                />
               </span>
               <span className={styles.tag}>
-                <img src={useBaseUrl("./img/msec.png")} alt="IT Security" className={styles.icon} />
+                <img
+                  src={useBaseUrl("/img/msec.png")}
+                  alt={t("alts.security")}
+                  className={styles.icon}
+                />
               </span>
               <span className={styles.tag}>
-                <img src={useBaseUrl("./img/mcontainer.png")} alt="Container" className={styles.icon} />
+                <img
+                  src={useBaseUrl("/img/mcontainer.png")}
+                  alt={t("alts.container")}
+                  className={styles.icon}
+                />
               </span>
             </div>
           </div>
@@ -150,7 +190,7 @@ const MyProjectHighlights: React.FC = () => {
               <img
                 className={styles.thumb}
                 src={useBaseUrl("/img/wordpress.png")}
-                alt="WordPress hosten"
+                alt={t("alts.wp")}
                 width={355}
                 height={240}
               />
@@ -158,15 +198,17 @@ const MyProjectHighlights: React.FC = () => {
 
             <div className={styles.info}>
               <p className={styles.desc}>
-                Write some information about the project. For example: Why are you proud of it? What were you able
-                to implement here? What different algorithms, server architecture did you use? Why did you find
-                this project so interesting?
+                {t("firstCard.desc")}
               </p>
 
               <div className={styles.buttons}>
-                <Link to={useBaseUrl("docs/projects")}>Documentation</Link>
-                <a href="https://github.com/Gosia2024/dso_blog" target="_blank" rel="noopener noreferrer">
-                  GitHub
+                <Link to={useBaseUrl("docs/projects")}>{t("buttons.docs")}</Link>
+                <a
+                  href="https://github.com/Gosia2024/dso_blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("buttons.github")}
                 </a>
               </div>
             </div>
