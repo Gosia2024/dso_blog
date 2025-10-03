@@ -48,10 +48,10 @@ const skillsAll: Skill[] = [
   { name: "Container", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9, description: [
     "CI/CD pipelines","Automate building, testing, deploying applications","Build microservices-based applications",
   ]},
-  { name: "CI/CD", icon: "./img/github-actions.png", iconW: 22.19, iconH: 49.9, description: [
+  { name: "CI/CD", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9, description: [
     "Automated builds and tests","Pre-built actions for common tasks","Push, pull request, or schedule","Automated deployments",
   ]},
-  { name: "IT Security", icon: "./img/security.png", iconW: 22.19, iconH: 49.9, description: [
+  { name: "IT Security", icon: "./img/sec.png", iconW: 22.19, iconH: 49.9, description: [
     "Simulate attacks and identify vulnerabilities","Set up multi-factor authentication","Login security","Implement authentication and authorization",
   ]},
 ];

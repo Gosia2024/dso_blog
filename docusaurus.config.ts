@@ -47,6 +47,9 @@ const config: Config = {
   },
 },
 
+clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
+
+
   presets: [
     [
       'classic',
@@ -183,5 +186,8 @@ if (blogEnabled) {
   (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
   (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
 }
+
+
+
 
 export default config;

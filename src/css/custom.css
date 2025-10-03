@@ -1,3 +1,32 @@
+/* ----------------------- Global browser reset ----------------------- */
+html, body {
+  margin: 0;          /* remove default page margins */
+  padding: 0;         /* remove default page padding */
+  max-width: 100%;    /* prevent horizontal overflow */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;  /* include padding/border in element width/height */
+}
+
+/* ----------------------- Full-bleed utility ------------------------- */
+/* Make a section span the full viewport width (bypass Docusaurus container). */
+.fullBleed {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+}
+
+/* ----------------------- Example usage note ------------------------- */
+/* In React/MDX:
+   <section className={`${styles.hero} fullBleed`}> ... </section>
+*/
+
+/* ----------------------- Example usage note ------------------------- */
+/* In React/MDX:
+   <section className={`${styles.hero} fullBleed`}> ... </section>
+*/
+
 /* -----------------------------------------------------------------------------
   Global font & variables
   - Loads "Quicksand" from Google Fonts (weights 500, 600, 700).

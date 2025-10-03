@@ -1,112 +1,66 @@
 // src/components/header/Header.tsx
 
-// Import React and the useState hook
 import React, { useState } from "react";
-
-// Import CSS Module styles for this component
 import styles from "./header.module.css";
+import { useTranslation } from "react-i18next"; // ⬅ tylko i18next (bez Link)
 
-// Import Docusaurus components used for internal links and i18n text
-import Link from "@docusaurus/Link";
-import Translate from "@docusaurus/Translate";
-
-// Define the Header component as a named function (no arrow functions)
 function Header() {
-  // Declare a piece of state to track if the mobile menu is open (initially false)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
-  // Open the mobile menu by setting state to true
-  function openMenu() {
-    setIsMenuOpen(true);
-  }
+  function openMenu() { setIsMenuOpen(true); }
+  function closeMenu() { setIsMenuOpen(false); }
+  function handleNavClick() { setIsMenuOpen(false); }
 
-  // Close the mobile menu by setting state to false
-  function closeMenu() {
-    setIsMenuOpen(false);
-  }
-
-  // Close the menu after clicking any navigation link (useful on mobile)
-  function handleNavClick() {
-    setIsMenuOpen(false);
-  }
-
-  // Render the header markup
   return (
-    // Outer header wrapper with a styled class from CSS Modules
-    <header className={styles.header}>
-      {/* Desktop navigation bar with anchor links to page sections */}
+    <header className={`${styles.header} fullBleed`}>
+      {/* Desktop nav */}
       <nav className={styles.nav}>
-        {/* Each link jumps to a section ID on the same page */}
-        <a href="#about">
-          {/* Translate component enables i18n keys with fallbacks */}
-          <Translate id="nav.about">About me</Translate>
-        </a>
-        <a href="#skills">
-          <Translate id="nav.skills">My skills</Translate>
-        </a>
-        <a href="#projects">
-          <Translate id="nav.projects">My projects</Translate>
-        </a>
-        <a href="#contact">
-          <Translate id="nav.contact">Contact</Translate>
-        </a>
+        <a href="#about">{t("nav.about")}</a>
+        <a href="#skills">{t("nav.skills")}</a>
+        <a href="#projects">{t("nav.projects")}</a>
+        <a href="#contact">{t("nav.contact")}</a>
       </nav>
 
-      {/* Desktop language switcher with Docusaurus <Link> for internal routing */}
+      {/* Desktop language switcher — BEZ zmiany trasy */}
       <div className={styles.langSwitcher}>
-        {/* data-noBrokenLink tells Docusaurus to skip broken-link validation for these */}
-        <Link to="/" data-noBrokenLink>EN</Link>
-        <Link to="/de/" data-noBrokenLink>DE</Link>
-        {/* Root ("/") is the default language (PL) in this setup */}
-        <Link to="/pl/" data-noBrokenLink>PL</Link>
+        <button type="button" onClick={() => i18n.changeLanguage("en")}>EN</button>
+        <button type="button" onClick={() => i18n.changeLanguage("de")}>DE</button>
+        <button type="button" onClick={() => i18n.changeLanguage("pl")}>PL</button>
       </div>
 
-      {/* Hamburger button visible on mobile; opens the mobile menu */}
+      {/* Mobile hamburger */}
       <button
-        className={styles.menuButton}  // Style the button via CSS Modules
-        onClick={openMenu}             // Click handler that opens the menu
-        aria-label="Open menu"         // Accessibility label for screen readers
-        type="button"                  // Ensure it doesn't submit any form accidentally
+        className={styles.menuButton}
+        onClick={openMenu}
+        aria-label={t("nav.openMenu", { defaultValue: "Open menu" })}
+        type="button"
       >
-        {/* Simple hamburger icon character */}
         ☰
       </button>
 
-      {/* Conditionally render the mobile menu only when isMenuOpen is true */}
+      {/* Mobile menu */}
       {isMenuOpen && (
-        // Use a dialog role for better accessibility when the menu overlays content
         <div className={styles.mobileMenu} role="dialog" aria-modal="true">
-          {/* Close button for the mobile menu */}
           <button
-            className={styles.closeButton} // Style the close button
-            onClick={closeMenu}            // Click handler that closes the menu
-            aria-label="Close menu"        // Accessibility label
-            type="button"                  // Button type to avoid form submission
+            className={styles.closeButton}
+            onClick={closeMenu}
+            aria-label={t("nav.closeMenu", { defaultValue: "Close menu" })}
+            type="button"
           >
-            {/* Close (X) icon character */}
             ✕
           </button>
 
-          {/* Mobile navigation links; each closes the menu after click */}
-          <a href="#about" onClick={handleNavClick}>
-            <Translate id="nav.about">About me</Translate>
-          </a>
-          <a href="#skills" onClick={handleNavClick}>
-            <Translate id="nav.skills">My skills</Translate>
-          </a>
-          <a href="#projects" onClick={handleNavClick}>
-            <Translate id="nav.projects">My projects</Translate>
-          </a>
-          <a href="#contact" onClick={handleNavClick}>
-            <Translate id="nav.contact">Contact</Translate>
-          </a>
+          <a href="#about" onClick={handleNavClick}>{t("nav.about")}</a>
+          <a href="#skills" onClick={handleNavClick}>{t("nav.skills")}</a>
+          <a href="#projects" onClick={handleNavClick}>{t("nav.projects")}</a>
+          <a href="#contact" onClick={handleNavClick}>{t("nav.contact")}</a>
 
-          {/* Mobile language switcher; mirrors the desktop switcher */}
+          {/* Mobile language switcher — również bez zmiany trasy */}
           <div className={styles.mobileLangSwitcher}>
-            {/* Use the same internal routes; close the menu after choosing a language */}
-            <Link to="/en/" data-noBrokenLink onClick={handleNavClick}>EN</Link>
-            <Link to="/de/" data-noBrokenLink onClick={handleNavClick}>DE</Link>
-            <Link to="/"    data-noBrokenLink onClick={handleNavClick}>PL</Link>
+            <button type="button" onClick={() => { i18n.changeLanguage("en"); handleNavClick(); }}>EN</button>
+            <button type="button" onClick={() => { i18n.changeLanguage("de"); handleNavClick(); }}>DE</button>
+            <button type="button" onClick={() => { i18n.changeLanguage("pl"); handleNavClick(); }}>PL</button>
           </div>
         </div>
       )}
@@ -114,5 +68,4 @@ function Header() {
   );
 }
 
-// Export the component as the default export so it can be imported elsewhere
 export default Header;

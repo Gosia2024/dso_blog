@@ -43,16 +43,16 @@ const MyProjectHighlights: React.FC = () => {
 
               <div className={styles.tags}>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("/img/myaml.png")} alt="YAML" className={styles.icon} />
+                  <img src={useBaseUrl("./img/myaml.png")} alt="YAML" className={styles.icon} />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("/img/mshell.png")} alt="Shell scripting" className={styles.icon} />
+                  <img src={useBaseUrl("./img/mshell.png")} alt="Shell scripting" className={styles.icon} />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("/img/msec.png")} alt="IT Security" className={styles.icon} />
+                  <img src={useBaseUrl("./img/msec.png")} alt="IT Security" className={styles.icon} />
                 </span>
                 <span className={styles.tag}>
-                  <img src={useBaseUrl("/img/mcontainer.png")} alt="Container" className={styles.icon} />
+                  <img src={useBaseUrl("./img/mcontainer.png")} alt="Container" className={styles.icon} />
                 </span>
               </div>
             </div>
@@ -61,13 +61,13 @@ const MyProjectHighlights: React.FC = () => {
               <div className={styles.media}>
                 <img
                   className={styles.thumb}
-                  src={useBaseUrl("/img/minecraft.png")}
+                  src={useBaseUrl("./img/minecraft.png")}
                   alt="Project Minecraft"
                   width={355}
                   height={240}
                 />
                 <span className={styles.watermark}>MINECRAFT</span>
-                <img className={styles.logo} src={useBaseUrl("/img/mlogo.png")} alt="Minecraft logo" />
+                <img className={styles.logo} src={useBaseUrl("./img/mlogo.png")} alt="Minecraft logo" />
               </div>
 
               <div className={styles.info}>
@@ -137,10 +137,10 @@ const MyProjectHighlights: React.FC = () => {
                 <img src={useBaseUrl("/img/mshell.png")} alt="Shell scripting" className={styles.icon} />
               </span>
               <span className={styles.tag}>
-                <img src={useBaseUrl("/img/msec.png")} alt="IT Security" className={styles.icon} />
+                <img src={useBaseUrl("./img/msec.png")} alt="IT Security" className={styles.icon} />
               </span>
               <span className={styles.tag}>
-                <img src={useBaseUrl("/img/mcontainer.png")} alt="Container" className={styles.icon} />
+                <img src={useBaseUrl("./img/mcontainer.png")} alt="Container" className={styles.icon} />
               </span>
             </div>
           </div>
