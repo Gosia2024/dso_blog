@@ -1,43 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
-/* ===== FULL-BLEED SECTION (the background spans the full viewport width) ===== */
+/* ===== SECTION (full-bleed) ===== */
 .projectsSection{
   background:#266AD9;
   color:#fff;
-  /* make the section escape Docusaurus’ centered container so it goes edge-to-edge */
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:72px 0;                 /* vertical spacing for the section */
+  padding:72px 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 }
 
-/* Inner wrapper — keeps content at 1440px with 110px side paddings */
+/* Inner wrapper */
 .inner{
   max-width:1440px;
   margin:0 auto;
-  padding:0 110px;                 /* matches Figma: 110px left/right */
+  padding:0 110px;
   box-sizing:border-box;
 }
 
-/* Section title (Quicksand 700 / 64 / 120%) */
+/* Title */
 .sectionTitle{
   font-family:'Quicksand',system-ui,sans-serif;
   font-weight:700;
   font-size:64px;
   line-height:120%;
-  margin:0 0 64px 0;               /* 64px gap below the title */
+  margin:0 0 64px 0;
 }
 
-/* ===== MAIN CONTENT: left list + right card (48px gap) ===== */
+/* ===== LAYOUT ===== */
 .content{
   display:flex;
   gap:48px;
   align-items:flex-start;
-  width:fit-content;               /* “Hug” the content width */
+  width:fit-content;
 }
 
-/* LEFT: vertical list of project titles (24px gap) */
+/* Left list */
 .projectList{ width:256px; }
 .projectList ul{
   list-style:none; margin:0; padding:0;
@@ -46,49 +45,43 @@
 .projectList li{ font-size:22px; line-height:1.4; }
 .moreProjects{ margin-top:24px; opacity:.9; }
 
-/* ===== RIGHT: PROJECT CARD (vertical stack) ===== */
+/* Card */
 .projectCard{
-  width:913px;                     /* fixed width per Figma */
+  width:913px;
   background:#2F4563;
   border-radius:30px;
   padding:32px;
   box-sizing:border-box;
   display:flex;
-  flex-direction:column;           /* vertical layout inside the card */
-  gap:32px;                        /* spacing between header and body */
+  flex-direction:column;
+  gap:32px;
 }
 
-/* HEADER: keep title + tags in a single row */
+/* Header */
 .header{
   display:flex;
   align-items:center;
   gap:12px;
-  flex-wrap:nowrap;                /* do NOT wrap to a second line on desktop */
+  flex-wrap:nowrap;
 }
-
-/* Title: one line, pushes tags to the right */
 .cardTitle{
   margin:0;
   font-family:'Quicksand',system-ui,sans-serif;
   font-weight:700;
   font-size:40px;
-  line-height:120%;                /* ≈48px visual height */
+  line-height:120%;
   color:#fff;
-  white-space:nowrap;              /* keep on one line */
-  margin-right:auto;               /* push the tags container to the right */
-  flex:0 0 auto;                   /* prevent shrinking */
+  white-space:nowrap;
+  margin-right:auto;
+  flex:0 0 auto;
 }
-
-/* Tags: single line of pill badges */
 .tags{
   display:flex;
   align-items:center;
   gap:8px;
-  flex-wrap:nowrap;                /* single line */
-  min-width:0;                     /* allow the container to shrink if needed */
+  flex-wrap:nowrap;
+  min-width:0;
 }
-
-/* Single tag pill */
 .tag{
   background:#FFFFFF;
   color:#2F4563;
@@ -99,336 +92,152 @@
   white-space:nowrap;
   border:1px solid rgba(0,0,0,.08);
 }
+.icon{ width:20px; height:20px; display:block; }
 
-/* BODY ROW: image on the left, text/buttons on the right */
+/* Body row */
 .row{
   display:flex;
   align-items:flex-start;
-  justify-content:space-between;   /* matches Figma spacing */
+  justify-content:space-between;
   width:849px;
   gap:32px;
 }
 
-/* IMAGE WRAPPER (used so we can overlay text/logo and clip rounding) */
+/* Image */
 .media{
   position: relative;
-  width: 355px;                    /* Figma: 355 × 240 */
+  width: 355px;
   height: 240px;
   border-radius: 16px;
-  overflow: hidden;                /* keep overlays inside rounded corners */
-  isolation: isolate;              /* own stacking context for safe z-indexing */
+  overflow: hidden;
+  isolation: isolate;
 }
+.thumb{ width:100%; height:100%; object-fit:cover; display:block; }
 
-/* The image itself */
-.thumb{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Watermark/heading “MINECRAFT” drawn on top of the image */
 .watermark{
-  position: absolute;
-  top: 8px;                        /* tweak to match Figma */
-  left: 16px;
-  font-weight: 800;
-  font-size: 48px;
-  letter-spacing: 2px;
-  color: rgba(0,0,0,.5);           /* subtle dark overlay look */
-  z-index: 2;
-  pointer-events: none;
-  user-select: none;
+  position:absolute; top:8px; left:16px;
+  font-weight:800; font-size:48px; letter-spacing:2px;
+  color:rgba(0,0,0,.5);
+  z-index:2; pointer-events:none; user-select:none;
 }
-
-/* Centered logo overlay (inside the image) */
 .logo{
-  position: absolute;
-  width: 82px;
-  height: 82px;
-  left: 134px;                     /* Figma offsets; adjust if needed */
-  top: 133px;
-  border-radius: 30px;
-  z-index: 3;
-  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  position:absolute; width:82px; height:82px; left:134px; top:133px;
+  border-radius:30px; z-index:3; box-shadow:0 4px 16px rgba(0,0,0,.25);
 }
 
-/* RIGHT COLUMN: copy and buttons (vertical stack) */
-.info{
-  width:456px;
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
-
-/* Body copy (Quicksand 400 / 20 / 125%) */
+/* Right column */
+.info{ width:456px; display:flex; flex-direction:column; gap:24px; }
 .desc{
   margin:0;
   font-family:'Quicksand',system-ui,sans-serif;
-  font-weight:400;
-  font-size:20px;
-  line-height:125%;
+  font-weight:400; font-size:20px; line-height:125%;
   color:rgba(255,255,255,.9);
 }
-
-/* Buttons row */
 .buttons{ display:flex; gap:16px; }
 .buttons a{
   display:inline-flex; align-items:center; justify-content:center;
-  height:52px;
-  padding:0 18px;
-  border-radius:20px;
-  background:#1E2E43;
-  border:1px solid rgba(255,255,255,.25);
+  height:52px; padding:0 18px; border-radius:20px;
+  background:#1E2E43; border:1px solid rgba(255,255,255,.25);
   color:#fff; text-decoration:none; font-weight:600;
 }
 
-/* ===== MOBILE OVERRIDES ===== */
-/* ===== MOBILE: layout like in the screenshot (≤768px) ===== */
+/* ===== VISIBILITY UTILS ===== */
+.mobileOnly { display:none; }
+.desktopOnly { display:block; }
+.mobileHidden { display:block; }
+
+/* ===== MOBILE (≤768px) ===== */
 @media (max-width: 768px){
 
-  .projectsSection{ padding:32px 0 !important; }
-  .inner{ padding:0 20px !important; max-width:100% !important; }
+  .projectsSection{ padding:32px 0; }
+  .inner{ padding:0 20px; max-width:100%; }
 
-  .sectionTitle{
-    font-size:36px !important;
-    line-height:1.2 !important;
-    margin:0 0 24px !important;
-  }
+  .sectionTitle{ font-size:36px; line-height:1.2; margin:0 0 24px; }
 
-  /* Single column, everything LEFT-aligned */
   .content{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:stretch !important;
-    gap:20px !important;
-    width:100% !important;
-    max-width:100% !important;
+    flex-direction:column; align-items:stretch;
+    gap:20px; width:100%; max-width:100%;
   }
 
-  /* Hide the project list on mobile */
-  .projectList{ display:none !important; }
+  .projectList{ display:none; }
 
-  /* Card without extra background — the section already has one */
   .projectCard{
-    width:100% !important;
-    max-width:100% !important;
-    background:transparent !important;
-    padding:0 !important;
-    gap:16px !important;
-    box-shadow:none !important;
-    overflow:visible !important;
+    width:100%; max-width:100%;
+    background:transparent; padding:0; gap:16px;
+    box-shadow:none; overflow:visible;
   }
 
-  /* Header: title above tags, LEFT-aligned */
-  .header{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    text-align:left !important;
-    gap:12px !important;
-    padding:0 !important;
-  }
-
-  .cardTitle{
-    font-size:24px !important;
-    line-height:1.2 !important;
-    margin:0 !important;
-    white-space:normal !important;
-    color:#fff !important;
-  }
-
-  /* Pills/tags like in the screenshot */
-  .tags{
-    display:flex !important;
-    flex-wrap:wrap !important;
-    justify-content:flex-start !important;
-    gap:8px !important;
-    margin:0 0 8px 0 !important;
-  }
+  .header{ flex-direction:column; align-items:flex-start; gap:12px; padding:0; }
+  .cardTitle{ font-size:24px; line-height:1.2; white-space:normal; color:#fff; }
+  .tags{ flex-wrap:wrap; justify-content:flex-start; gap:8px; margin:0 0 8px 0; }
   .tag{
-    padding:10px 14px !important;
-    border-radius:12px !important;
-    background:#4A77C7 !important;                 /* blue background */
-    color:#fff !important;
-    border:1px solid rgba(255,255,255,.18) !important;
-  }
-  .icon{ width:20px !important; height:20px !important; display:block !important; }
-
-  /* Row: image above the text */
-  .row{
-    width:100% !important;
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:flex-start !important;
-    gap:16px !important;
+    padding:10px 14px; border-radius:12px;
+    background:#4A77C7; color:#fff; border:1px solid rgba(255,255,255,.18);
   }
 
-  /* Image 355×240 with large radius */
-  .media{
-    position:relative !important;
-    width:355px !important;
-    height:240px !important;
-    border-radius:24px !important;
-    overflow:hidden !important;
-  }
-  .thumb{
-    width:100% !important;
-    height:100% !important;
-    object-fit:cover !important;
-    display:block !important;
-  }
+  .row{ width:100%; flex-direction:column; align-items:flex-start; gap:16px; }
 
-  /* “MINECRAFT” in the top-left corner of the image */
+  .media{ width:355px; height:240px; border-radius:24px; }
+  .thumb{ width:100%; height:100%; object-fit:cover; }
+
   .watermark{
-    position:absolute !important;
-    top:12px !important;
-    left:16px !important;
-    font-weight:800 !important;
-    letter-spacing:2px !important;
-    font-size:40px !important;
-    color:rgba(0,0,0,.5) !important;
-    pointer-events:none !important;
-    user-select:none !important;
+    top:12px; left:16px; font-size:40px; letter-spacing:2px;
+    color:rgba(0,0,0,.5);
   }
-
-  /* Logo centered on the image */
   .logo{
-    position:absolute !important;
-    left:50% !important;
-    top:50% !important;
-    transform:translate(-50%,-50%) !important;
-    width:82px !important;
-    height:82px !important;
-    border-radius:30px !important;
-    box-shadow:0 4px 16px rgba(0,0,0,.25) !important;
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:82px; height:82px; border-radius:30px; box-shadow:0 4px 16px rgba(0,0,0,.25);
   }
 
-  /* Description below the image */
-  .info{
-    width:100% !important;
-    max-width:100% !important;
-    display:flex !important;
-    flex-direction:column !important;
-    gap:16px !important;
-  }
-  .desc{
-    font-size:16px !important;
-    line-height:1.5 !important;
-    color:rgba(255,255,255,.9) !important;
-    text-align:left !important;
-    margin:0 !important;
-  }
+  .info{ width:100%; max-width:100%; gap:16px; }
+  .desc{ font-size:16px; line-height:1.5; color:rgba(255,255,255,.9); }
 
-  /* Buttons: left-aligned, first white, second outlined */
-  .buttons{
-    display:flex !important;
-    gap:16px !important;
-    justify-content:flex-start !important;
-    align-items:center !important;
-  }
+  .buttons{ gap:16px; justify-content:flex-start; align-items:center; }
   .buttons a{
-    height:44px !important;
-    padding:0 18px !important;
-    border-radius:16px !important;
-    font-weight:700 !important;
-    text-decoration:none !important;
-    display:inline-flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    border:1px solid rgba(255,255,255,.6) !important;
-    background:transparent !important;
-    color:#fff !important;
+    height:44px; padding:0 18px; border-radius:16px; font-weight:700;
+    border:1px solid rgba(255,255,255,.6); background:transparent; color:#fff;
   }
-  /* “Documentation” — solid white */
-  .buttons a:first-child{
-    background:#fff !important;
-    color:#1E2E43 !important;
-    border:1px solid #fff !important;
-  }
-  /* “GitHub” — outlined */
-  .buttons a:last-child{
-    background:transparent !important;
-    color:#fff !important;
-    border:1px solid rgba(255,255,255,.6) !important;
-  }
-}
-/* Hide .mobileOnly on desktop, show everywhere else */
-@media (min-width: 769px){
-  .mobileOnly { display: none !important; }
-}
+  .buttons a:first-child{ background:#fff; color:#1E2E43; border:1px solid #fff; }
+  .buttons a:last-child{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.6); }
 
-/* (opcjonalnie) Hide .desktopOnly on mobile */
-@media (max-width: 768px){
-  .desktopOnly { display: none !important; }
-}
-/* show on mobile/tablet, hide on desktop */
-.mobileOnly { display: block; }
+  /* visibility toggles */
+  .mobileOnly { display:block !important; }
+  .desktopOnly { display:none !important; }
+  .mobileHidden { display:none !important; }
 
-@media (min-width: 769px){
-  .mobileOnly { display: none !important; }
-}
-
-/* (opcjonalnie) odwrotność, gdybyś chciała wersję tylko desktop */
-@media (max-width: 768px){
-  .desktopOnly { display: none !important; }
-}
-.mobileHidden { display: block; }
-@media (max-width: 768px){
-  .mobileHidden { display: none !important; }
-}
-/* Visibility utils */
-.mobileOnly { display: none; }
-.desktopOnly { display: block; }
-.mobileHidden { display: block; }
-
-@media (max-width: 768px){
-  .mobileOnly { display: block !important; }
-  .desktopOnly { display: none !important; }
-  .mobileHidden { display: none !important; }
-}
-/* Image 355×240 with large radius */
-.media{
-  position:relative !important;
-  width:355px !important;
-  height:240px !important;
-  border-radius:24px !important;
-  overflow:hidden !important;
-}
-
-/* === Visibility utils: exactly once, no duplicates === */
-.mobileOnly { display: none; }
-.desktopOnly { display: block; }
-.mobileHidden { display: block; }
-
-@media (max-width: 768px){
-  .sep{
-    width:355px;                 /* jak obrazek */
-    height:12px;
-    background:rgba(255,255,255,.18);
-    border-radius:12px;
-    margin:12px auto 0;          /* odstęp OD góry, wyśrodkowany */
-  }
-}
-/* Top & bottom grey bars for the whole card (mobile) */
-@media (max-width: 768px){
+  /* ===== Pasek wewnątrz karty (po buttonach) ===== */
   .cardBars{
     position: relative;
-    padding-top: 20px;    /* miejsce na górny pasek */
-    padding-bottom: 20px; /* miejsce na dolny pasek */
+    padding-bottom: 28px;            /* 12px paska + ~16px luzu nad nim */
   }
-  .cardBars::before,
   .cardBars::after{
     content:"";
     position:absolute;
+    bottom:0;                         /* wewnątrz karty, przy dolnej krawędzi */
     left:50%;
     transform:translateX(-50%);
-    width:355px;                 /* szerokość jak obraz */
-    height:12px;
-    background:rgba(255,255,255,.18);
-    border-radius:12px;
+    width:355px;                      /* szerokość z makiety */
+    height:12px;                      /* wysokość z makiety */
+    background:#262E34;               /* kolor z Figmy */
+    border-radius:12px;               /* pigułka */
     pointer-events:none;
   }
-  .cardBars::before{ top:0; }     /* PRZED tytułem (na górze karty) */
-  .cardBars::after{ bottom:0; }   /* PO przyciskach (na dole karty) */
+}
+
+
+
+
+/* Domyślnie ukryj pasek na desktopie */
+.sepBar { display: none; }
+
+/* Mobile: pełna szerokość kontenera, nie zakrywa niczego */
+@media (max-width: 768px){
+  .sepBar{
+    display:block;
+    width:100%;                 /* pełna szerokość karty */
+    height:50px;                /* jak w Figmie (możesz dać 16px jeśli ma być „grubszy”) */
+    background:#262E34;         /* kolor z Figmy */
+           /* pigułka */
+    margin-top:12px;            /* odstęp OD przycisków */
+  }
 }
