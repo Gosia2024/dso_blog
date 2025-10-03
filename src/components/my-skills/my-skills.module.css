@@ -132,28 +132,140 @@
 .content .skillCard:focus-within .skillOverlay {
   opacity: 1;
   pointer-events: auto;
-}
-
-/* === KARUZELA tylko na mobile (bez zmiany rozmiaru kart) === */
+}/* === HOTFIX: mobile (≤600px) treść NIE może znikać === */
 @media (max-width: 600px) {
-  .content {
-    overflow-x: auto;                 /* przewijanie w poziomie */
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;    /* snap do karty */
-    flex-wrap: nowrap;                /* jedna linia = karuzela */
-    gap: 16px;                        /* delikatniejszy odstęp w karuzeli */
-    padding-bottom: 8px;
+
+  /* 1) Slick – stabilny layout slajdu */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: flex; align-items: stretch; }
+  .content :global(.slick-slide) { padding: 0 8px; }
+  .content :global(.slick-slide)        { height: auto !important; }
+.content :global(.slick-slide > div)  { height: auto !important; display: block; }
+.content :global(.slick-track)        { display: block; } /* brak przeflexowywania wysokości */
+
+
+  /* 2) Twarde nadpisanie overlayu z desktopu – ma być ZAWSZE widoczny na mobile */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: none !important;    /* <- klucz: wyłączamy animację opacity */
   }
 
-  .content .skillCard {
-    scroll-snap-align: center;        /* ładne zatrzymanie na środku */
-    flex: 0 0 100%;                   /* pełna szerokość „slajdu” */
+  /* 3) Jeśli korzystasz z kart mobilnych (.mobileCard/.mobileItem), zostaw to: */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px; /* T R B L */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
 
-  /* (opcjonalnie) ukryj pasek przewijania */
-  .content::-webkit-scrollbar { display: none; }
-  .content { scrollbar-width: none; }
+  /* 4) Dla pewności – „kafel” desktopowy nie miesza w mobile */
+  .skillCard { height: auto; }
 }
+/* === FIX: slick + height/visibility na mobile (≤600px) === */
+@media (max-width: 600px) {
+  /* Zostaw kontrolę wysokości slickowi, ale nie pozwól na 0px */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block; } /* domyślka slicka */
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
 
+  /* Usuń poprzednie:  .content :global(.slick-slide > div) { height: 100%; }  */
 
+  /* Slajd = Twoja karta 340 × ~388 */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
 
+  /* Wyłącz animowanie/ukrywanie overlayu na mobile (gdy renderujesz .skillCard) */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+/* === MOBILE FINAL FIX (≤600px) === */
+@media (max-width: 600px) {
+  /* 0) Nie rób z .content flexa na mobile – slider lubi block */
+  .content { display: block; }
+
+  /* 1) slick – klasy stabilizujące wysokość/visibility */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block !important; }
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
+
+  /* 2) karta-slajd (Figma: 340 × ~388, radius 30, padding 16/8/16/12) */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+
+  /* 3) wyłącz desktopowy overlay na mobile, żeby treść była stała */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
