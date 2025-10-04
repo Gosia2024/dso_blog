@@ -1,40 +1,85 @@
-/* ===== mini reset ===== */
+/* ===== Mini reset ===== */
 html, body { margin: 0; padding: 0; box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
 body { overflow-x: hidden; background: #fff; }
 
-/* Container “like the theme”
-   Use this if a section should behave like the default Docusaurus container. */
+/* ===== Container (like the theme container) =====
+   Use this when a section should behave like the default Docusaurus container. */
 .container {
   max-width: var(--ifm-container-width, 1100px);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* ===== FULL-BLEED without artifacts =====
-   Expand a section to the full viewport width while avoiding layout glitches. */
+/* ===== FULL-BLEED (edge-to-edge) =====
+   Stretch a section to the full viewport width without layout artifacts. */
 .fullBleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  display: flow-root;     /* prevents child margin collapse */
-  overflow: hidden;       /* trims sub-pixel seams between adjacent sections */
+  display: flow-root;         /* prevents child margin collapse */
+  overflow: hidden;           /* hides tiny seams between adjacent sections */
 }
 
-/* Section background matching the hero/header */
-.edgePrimary { background: #266AD9; }
+/* Shared background for header/hero stripe (tweak as you like). */
+.edgePrimary {
+  /* Option A: brand color */
+  /* background: #266AD9; */
 
-/* If your Header uses a sticky/fixed navbar, set its height here; otherwise keep 0 */
+  /* Option B: use theme contrast background */
+  background: var(--ifm-color-primary-contrast-background);
+}
+
+/* Spacer under a sticky/fixed global navbar (set height if your navbar is sticky). */
 .navbarSpacer { height: 0; }
 
-/* Neutralize vertical margins so the background doesn’t “leak” past edges */
+/* Remove vertical margins inside a section so background doesn't "bleed". */
 .killMargins > * { margin-block: 0 !important; }
-/* When the margin is one level deeper */
 .killMargins *:first-child { margin-top: 0 !important; }
 .killMargins *:last-child  { margin-bottom: 0 !important; }
 
-/* Subtle tweak to eliminate a 1px “seam” between neighboring sections */
+/* Subtle tweak to eliminate a 1px seam between neighboring sections. */
 .noSeam { border-top: 1px solid transparent; margin-top: -1px; }
 
-/* Optional breathing room for .hero if your module doesn’t add it */
+/* Optional breathing room for .hero if the component itself doesn't add it. */
 .hero { padding: 3rem 0; }
+
+/* ===== Portfolio-only top bar (Back to Docs) ===== */
+.portfolioTopbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  padding: .6rem 1rem;
+}
+.backLink {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== Floating back button (mobile/desktop) ===== */
+.fabBack {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  box-shadow: var(--ifm-global-shadow-lw);
+  text-decoration: none;
+}
+.fabBack:hover { opacity: .9; }
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 996px) {
+  .portfolioTopbar { padding: .5rem .75rem; }
+}

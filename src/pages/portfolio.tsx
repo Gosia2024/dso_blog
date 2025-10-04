@@ -1,49 +1,20 @@
-// src/pages/portfolio.tsx
-// -----------------------------------------------------------------------------
-// This file defines the "Portfolio" page for a Docusaurus site.
-// It uses React + TypeScript (TSX) and composes several presentational sections
-// (Header, Hero, MySkills, MyProjectHighlights, Contact).
-//
-// Notable conventions:
-// - We use a small wrapper component (EdgeToEdge) to create full-bleed sections
-//   that extend to the viewport edges (bypassing the default Docusaurus container).
-// - Page-level <Head> sets the document title and SEO description.
-// - Styling for full-bleed and spacing utilities lives in ./portfolio.css.
-// -----------------------------------------------------------------------------
-
 import React from 'react';
-import Head from '@docusaurus/Head';     // Docusaurus helper for managing <head> tags (SSR-friendly)
-import './portfolio.css';                // Page-scoped styles (utilities like .fullBleed, .navbarSpacer, etc.)
+import Head from '@docusaurus/Head';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-// Page sections (local components). Each renders a self-contained slice of the page.
+import './portfolio.css'; // page-scoped styles (full-bleed, topbar, floating back button)
+
 import Header from '../components/header';
 import Hero from '../components/hero';
 import MySkills from '../components/my-skills';
 import MyProjectHighlights from '../components/my-project-highlights';
 import Contact from '../components/contact';
 
-/**
- * EdgeToEdge — full-width (full-bleed) layout wrapper.
- *
- * Purpose:
- * - Docusaurus content typically sits inside a centered container.
- * - This wrapper applies a global `.fullBleed` utility so the section spans
- *   the entire viewport width (great for hero/stripe backgrounds).
- *
- * Type signature:
- * - React.FC with React.PropsWithChildren so it accepts children and an optional className.
- * - `className?: string` lets you pass additional utility classes (e.g. background variants).
- *
- * Implementation details:
- * - We concatenate 'fullBleed' with any incoming className, filtering falsy values.
- * - `.fullBleed` CSS is responsible for the edge-to-edge effect:
- *     margin-left: calc(50% - 50vw);
- *     margin-right: calc(50% - 50vw);
- *     width: 100vw;
- *
- * Accessibility:
- * - This wrapper renders a semantic <section>, which is appropriate for distinct page regions.
- */
+// EdgeToEdge — stretches a section to viewport edges (full-bleed).
+// Implementation detail:
+// - .fullBleed uses negative margins to escape the default centered container:
+//   width: 100vw; margin-left/right: calc(50% - 50vw);
 const EdgeToEdge: React.FC<React.PropsWithChildren<{ className?: string }>> = ({
   className,
   children,
@@ -54,30 +25,45 @@ const EdgeToEdge: React.FC<React.PropsWithChildren<{ className?: string }>> = ({
 );
 
 export default function Portfolio() {
+  // Always navigates back to your site root respecting baseUrl
+  // Example in prod: https://gosia2024.github.io/dso_blog/
+  const home = useBaseUrl('/');
+
   return (
     <>
-      {/* <Head> updates the document <head>. Docusaurus will SSR this properly. */}
-      <Head>
-        {/* Page title (shows in browser tab and search engines) */}
-        <title>Portfolio</title>
+      {/* Lightweight top bar (only on this page) for a clear "back" affordance. */}
+      <nav className="portfolioTopbar">
+        <Link className="backLink" to={home} aria-label="Back to Docs">
+          ← Back to Docs
+        </Link>
+      </nav>
 
-        {/* Basic SEO: short, descriptive summary of the page content */}
-        <meta name="description" content="My projects" />
+      {/* Page-level head tags (SSR-friendly) */}
+      <Head>
+        <title>Portfolio</title>
+        <meta
+          name="description"
+          content="Showcase of my work: skills, selected projects and contact information."
+        />
+        {/*
+          Optional social share tags (uncomment and customize if needed):
+          <meta property="og:title" content="Portfolio" />
+          <meta property="og:description" content="My projects and skills." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={useBaseUrl('/portfolio')} />
+          <meta property="og:image" content={useBaseUrl('/img/og-portfolio.png')} />
+        */}
       </Head>
 
-      {/* Spacer below the navbar.
-         - If your navbar is sticky/fixed, this prevents content from sitting underneath it.
-         - If your navbar is NOT sticky, keep this at 0 height in CSS (no visual effect).
-         - Adjust height in `portfolio.css` via `.navbarSpacer { height: <px|rem>; }`
-      */}
+      {/* Spacer under a global sticky navbar (set height in CSS; or keep 0 if not sticky). */}
       <div className="navbarSpacer" />
 
-      {/* HEADER + HERO share the same background and touch the edges.
-         - `edgePrimary` can be a background theme (e.g., gradient or brand color).
-         - `killMargins` removes outer margins/padding if components add their own.
-         - `noSeam` is a cosmetic class to ensure the two sections meet without a visible seam.
-         - All three classes are optional utilities defined in `portfolio.css`.
-      */}
+      {/* HEADER + HERO share the same background and meet seamlessly.
+         Utilities:
+         - edgePrimary: themed background for the stripe
+         - killMargins: remove outer spacing if inner components handle their own
+         - noSeam: ensure a clean visual join between adjacent sections
+       */}
       <EdgeToEdge className="edgePrimary killMargins noSeam">
         <Header />
       </EdgeToEdge>
@@ -86,10 +72,7 @@ export default function Portfolio() {
         <Hero />
       </EdgeToEdge>
 
-      {/* Remaining sections render full-bleed but manage their own internal containers/backgrounds.
-         - Keep them inside EdgeToEdge for visual continuity across the viewport.
-         - Inside each component, you can still center content with a max-width container.
-      */}
+      {/* Remaining sections: still full-bleed, each manages its own inner container/max-width. */}
       <EdgeToEdge>
         <MySkills />
       </EdgeToEdge>
@@ -101,35 +84,11 @@ export default function Portfolio() {
       <EdgeToEdge>
         <Contact />
       </EdgeToEdge>
+
+      {/* Floating back-to-docs button (visible on mobile/desktop). */}
+      <a className="fabBack" href={home} aria-label="Back to Docs">
+        ↑
+      </a>
     </>
   );
 }
-
-/* ------------------------------------ Notes -----------------------------------
-- Where to style:
-  - `portfolio.css` should define:
-      .fullBleed           // width:100vw; negative margins to escape container
-      .navbarSpacer        // height for sticky nav offset (or 0 if not needed)
-      .edgePrimary         // shared background for Header + Hero
-      .killMargins, .noSeam  // optional utilities to control spacing/joins
-
-- TypeScript niceties:
-  - Using React.FC with PropsWithChildren gives you children typing + default `children` prop.
-  - You could also inline the props: `({ className, children }: { className?: string; children: React.ReactNode }) => ...`
-
-- Performance:
-  - This file renders a simple composition — no heavy logic/hooks here.
-  - If any child sections become expensive to render, consider memoizing them
-    (e.g., `export default React.memo(MySkills)`), but only if you measure a benefit.
-
-- SEO:
-  - Consider enhancing <Head> with Open Graph/Twitter tags if this page is shareable.
-
-- Accessibility:
-  - Ensure each section has appropriate headings (h1/h2/h3) inside the components.
-  - Keep color contrast in mind for any backgrounds used in `edgePrimary`.
-
-- Docusaurus specifics:
-  - Pages in `src/pages` map directly to routes.
-  - This file will be served at `/portfolio` by default.
-------------------------------------------------------------------------------- */
