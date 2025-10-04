@@ -3,36 +3,38 @@ html, body { margin: 0; padding: 0; box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
 body { overflow-x: hidden; background: #fff; }
 
-/* kontener „jak w motywie” — użyjesz, gdyby jakaś sekcja go potrzebowała */
+/* Container “like the theme”
+   Use this if a section should behave like the default Docusaurus container. */
 .container {
   max-width: var(--ifm-container-width, 1100px);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* ===== FULL-BLEED bez artefaktów ===== */
+/* ===== FULL-BLEED without artifacts =====
+   Expand a section to the full viewport width while avoiding layout glitches. */
 .fullBleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  display: flow-root;     /* blokuje kolaps marginesów dzieci */
-  overflow: hidden;       /* ucina subpikselowe kreski między sekcjami */
+  display: flow-root;     /* prevents child margin collapse */
+  overflow: hidden;       /* trims sub-pixel seams between adjacent sections */
 }
 
-/* tło sekcji takie jak w hero/header */
+/* Section background matching the hero/header */
 .edgePrimary { background: #266AD9; }
 
-/* jeśli masz sticky navbar w swoim Headerze, wpisz jego wysokość; inaczej 0 */
+/* If your Header uses a sticky/fixed navbar, set its height here; otherwise keep 0 */
 .navbarSpacer { height: 0; }
 
-/* neutralizacja marginesów, żeby tło nie „wyciekało” */
+/* Neutralize vertical margins so the background doesn’t “leak” past edges */
 .killMargins > * { margin-block: 0 !important; }
-/* gdy margines jest poziom głębiej */
+/* When the margin is one level deeper */
 .killMargins *:first-child { margin-top: 0 !important; }
 .killMargins *:last-child  { margin-bottom: 0 !important; }
 
-/* delikatne nadpisanie, by nie było 1px „szwu” między sąsiadami */
+/* Subtle tweak to eliminate a 1px “seam” between neighboring sections */
 .noSeam { border-top: 1px solid transparent; margin-top: -1px; }
 
-/* opcjonalny oddech dla .hero, jeśli Twój moduł go nie dodaje */
+/* Optional breathing room for .hero if your module doesn’t add it */
 .hero { padding: 3rem 0; }
