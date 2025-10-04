@@ -22,12 +22,12 @@ const config: Config = {
   url: process.env.DEPLOYMENT_URL ?? "https://gosia2024.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/blog-dev/",
+  baseUrl: "/dso_blog/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Gosia2024', // Usually your GitHub org/user name.
-  projectName: 'blog-dev', // Usually your repo name.
+  projectName: 'dso_blog', // Usually your repo name.
 
   deploymentBranch: 'gh-pages',
 
@@ -56,6 +56,7 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // routeBasePath: '/',   // teraz / otwiera dokumentację
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -111,13 +112,7 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
     },
     footer: {
       style: 'dark',
-      logo: {
-        src: 'img/logo.png',  // <--- ścieżka do pliku w /static/img
-    href: '/',             // (opcjonalne) link po kliknięciu
-    width: 90,              // (opcjonalnie) rozmiar
-    height: 90,
-    className:'spinReverse'
-      },
+      
       links: [
         {
           title: 'Docs',
@@ -159,7 +154,7 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Gosia. Built with Docusaurus and ❤️.`,
+       copyright: `Copyright © ${new Date().getFullYear()} Gosia. Built with Docusaurus and 💚.`,
     },
     prism: {
       theme: prismThemes.github,
