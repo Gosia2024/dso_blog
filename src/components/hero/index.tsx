@@ -8,7 +8,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 function Hero() {
   const { t } = useTranslation("homepage");
-  const profileUrl = useBaseUrl("/img/profile.jpg");
+  const profileUrl = useBaseUrl("./img/profile.jpg");
 
   return (
     <section className={styles.hero}>

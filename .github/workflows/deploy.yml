@@ -3,7 +3,8 @@ name: Deploy Docusaurus site to Pages
 on:
   push:
     branches: [ "portfolio" ]  # 🔹 Run this workflow only when code is pushed to the "portfolio" branch
-permissions:
+   
+permissions: 
   contents: write
   pages: write
 jobs:
@@ -29,6 +30,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
+          force_orphan: true #clean old files
         # 🔹 Step 5: Deploy the contents of the /build folder to GitHub Pages
         #    This action pushes the build output to the branch set in your docusaurus.config.ts (deploymentBranch)
 

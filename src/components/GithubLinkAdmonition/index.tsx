@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import Admonition from '@theme/Admonition';
-import GithubIcon from '/static/img/github.svg';
-
+//import GithubIcon from '/static/img/github.svg';
+import GithubIcon from '@site/static/img/github.svg';
 
 type AdmonitionType = "info" | "tip" | "warning" | "note" | "danger";
 
