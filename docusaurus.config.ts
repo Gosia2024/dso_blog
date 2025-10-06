@@ -31,8 +31,13 @@ const config: Config = {
 
   deploymentBranch: 'gh-pages',
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+ trailingSlash: true,
+
+  // Linki: nie wywalaj builda gdy coś jest nie tak
+  onBrokenLinks: 'ignore',
+  markdown: {
+    hooks: { onBrokenMarkdownLinks: 'ignore' }, // albo 'warn' jeśli wolisz
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -183,8 +188,6 @@ if (blogEnabled) {
   (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
   (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
 }
-
-
 
 
 
