@@ -87,22 +87,6 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
   ],
 
 
-plugins: [
-  [
-    '@docusaurus/plugin-client-redirects',
-    {
-      // Leitet automatisch von /pfad  →  /pfad/ um
-      createRedirects(existingPath: string) {
-        if (existingPath.endsWith('/')) {
-          return [existingPath.slice(0, -1)];
-        }
-        return [];
-      },
-    },
-  ],
-],
-
-
 
   themeConfig: {
     // Replace with your project's social card
@@ -200,15 +184,6 @@ if (blogEnabled) {
   (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
 }
 
-module.exports = {
-  // ...
-  onBrokenLinks: 'warn',
-  markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
-  },
-};
 
 
 
