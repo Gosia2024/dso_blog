@@ -56,7 +56,7 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // routeBasePath: '/',   // teraz / otwiera dokumentację
+          routeBasePath: '/',   // teraz / otwiera dokumentację
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -85,6 +85,24 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
       } satisfies Preset.Options,
     ],
   ],
+
+
+plugins: [
+  [
+    '@docusaurus/plugin-client-redirects',
+    {
+      // Leitet automatisch von /pfad  →  /pfad/ um
+      createRedirects(existingPath: string) {
+        if (existingPath.endsWith('/')) {
+          return [existingPath.slice(0, -1)];
+        }
+        return [];
+      },
+    },
+  ],
+],
+
+
 
   themeConfig: {
     // Replace with your project's social card
@@ -148,8 +166,8 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
               href: 'https://github.com/facebook/docusaurus',
             },
             {
-          label: 'My Portfolio',                     // 👈 Twój nowy link
-          href: 'http://malgorzata-lingenfelder.de',               // 👈 adres Twojej strony na FTP
+          label: 'My Portfolio',                     
+          href: 'http://malgorzata-lingenfelder.de',               
         },
           ],
         },
@@ -181,6 +199,8 @@ if (blogEnabled) {
   (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
   (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
 }
+
+
 
 
 
