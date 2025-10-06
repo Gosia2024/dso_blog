@@ -200,6 +200,15 @@ if (blogEnabled) {
   (config.themeConfig.footer as any).links[2].items.push({to: '/blog', label: 'Blog'});
 }
 
+module.exports = {
+  // ...
+  onBrokenLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
+};
 
 
 
