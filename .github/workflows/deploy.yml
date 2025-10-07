@@ -10,6 +10,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest      # 🔹 Use the latest Ubuntu virtual machine as the build environment
+    env:
+      CI: false        # globalnie dla joba
     steps:
       - uses: actions/checkout@v4
         # 🔹 Step 1: Check out the repository code into the runner so it can be built
@@ -24,8 +26,7 @@ jobs:
 
       - run: npm run build
         # 🔹 Step 4: Build the Docusaurus site into static files (output goes to /build)
-        env:
-           CI: false
+       
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
