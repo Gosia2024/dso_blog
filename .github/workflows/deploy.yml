@@ -36,8 +36,4 @@ jobs:
           force_orphan: true #clean old files
         # 🔹 Step 5: Deploy the contents of the /build folder to GitHub Pages
         #    This action pushes the build output to the branch set in your docusaurus.config.ts (deploymentBranch)
-      - name: Debug env
-        run: |
-           echo "CI=$CI"
-            node -e "console.log('process.env.CI=', process.env.CI)"
-
+      
