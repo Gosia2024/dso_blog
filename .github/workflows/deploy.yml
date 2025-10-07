@@ -2,9 +2,9 @@ name: Deploy Docusaurus site to Pages
 
 on:
   push:
-    branches: [ "portfolio" ]  # 🔹 Run this workflow only when code is pushed to the "portfolio" branch
-   
-permissions: 
+    branches: ["revert-to-5f0e74c"]  # 🔹 Run this workflow only when code is pushed to the "revert-to-5f0e74c" branch
+
+permissions:
   contents: write
   pages: write
 jobs:
