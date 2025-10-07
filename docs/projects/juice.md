@@ -1,27 +1,22 @@
-# Juice-Shop-Meister
+---
+id: juice-shop-meister
+title: Juice Shop Meister
+slug: /projects/juice-shop-meister
+---
 
-
-<!--INSERT YOUR BRIEF DESCRIPTION HERE -->
-This page documents how I configured my very first cloud server instance in the Developer Akademie DevSecOps Course.
-
-## TOC
-
-<!--INSERT YOUR TABLE OF CONTENTS HERE -->
+This page documents how I approached selected OWASP Juice Shop challenges.
 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
 
 <GithubLinkAdmonition
   link="https://github.com/Gosia2024/juice-shop-meister"
-  title="Github Tip"
+  title="GitHub Tip"
   type="tip"
 />
 
-# Juice-Shop-Meister
-
-This is a **collection repository** of OWASP Juice Shop challenges.  
-All individual challenges are documented inside the [`challenges/`](./challenges) folder.
-
 ## Table of Contents
+
+- [Table of Contents](#table-of-contents)
 - [Challenges](#challenges)
 - [Note](#note)
 
@@ -29,15 +24,16 @@ All individual challenges are documented inside the [`challenges/`](./challenges
 
 ## Challenges
 
-Here is the overview of challenges with links to their documentation:
+Overview with links to the write-ups:
 
-* [View Basket (Broken Access Control)](./challenges/view-basket.md)
-* [Error Handling (Security Misconfiguration)](./challenges/error-handling.md)
-* [Vulnerable Library (Using components with known vulnerabilities)](./challenges/vulnerable-library.md)
+- [View Basket](./view-basket)
+- [Error Handling](./error-handling)
+- [Vulnerable Library](./vulnerable-library)
+
 
 ---
 
+## Note
 
-> [!NOTE]  
-> This repository is strictly for **learning and training purposes** in the context of Juice Shop exercises.  
-> Use it only in controlled environments or with explicit permission.
+> This material is for **learning and practice** in the Juice Shop context only.  
+> Use it in controlled environments or with explicit permission.
