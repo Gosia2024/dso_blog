@@ -24,7 +24,8 @@ jobs:
 
       - run: npm run build
         # 🔹 Step 4: Build the Docusaurus site into static files (output goes to /build)
-       
+        env:
+           CI: false
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
