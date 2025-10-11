@@ -31,13 +31,8 @@ const config: Config = {
 
   deploymentBranch: 'gh-pages',
 
-// trailingSlash: true,
-
-  // Linki: nie wywalaj builda gdy coś jest nie tak
-  //onBrokenLinks: 'ignore',
-  //markdown: {
-   // hooks: { onBrokenMarkdownLinks: 'ignore' }, // albo 'warn' jeśli wolisz
-  //},
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -61,7 +56,7 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/',   // teraz / otwiera dokumentację
+          // routeBasePath: '/',   // teraz / otwiera dokumentację
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -90,8 +85,6 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
       } satisfies Preset.Options,
     ],
   ],
-
-
 
   themeConfig: {
     // Replace with your project's social card
@@ -155,8 +148,8 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
               href: 'https://github.com/facebook/docusaurus',
             },
             {
-          label: 'My Portfolio',                     
-          href: 'http://malgorzata-lingenfelder.de',               
+          label: 'My Portfolio',                     // 👈 Twój nowy link
+          href: 'http://malgorzata-lingenfelder.de',               // 👈 adres Twojej strony na FTP
         },
           ],
         },
