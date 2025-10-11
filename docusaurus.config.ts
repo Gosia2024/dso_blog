@@ -32,8 +32,8 @@ const config: Config = {
   deploymentBranch: 'gh-pages',
 
   // HIER ergänzen
-  trailingSlash: true,
-  scripts: [{ src: 'restoreSPAPath.js', async: false }],
+  //trailingSlash: true,
+  //scripts: [{ src: 'restoreSPAPath.js', async: false }],
 
  
 
