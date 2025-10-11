@@ -31,6 +31,14 @@ const config: Config = {
 
   deploymentBranch: 'gh-pages',
 
+  // HIER ergänzen
+  trailingSlash: true,
+  scripts: [{ src: 'restoreSPAPath.js', async: false }],
+
+ 
+
+
+
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -184,5 +192,5 @@ if (blogEnabled) {
 
 
 
-
 export default config;
+

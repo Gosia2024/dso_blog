@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="de">
+  <head><meta charset="utf-8" /><meta name="robots" content="noindex" /></head>
+  <body>
+    <script>
+      (function (l) {
+        var path = l.pathname + l.search + l.hash;
+        // <- WICHTIG: dein Repo-Pfad
+        var repo = '/dso_blog/';
+        l.replace(l.protocol + '//' + l.host + repo + '?p=' + encodeURIComponent(path));
+      })(window.location);
+    </script>
+  </body>
+</html>
