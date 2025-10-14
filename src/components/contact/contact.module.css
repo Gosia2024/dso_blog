@@ -234,15 +234,13 @@
 
 
 
-
-
-/* Domyślnie ukryte (desktop/tablet) */
+/* Hidden by default (desktop/tablet) */
 .mobileHint,
 .mobileCta {
   display: none;
 }
 
-/* Pokaż tylko na mobile */
+/* Show only on mobile */
 @media (max-width: 768px) {
   .mobileHint {
     display: block;
@@ -259,3 +257,4 @@
     text-decoration: none;
   }
 }
+

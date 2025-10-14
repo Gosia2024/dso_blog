@@ -1,4 +1,4 @@
-// src/components/my-skills/MySkills.tsx  (dostosuj ścieżkę do Twojego pliku)
+// src/components/my-skills/MySkills.tsx  (adjust the path to your file)
 import React, { useEffect, useState } from "react";
 import styles from "./my-skills.module.css";
 import Slider, { Settings } from "react-slick";
@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from "react-i18next";
 
-/* Hook w tym pliku – zero importów zewnętrznych */
+/* Hook in this file — no external imports */
 function useIsMobile(breakpoint = 600) {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -37,7 +37,7 @@ type SkillData = {
   iconH: number;
 };
 
-// ikony i wymiary zostają w kodzie
+// icons and dimensions stay hardcoded in the source
 const skillsBase: SkillData[] = [
   { id: "html",      icon: "./img/html.png",   iconW: 22.19, iconH: 49.9 },
   { id: "css",       icon: "./img/css.png",    iconW: 22.19, iconH: 49.9 },
@@ -50,7 +50,7 @@ const skillsBase: SkillData[] = [
   { id: "security",  icon: "./img/sec.png",    iconW: 22.19, iconH: 49.9 }
 ];
 
-// grupy na mobile po ID — niezależne od tłumaczeń
+// mobile groups by ID — independent of translations
 const groupsMobileIds: SkillId[][] = [
   ["html", "css", "static"],
   ["python", "shell", "yaml"],
@@ -73,41 +73,40 @@ export default function MySkills() {
   const isMobile = useIsMobile(600);
   const { t } = useTranslation("mySkills");
 
-  // z tłumaczeń bierzemy nazwę i listę opisów
+  // pull display name and description list from translations
   const skillsAll = skillsBase.map((s) => ({
     ...s,
     name: t(`skills.${s.id}.name`) as string,
     description: t(`skills.${s.id}.desc`, { returnObjects: true }) as string[]
   }));
 
-  // helper: znajdź obiekt po ID
+  // helper: find the object by ID
   const byId = (id: SkillId) => skillsAll.find((s) => s.id === id)!;
 
   const list = (arr: typeof skillsAll) =>
-  arr.map((s) => (
-    <article key={s.id} className={styles.skillCard} tabIndex={0}>
-      <div className={styles.skillStack}>
-        <img
-          className={styles.skillIcon}
-          src={s.icon}
-          alt={s.name}
-          width={s.iconW}
-          height={s.iconH}
-        />
-        <span className={styles.skillName}>{s.name}</span>
-      </div>
+    arr.map((s) => (
+      <article key={s.id} className={styles.skillCard} tabIndex={0}>
+        <div className={styles.skillStack}>
+          <img
+            className={styles.skillIcon}
+            src={s.icon}
+            alt={s.name}
+            width={s.iconW}
+            height={s.iconH}
+          />
+          <span className={styles.skillName}>{s.name}</span>
+        </div>
 
-      <div className={styles.skillOverlay}>
-        <h3 className={styles.overlayTitle}>How I used this skills</h3>
-        <ul className={styles.overlayList}>
-          {s.description.map((line, i) => (
-            <li key={i}>{line}</li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  ));
-
+        <div className={styles.skillOverlay}>
+          <h3 className={styles.overlayTitle}>How I used these skills</h3>
+          <ul className={styles.overlayList}>
+            {s.description.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ));
 
   return (
     <section className={styles.skillsSection} id="skills" aria-labelledby="skills-heading">
@@ -124,26 +123,25 @@ export default function MySkills() {
                   {group.map((id) => {
                     const s = byId(id);
                     return (
-       <div key={s.id} className={styles.mobileItem}>
-  <div className={styles.mobileIconCol}>
-    <img
-      className={styles.mobileIcon}
-      src={s.icon}
-      alt={s.name}
-      width={s.iconW}
-      height={s.iconH}
-    />
-    <span className={styles.mobileName}>{s.name}</span>
-  </div>
+                      <div key={s.id} className={styles.mobileItem}>
+                        <div className={styles.mobileIconCol}>
+                          <img
+                            className={styles.mobileIcon}
+                            src={s.icon}
+                            alt={s.name}
+                            width={s.iconW}
+                            height={s.iconH}
+                          />
+                          <span className={styles.mobileName}>{s.name}</span>
+                        </div>
 
-  {/* kolumna tekstowa */}
-  <div className={styles.mobileTextCol}>
-   
-    <ul className={styles.mobileList}>
-      {s.description.map((line, i) => (<li key={i}>{line}</li>))}
-    </ul>
-  </div>
-</div>
+                        {/* text column */}
+                        <div className={styles.mobileTextCol}>
+                          <ul className={styles.mobileList}>
+                            {s.description.map((line, i) => (<li key={i}>{line}</li>))}
+                          </ul>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>

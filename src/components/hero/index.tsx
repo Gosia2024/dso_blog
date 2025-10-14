@@ -8,8 +8,8 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 function Hero() {
   const { t } = useTranslation("homepage");
-    const { t: tContact } = useTranslation("contact");   // <— dodane
-  const emailHref = tContact("links.emailHref");        // <— dodane
+    const { t: tContact } = useTranslation("contact");   // add
+  const emailHref = tContact("links.emailHref");        // add
   const profileUrl = useBaseUrl("./img/profile.jpg");
 
   return (

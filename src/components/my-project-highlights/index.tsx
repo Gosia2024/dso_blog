@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-/** Ikona w „pigułce” – desktop: biała, mobile: niebieska */
+/** Icon in a “pill” — desktop: white, mobile: blue */
 const TagIcon: React.FC<{ desktop: string; mobile: string; alt: string }> = ({
   desktop,
   mobile,
@@ -27,39 +27,39 @@ const TagIcon: React.FC<{ desktop: string; mobile: string; alt: string }> = ({
 const MyProjectHighlights: React.FC = () => {
   const { t } = useTranslation("projectHighlight");
 
-  // lista po lewej z i18n
+  // left column list from i18n
   const projects = t("list", { returnObjects: true }) as string[];
 
   return (
     <section className={styles.projectsSection} id="projects">
       <div className={styles.inner}>
-        {/* tytuł desktop */}
+        {/* desktop title */}
         <h2 className={`${styles.sectionTitle} ${styles.mobileHidden}`}>
           {t("sectionTitle")}
         </h2>
 
-        {/* tytuł mobile dla pierwszej karty */}
+        {/* mobile title for the first card */}
         <h3 className={`${styles.cardTitle} ${styles.mobileOnly}`}>
           {t("firstCard.title")}
         </h3>
 
         <div className={styles.content}>
-          {/* lewa kolumna – lista projektów */}
+          {/* left column — project list */}
           <nav className={styles.projectList} aria-label="Project list">
             <ul>
               {projects.map((p) => (
                 <li key={p}>{p}</li>
               ))}
             </ul>
-           <Link
-    className={styles.moreProjects}
-    to={useBaseUrl("docs/projects/overview")}
-  >
-    {t("seeMore")}
-  </Link>
+            <Link
+              className={styles.moreProjects}
+              to={useBaseUrl("docs/projects/overview")}
+            >
+              {t("seeMore")}
+            </Link>
           </nav>
 
-          {/* prawa kolumna – karty */}
+          {/* right column — cards */}
           <div className={styles.cards}>
             {/* 1) Minecraft */}
             <article className={styles.projectCard}>
@@ -68,7 +68,7 @@ const MyProjectHighlights: React.FC = () => {
                   {t("firstCard.h3")}
                 </h3>
 
-                {/* tagi */}
+                {/* tags */}
                 <div className={styles.tags}>
                   <TagIcon
                     desktop="/img/myaml.png"
@@ -255,5 +255,3 @@ const MyProjectHighlights: React.FC = () => {
 };
 
 export default MyProjectHighlights;
-
-

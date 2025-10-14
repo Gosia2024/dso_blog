@@ -13,7 +13,7 @@ function Contact() {
   const profileHref = t("links.profileHref");
   const profileLabel = t("links.profileLabel");
 
-  // obrazki przez baseUrl (jeśli masz baseUrl w Docusaurus)
+ 
   const emailIcon = useBaseUrl("/img/email.png");
   const linkedIcon = useBaseUrl("/img/linked.png");
   const arrowIcon = useBaseUrl("/img/arrow.png");
@@ -100,7 +100,6 @@ function Contact() {
 
         <p className={styles.copy}>{t("copyright")}</p>
 
-        {/* Jeden paragraf + jeden link */}
         <p className={styles.legal}>
           <Link className={styles.legalLink} to={useBaseUrl("/legal-notice")}>
             {t("legal")}

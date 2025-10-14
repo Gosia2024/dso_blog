@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./header.module.css";
-import { useTranslation } from "react-i18next"; // ⬅ tylko i18next (bez Link)
+import { useTranslation } from "react-i18next"; // ⬅ i18next only (no Link)
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ function Header() {
         <a href="#contact">{t("nav.contact")}</a>
       </nav>
 
-      {/* Desktop language switcher — BEZ zmiany trasy */}
+      {/* Desktop language switcher — WITHOUT changing the route */}
       <div className={styles.langSwitcher}>
         <button type="button" onClick={() => i18n.changeLanguage("en")}>EN</button>
         <button type="button" onClick={() => i18n.changeLanguage("de")}>DE</button>
@@ -56,7 +56,7 @@ function Header() {
           <a href="#projects" onClick={handleNavClick}>{t("nav.projects")}</a>
           <a href="#contact" onClick={handleNavClick}>{t("nav.contact")}</a>
 
-          {/* Mobile language switcher — również bez zmiany trasy */}
+          {/* Mobile language switcher — also WITHOUT changing the route */}
           <div className={styles.mobileLangSwitcher}>
             <button type="button" onClick={() => { i18n.changeLanguage("en"); handleNavClick(); }}>EN</button>
             <button type="button" onClick={() => { i18n.changeLanguage("de"); handleNavClick(); }}>DE</button>

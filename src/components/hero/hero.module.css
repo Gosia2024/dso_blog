@@ -104,10 +104,7 @@
 
 
 
-
-
-
-/* === BASE / DESKTOP (obowiązuje zawsze, potem doprecyzują media) === */
+/* === BASE / DESKTOP (always applies; media queries refine later) === */
 .imageSection img { 
   width: clamp(140px, 32vw, 340px);
   height: auto;
@@ -121,11 +118,11 @@
   max-width: 600px;
 }
 
-/* Jeśli masz te klasy – domyślnie desktopowy układ */
+/* If you have these classes — desktop layout by default */
 .desktopOnly { display: block; }
 .mobileOnly  { display: none; }
 
-/* === (OPCJONALNE) SMALL DESKTOP / TABLET: 900px → 401px === */
+/* === (OPTIONAL) SMALL DESKTOP / TABLET: 900px → 401px === */
 @media (max-width: 900px) and (min-width: 401px) {
   .hero {
     flex-direction: row;
@@ -137,12 +134,12 @@
   .textSection { max-width: 520px; }
   .imageSection img { width: clamp(150px, 28vw, 300px); }
 
-  /* upewnij się, że wersja desktopowa jest widoczna w tym zakresie */
+  /* Make sure the desktop version is visible in this range */
   .desktopOnly { display: block; }
   .mobileOnly  { display: none; }
 }
 
-/* === MOBILE: ≤400px — dopiero tutaj kolumna === */
+/* === MOBILE: ≤400px — only here switch to column === */
 @media (max-width: 400px) {
   .hero {
     flex-direction: column;
@@ -158,11 +155,11 @@
     text-align: left;
   }
 
-  /* Wariant A (jeden obraz): przenieś obraz pod tekstem */
+  /* Variant A (single image): move the image below the text */
   .imageSection { order: 2; align-self: center; }
   .imageSection img { width: 325px; margin: 16px 0; }
 
-  /* Wariant B (duplikat inline) — odkomentuj, jeśli używasz:
+  /* Variant B (inline duplicate) :
   .desktopOnly { display: none; }
   .mobileOnly  { display: block; }
   .imageInline img { width: 325px; margin: 16px 0; }

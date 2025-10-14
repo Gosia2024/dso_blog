@@ -65,7 +65,7 @@
   flex-direction:column;
   gap:32px;
 
-  /* Avoid content poking through rounded corners */
+  /* Prevent content from bleeding through rounded corners */
   overflow:hidden;
   padding-bottom:48px;
 }
@@ -172,7 +172,7 @@
   color:#fff; text-decoration:none; font-weight:600;
   border-radius: 60px;
 }
-/* GitHub = outline (drugi/ostatni w .buttons) */
+/* GitHub = outline (second/last in .buttons) */
 .buttons a:last-child{
   background: transparent;
   border-color: #fff;
@@ -239,7 +239,7 @@
   }
 }
 
-/* ===== ≤900px — even tighter, 2 columns ===== */
+/* ===== ≤900px — even tighter, still 2 columns ===== */
 @media (max-width: 900px){
   .inner{ padding: 0 24px; max-width: 860px; }
 
@@ -297,11 +297,11 @@
 
   .tags{ flex-wrap:wrap; justify-content:flex-start; gap:8px; margin:0 0 8px 0; }
  
-.tag{
-   padding:10px 14px;
-   border-radius:12px;
-   /* białe tło na 20% – jak w Figmie */
-   background: rgba(255, 255, 255, 0.20);   /* = #FFFFFF33 */
+  .tag{
+    padding:10px 14px;
+    border-radius:12px;
+    /* white background at 20% — like in Figma */
+    background: rgba(255, 255, 255, 0.20);   /* = #FFFFFF33 */
     border: 1px solid rgba(255, 255, 255, 0.35);   color:#fff;
   }
   .row{ width:100%; flex-direction:column; align-items:flex-start; gap:16px; }
@@ -334,7 +334,7 @@
   .desktopOnly { display:none !important; }
   .mobileHidden { display:none !important; }
 
-  /* Decorative bar inside card — mobile only */
+  /* Decorative bar inside the card — mobile only */
   .sepBar{
     display:block;
     width:100%;
@@ -345,54 +345,54 @@
   }
 }
 
-/***obrazki***/
+/*** images ***/
 
 @media (max-width: 400px){
   .media{ width: min(100%, 260px); }  /* ~260×146 */
-  /* jeśli chcesz, by logo też było odrobinę mniejsze: */
+  /* if you want the logo slightly smaller too: */
   .logo{ width: 70px; height: 70px; }
-  /* watermark delikatniej: */
+  /* softer watermark: */
   .watermark{ font-size: 32px; }
 }
 @media (max-width: 400px){
-  /* wyśrodkowanie obrazka */
-  .row { align-items: center; }        /* kolumna centruje dzieci */
+  /* center the image */
+  .row { align-items: center; }        /* column centers children */
   .media{
     width: min(100%, 260px);
-    margin: 0 auto;                    /* centrowanie poziome */
-    /* albo zamiast margin: align-self: center; */
+    margin: 0 auto;                    /* horizontal centering */
+    /* or instead of margin: align-self: center; */
   }
 
-  .logo{ width: 70px; height: 70px; }  /* (jak miałeś) */
-  .watermark{ font-size: 32px; }       /* (jak miałeś) */
+  .logo{ width: 70px; height: 70px; }  /* (as you had) */
+  .watermark{ font-size: 32px; }       /* (as you had) */
 }
-/* SEE MORE — taki sam efekt jak w li */
+/* SEE MORE — same effect as on li */
 .moreProjects{
   position: relative;
-  display: inline-block;   /* szerokość = szerokość tekstu */
+  display: inline-block;   /* width = text width */
   color: #fff;
   cursor: pointer;
-  padding-bottom: 2px;     /* miejsce na kreskę */
+  padding-bottom: 2px;     /* space for the underline */
   transition: color .15s ease;
 }
 
-/* SEE MORE — taki sam efekt jak w li */
+/* SEE MORE — same effect as on li */
 .moreProjects{
   position: relative;
-  display: inline-block;   /* szerokość = szerokość tekstu */
+  display: inline-block;   /* width = text width */
   color: #fff;
   cursor: pointer;
-  padding-bottom: 2px;     /* miejsce na kreskę */
+  padding-bottom: 2px;     /* space for the underline */
   transition: color .15s ease;
 }
 
-/* bazowy wygląd + kreska */
+/* base look + underline */
 .projectList li{
   position: relative;
   display: inline-block;
   padding-bottom: 2px;
   color: #fff;
-  cursor: pointer;              /* element traktowany jak klikalny */
+  cursor: pointer;              /* treat as a clickable element */
 }
 .projectList li::after{
   content:"";
@@ -404,7 +404,7 @@
 }
 .projectList li:hover::after{ width:100%; }
 
-/* kliknięty (TYLKO gdy trzymasz przycisk) */
+/* clicked (ONLY while holding the mouse button) */
 .projectList li:active{
-  color:#262E34 !important;     /* nadpisuje inne kolory */
+  color:#262E34 !important;     /* overrides other colors */
 }
