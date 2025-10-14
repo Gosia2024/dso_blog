@@ -289,11 +289,14 @@
   .cardTitle{ font-size:24px; line-height:1.2; color:#fff; }
 
   .tags{ flex-wrap:wrap; justify-content:flex-start; gap:8px; margin:0 0 8px 0; }
-  .tag{
-    padding:10px 14px; border-radius:12px;
-    background:#4A77C7; color:#fff; border:1px solid rgba(255,255,255,.18);
+ 
+.tag{
+   padding:10px 14px;
+   border-radius:12px;
+   /* białe tło na 20% – jak w Figmie */
+   background: rgba(255, 255, 255, 0.20);   /* = #FFFFFF33 */
+    border: 1px solid rgba(255, 255, 255, 0.35);   color:#fff;
   }
-
   .row{ width:100%; flex-direction:column; align-items:flex-start; gap:16px; }
 
   .media{ width:355px; height:240px; border-radius:24px; }
