@@ -231,3 +231,31 @@
   .mobileCta:hover  { filter: brightness(1.05); }
   .mobileCta:active { transform: translateY(1px); }
 }
+
+
+
+
+
+/* Domyślnie ukryte (desktop/tablet) */
+.mobileHint,
+.mobileCta {
+  display: none;
+}
+
+/* Pokaż tylko na mobile */
+@media (max-width: 768px) {
+  .mobileHint {
+    display: block;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .mobileCta {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    border-radius: 9999px;
+    text-decoration: none;
+  }
+}

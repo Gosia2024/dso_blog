@@ -334,3 +334,25 @@
     border-radius:12px;
   }
 }
+
+/***obrazki***/
+
+@media (max-width: 400px){
+  .media{ width: min(100%, 260px); }  /* ~260×146 */
+  /* jeśli chcesz, by logo też było odrobinę mniejsze: */
+  .logo{ width: 70px; height: 70px; }
+  /* watermark delikatniej: */
+  .watermark{ font-size: 32px; }
+}
+@media (max-width: 400px){
+  /* wyśrodkowanie obrazka */
+  .row { align-items: center; }        /* kolumna centruje dzieci */
+  .media{
+    width: min(100%, 260px);
+    margin: 0 auto;                    /* centrowanie poziome */
+    /* albo zamiast margin: align-self: center; */
+  }
+
+  .logo{ width: 70px; height: 70px; }  /* (jak miałeś) */
+  .watermark{ font-size: 32px; }       /* (jak miałeś) */
+}

@@ -11,7 +11,7 @@
   "firstCard": {
     "title": "1. Minecraft",
     "h3": "Projekt Minecraft",
-    "desc": "Napisz kilka informacji o projekcie. Np.: z czego jesteś dumna, co udało się tu zaimplementować, jaką architekturę/algorytmy zastosowałaś i dlaczego ten projekt był dla Ciebie interesujący."
+    "desc": "Produkcyjny serwer Minecraft Java w Dockerze i Compose. Trwałe światy, konfiguracja przez zmienne środowiskowe i proste testy — mój pierwszy build w chmurze z kursu DevSecOps, przygotowany tak, by był niezawodny i powtarzalny."
   },
   "secondCard": { "title": "2. Klon (Container)" },
   "thirdCard":  { "title": "3. Hosting WordPressa" },

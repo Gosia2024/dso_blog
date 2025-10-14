@@ -1,14 +1,14 @@
 {
-  "mobileHint": "Schreibe etwas über weitere Projekte. Woran hast du bisher gearbeitet?",
+  "mobileHint": "Neugierig auf mehr? Hier zeige ich kleine Builds und Experimente.",
   "mobileCta": "Mehr Projekte ansehen",
   "title": "Kontaktiere mich",
   "subtitle": "Ich freue mich auf deine Nachricht!",
-  "bodyIntro": "Füge Informationen wie folgt hinzu:",
+  "bodyIntro": "Kurze Infos reichen:",
   "bullets": [
-    "Gerne auch Jobangebote oder ähnliche Möglichkeiten...",
-    "Welche Rolle suchst du?",
-    "Wie kannst du das neue Team unterstützen?",
-    "Offen für Remote oder Umzug?"
+    "Anfragen zu DevOps-Rollen oder kurzen Aufträgen sind willkommen.",
+    "Rolle: DevOps Engineer.",
+    "Ich unterstütze mit Docker, CI/CD, Security und Monitoring.",
+    "Verfügbarkeit: nur Remote."
   ],
   "links": {
     "emailLabel": "info@malgorzata-lingenfelder.de",

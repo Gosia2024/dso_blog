@@ -1,14 +1,14 @@
 {
-  "mobileHint": "Write some information about your other projects. What other projects have you been working on so far?",
+  "mobileHint": "Curious for more? I also share smaller builds and experiments.",
   "mobileCta": "See more projects",
   "title": "Contact me",
-  "subtitle": "Looking forward to hearing from you!",
-  "bodyIntro": "Include the information like:",
+  "subtitle": "I’m happy to hear from you!",
+  "bodyIntro": "A few details help:",
   "bullets": [
-    "Feel free to reach out with job offers or opportunities like...",
-    "What role are you looking for?",
-    "How you will contribute to the new team.",
-    "Are you open for remote work or even relocate?"
+    "Reach out about DevOps roles or short gigs.",
+    "Role: DevOps Engineer.",
+    "I can help with Docker, CI/CD, security, and monitoring.",
+    "Availability: remote only."
   ],
   "links": {
     "emailLabel": "info@malgorzata-lingenfelder.de",

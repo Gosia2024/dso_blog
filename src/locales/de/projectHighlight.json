@@ -11,10 +11,10 @@
   "firstCard": {
     "title": "1. Minecraft",
     "h3": "Projekt Minecraft",
-    "desc": "Schreibe einige Infos über das Projekt. Z. B.: Worauf bist du stolz? Was konntest du hier umsetzen? Welche Algorithmen bzw. Serverarchitektur hast du verwendet? Warum fandest du das Projekt besonders interessant?"
+    "desc": "Ein produktionsreifer Minecraft-Java-Server mit Docker & Compose. Persistente Welten, env-basierte Konfiguration und einfacher Health-Check – mein erster Cloud-Build aus dem DevSecOps-Kurs, zuverlässig und reproduzierbar."
   },
   "secondCard": { "title": "2. Clone (Container)" },
-  "thirdCard":  { "title": "3. WordPress hosten" },
+  "thirdCard": { "title": "3. WordPress hosten" },
   "buttons": { "docs": "Dokumentation", "github": "GitHub" },
   "alts": {
     "yaml": "YAML",
@@ -27,3 +27,4 @@
   },
   "watermark": "MINECRAFT"
 }
+

@@ -100,3 +100,73 @@
   .contactButton { align-self: center; }
 }
 
+
+
+
+
+
+
+
+/* === BASE / DESKTOP (obowiązuje zawsze, potem doprecyzują media) === */
+.imageSection img { 
+  width: clamp(140px, 32vw, 340px);
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.textSection { 
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 600px;
+}
+
+/* Jeśli masz te klasy – domyślnie desktopowy układ */
+.desktopOnly { display: block; }
+.mobileOnly  { display: none; }
+
+/* === (OPCJONALNE) SMALL DESKTOP / TABLET: 900px → 401px === */
+@media (max-width: 900px) and (min-width: 401px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 36px 32px 44px;
+  }
+
+  .textSection { max-width: 520px; }
+  .imageSection img { width: clamp(150px, 28vw, 300px); }
+
+  /* upewnij się, że wersja desktopowa jest widoczna w tym zakresie */
+  .desktopOnly { display: block; }
+  .mobileOnly  { display: none; }
+}
+
+/* === MOBILE: ≤400px — dopiero tutaj kolumna === */
+@media (max-width: 400px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 24px 40px;
+  }
+
+  .textSection {
+    width: 100%;
+    max-width: 325px;  /* Figma */
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Wariant A (jeden obraz): przenieś obraz pod tekstem */
+  .imageSection { order: 2; align-self: center; }
+  .imageSection img { width: 325px; margin: 16px 0; }
+
+  /* Wariant B (duplikat inline) — odkomentuj, jeśli używasz:
+  .desktopOnly { display: none; }
+  .mobileOnly  { display: block; }
+  .imageInline img { width: 325px; margin: 16px 0; }
+  */
+
+  .contactButton { align-self: center; }
+}

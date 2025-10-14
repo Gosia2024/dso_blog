@@ -106,6 +106,7 @@ const MyProjectHighlights: React.FC = () => {
                 {/* Description + CTAs */}
                 <div className={styles.info}>
                   <p className={styles.desc}>{t("firstCard.desc")}</p>
+                 
 
                   <div className={styles.buttons}>
                     <Link to={useBaseUrl("docs/projects")}>
@@ -145,7 +146,8 @@ const MyProjectHighlights: React.FC = () => {
                 </div>
 
                 <div className={styles.info}>
-                  <p className={styles.desc}>…</p>
+                  {/* <p className={styles.desc}>…</p> */}
+                  <p className={styles.desc}>{t("secondCard.desc")}</p>
                   <div className={styles.buttons}>
                     <Link to={useBaseUrl("docs/projects")}>
                       {t("buttons.docs")}
@@ -211,7 +213,8 @@ const MyProjectHighlights: React.FC = () => {
                 </div>
 
                 <div className={styles.info}>
-                  <p className={styles.desc}>{t("firstCard.desc")}</p>
+                  {/* <p className={styles.desc}>{t("firstCard.desc")}</p> */}
+                 <p className={styles.desc}>{t("thirdCard.desc")}</p>
                   <div className={styles.buttons}>
                     <Link to={useBaseUrl("docs/projects")}>
                       {t("buttons.docs")}

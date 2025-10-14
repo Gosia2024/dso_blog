@@ -11,10 +11,16 @@
   "firstCard": {
     "title": "1. Minecraft",
     "h3": "Project Minecraft",
-    "desc": "Write some information about the project. For example: Why are you proud of it? What were you able to implement here? What different algorithms or server architecture did you use? Why did you find this project so interesting?"
+    "desc": "A production-ready Minecraft Java server packaged with Docker & Compose. Persistent worlds, env-based config, and simple testing—my first cloud build from the DevSecOps course, made reliable and repeatable."
   },
-  "secondCard": { "title": "2. Clone (Container)" },
-  "thirdCard":  { "title": "3. WordPress hosting" },
+  "secondCard": {
+    "title": "2. Clone (Container)",
+    "desc": "A lightweight app clone running in Docker. Multi-stage build, Docker Compose, and env-based config—fast spins, reproducible deploys, and simple health checks."
+  },
+  "thirdCard": {
+    "title": "3. WordPress hosting",
+    "desc": "WordPress on Docker/Compose. Persistent volumes for DB and uploads, .env-driven config, and hassle-free updates without data loss."
+  },
   "buttons": { "docs": "Documentation", "github": "GitHub" },
   "alts": {
     "yaml": "YAML",
