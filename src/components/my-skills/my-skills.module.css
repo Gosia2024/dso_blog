@@ -46,6 +46,7 @@
   justify-content: center;
 
   transition: transform 0.15s ease; /* simple hover animation */
+ 
 }
 .skillCard:hover {
   transform: translateY(-4px);      /* slight lift on hover */
@@ -62,10 +63,11 @@
 
 /* --- ICON --- */
 .skillIcon {
-  height: 56px;                     /* default icon height */
+  height: 80px;                     /* default icon height */
   width: auto;                      /* keep aspect ratio */
   object-fit: contain;              /* no distortion */
   display: block;
+  margin-top: 20px;
 }
 
 /* --- LABEL UNDER ICON (if used) --- */
@@ -269,3 +271,333 @@
     margin: 0 !important;
   }
 }
+
+
+
+
+
+/*
+
+/* --- SECTION BACKGROUND & COLORS --- */
+.skillsSection {
+  background: #1f252e;
+  color: #ffffff;
+  padding: 72px 144px 72px 120px; /* desktop */
+}
+
+/* --- CENTERED INNER CONTAINER --- */
+.inner {
+  max-width: 1176px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --- HEADLINE --- */
+.headline { max-width: 504px; }
+.headline h2 {
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.2;
+}
+
+/* --- CARD LIST --- */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* --- SINGLE SKILL CARD (responsywna kolumna) --- */
+.skillCard {
+  /* elastyczna kolumna: min 280, idealnie 376, ale może zejść do 33% */
+  flex: 1 1 clamp(280px, 33%, 376px);
+  max-width: 376px;
+  min-width: 280px;
+
+  min-height: 200px;                 /* zamiast sztywnego height */
+  background: #2a303b;
+  border-radius: 30px;
+  padding: 42px 71px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .15s ease;
+}
+.skillCard:hover { transform: translateY(-4px); }
+
+/* --- INNER STACK --- */
+.skillStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 105px;
+}
+
+.skillIcon {
+  height: 80px;                     /* default icon height */
+  width: auto;                      /* keep aspect ratio */
+  object-fit: contain;              /* no distortion */
+  display: block;
+  margin-top: 20px;
+}
+
+.skillName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* === OVERLAY (desktop hover) === */
+.content .skillCard { position: relative; overflow: hidden; }
+.content .skillCard .skillOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(109,133,150,.98);
+  color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 20px 24px;
+}
+.content .skillCard .skillOverlay h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+.content .skillCard .skillOverlay ul {
+  margin: 0; padding: 0; list-style: none;
+  font-size: 14px; line-height: 1.5; max-width: 22rem;
+}
+.content .skillCard:hover .skillOverlay,
+.content .skillCard:focus-within .skillOverlay {
+  opacity: 1; pointer-events: auto;
+}
+
+/* ============================= */
+/* ======= BREAKPOINTS ========= */
+/* ============================= */
+
+/* Small desktop / tablet wide (900–1179px) */
+@media (max-width: 1179px) and (min-width: 900px) {
+  .skillsSection { padding: 64px 72px; }
+  .inner { max-width: 100%; }
+  .content { justify-content: center; }
+  .skillCard {
+    /* 3 w rzędzie o ile się zmieszczą, inaczej 2 */
+    flex: 1 1 clamp(280px, 30%, 340px);
+    max-width: 340px;
+    padding: 36px 48px;
+  }
+}
+
+/* Tablet (601–899px): 2 kolumny */
+@media (max-width: 899px) and (min-width: 601px) {
+  .skillsSection { padding: 56px 48px; }
+  .headline h2 { font-size: clamp(26px, 4.5vw, 40px); }
+  .skillCard {
+    flex: 1 1 calc((100% - 24px) / 2);
+    max-width: none;
+    padding: 32px 36px;
+  }
+}
+
+/* Mobile (≤600px): 1 kolumna + overlay statyczny + slick fix */
+@media (max-width: 600px) {
+  .skillsSection { padding: 40px 20px; }
+  .headline { max-width: 100%; }
+  .headline h2 { font-size: 32px; }
+
+  /* jeden kafel na rząd */
+  .content { display: block; } /* ważne, gdy używasz slicka */
+  .skillCard {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  /* overlay ma być częścią treści (bez hover) */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Slick – stabilizacja wysokości (tylko jeśli używasz slicka) */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block !important; }
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
+
+  /* Wariant mobilnych „kafli” (jeśli renderujesz inne markupy) */
+  .mobileCard {
+    width: 100%;
+    max-width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    margin: 0 auto 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+}
+
+
+
+
+
+/* --- Bazowe wymiary „projektowe” mobilnej karty --- to dodalam jako ostatnie*/
+:root{
+  --mc-w: 340;      /* szerokość */
+  --mc-h: 388;      /* wysokość */
+  --mc-br: 30;      /* border-radius */
+  --mc-pad-t: 16;   /* padding-top */
+  --mc-pad-r: 8;    /* padding-right */
+  --mc-pad-b: 16;   /* padding-bottom */
+  --mc-pad-l: 12;   /* padding-left */
+  --mc-gap: 16;     /* gap w środku karty */
+  --mc-icon: 56;    /* wysokość ikony */
+  --mc-name: 14;    /* font-size nazwy */
+  --mc-line: 20;    /* line-height nazwy (px) */
+  --mc-list: 14;    /* font-size listy */
+}
+
+/* Karta w rozmiarze „pełnym” (≥401px) */
+.mobileCard{
+  width: calc(var(--mc-w)*1px);
+  height: calc(var(--mc-h)*1px);
+  background: #2a303b;
+  border-radius: calc(var(--mc-br)*1px);
+  padding: calc(var(--mc-pad-t)*1px) calc(var(--mc-pad-r)*1px)
+           calc(var(--mc-pad-b)*1px) calc(var(--mc-pad-l)*1px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--mc-gap)*1px);
+  overflow: hidden; /* zabezpiecza przed wyciekami treści */
+}
+
+.mobileItem{ display:flex; gap:16px; align-items:flex-start; }
+.mobileIconCol{ width:72px; flex:0 0 72px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.mobileIcon{ height: calc(var(--mc-icon)*1px); width:auto; display:block; }
+.mobileName{ font-size: calc(var(--mc-name)*1px); line-height: calc(var(--mc-line)*1px); font-weight:600; text-align:center; }
+.mobileList{ list-style:disc; padding-left:18px; margin:0; font-size: calc(var(--mc-list)*1px); line-height:1.45; }
+
+/* --- Poniżej 400px: ta sama karta, tylko proporcjonalnie zmniejszona --- */
+@media (max-width: 400px){
+  /* Skala – dopasuj bazę „360” do realnej przestrzeni w kolumnie, jeśli masz inne paddingi kontenera */
+  :root{ --mc-scale: clamp(0.70, 100vw / 360, 1); }
+
+  .mobileCard{
+    width:  calc(var(--mc-w)  * var(--mc-scale) * 1px);
+    height: calc(var(--mc-h)  * var(--mc-scale) * 1px);
+    border-radius: calc(var(--mc-br) * var(--mc-scale) * 1px);
+    padding: calc(var(--mc-pad-t) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-r) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-b) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-l) * var(--mc-scale) * 1px);
+    gap: calc(var(--mc-gap) * var(--mc-scale) * 1px);
+  }
+
+  .mobileIcon{
+    height: calc(var(--mc-icon) * var(--mc-scale) * 1px);
+  }
+  .mobileName{
+    font-size:  calc(var(--mc-name) * var(--mc-scale) * 1px);
+    line-height: calc(var(--mc-line) * var(--mc-scale) * 1px);
+  }
+  .mobileList{
+    font-size:  calc(var(--mc-list) * var(--mc-scale) * 1px);
+  }
+}
+
+
+
+/* globalnie */
+.skillName { display: none; }
+
+/* albo tylko na mobile */
+@media (max-width: 600px) {
+  .skillName { display: none; }
+}
+
+
+
+/* ZAMIANA TEGO BLOKU */
+.content .skillCard .skillOverlay ul {
+  margin: 0;
+  /* padding: 0;            <-- usuń */
+  /* list-style: none;      <-- usuń */
+  padding-left: 18px;        /* wcięcie jak w Figma */
+  list-style: disc;          /* kropki */
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 22rem;
+}
+
+
+/* overlay: wyrównanie do lewej */
+.content .skillCard .skillOverlay {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Tytuł NA WYSOKOŚCI KROPEK (przesunięty o tyle co padding ul) */
+.content .skillCard .skillOverlay h3 {
+  margin: 0 0 8px;      /* odstęp nad listą jak w makiecie */
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-left: -18px; */   /* = -padding-left z UL -> start równo z kropkami */
+  margin-bottom: 30px;
+}
+
+/* LISTA dokładnie jak w Figma */
+.content .skillCard .skillOverlay ul {
+  width: 332px;         /* szerokość z Figma */
+  margin: 0;
+  padding-left: 18px;   /* kolumna na kropkę */
+  list-style: disc outside;
+  font-size: 16px;
+  line-height: 1.2;     /* 120% */
+}
+
+/* odstęp między wierszami i (opcjonalnie) dosunięcie tekstu do kropki */
+.content .skillCard .skillOverlay li {
+  margin: 0 0 6px 0;
+  /* jeśli chcesz ciaśniej przy kropce, odkomentuj dwie linie poniżej: */
+  /* padding-left: 0.3em;     */
+  /* text-indent: -0.3em;     */
+}
+
+
+
+

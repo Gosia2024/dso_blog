@@ -46,7 +46,7 @@ const skillsBase: SkillData[] = [
   { id: "shell",     icon: "./img/shell.png",  iconW: 22.19, iconH: 49.9 },
   { id: "yaml",      icon: "./img/yaml.png",   iconW: 22.19, iconH: 49.9 },
   { id: "container", icon: "./img/docker.png", iconW: 22.19, iconH: 49.9 },
-  { id: "cicd",      icon: "./img/docker.png", iconW: 22.19, iconH: 49.9 },
+  { id: "cicd",      icon: "./img/ci.png", iconW: 22.19, iconH: 49.9 },
   { id: "security",  icon: "./img/sec.png",    iconW: 22.19, iconH: 49.9 }
 ];
 
@@ -84,23 +84,30 @@ export default function MySkills() {
   const byId = (id: SkillId) => skillsAll.find((s) => s.id === id)!;
 
   const list = (arr: typeof skillsAll) =>
-    arr.map((s) => (
-      <article key={s.id} className={styles.skillCard} tabIndex={0}>
-        <div className={styles.skillStack}>
-          <img
-            className={styles.skillIcon}
-            src={s.icon}
-            alt={s.name}
-            width={s.iconW}
-            height={s.iconH}
-          />
+  arr.map((s) => (
+    <article key={s.id} className={styles.skillCard} tabIndex={0}>
+      <div className={styles.skillStack}>
+        <img
+          className={styles.skillIcon}
+          src={s.icon}
+          alt={s.name}
+          width={s.iconW}
+          height={s.iconH}
+        />
         <span className={styles.skillName}>{s.name}</span>
-        </div>
-        <div className={styles.skillOverlay}>
-          <ul>{s.description.map((line, i) => <li key={i}>{line}</li>)}</ul>
-        </div>
-      </article>
-    ));
+      </div>
+
+      <div className={styles.skillOverlay}>
+        <h3 className={styles.overlayTitle}>How I used this skills</h3>
+        <ul className={styles.overlayList}>
+          {s.description.map((line, i) => (
+            <li key={i}>{line}</li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  ));
+
 
   return (
     <section className={styles.skillsSection} id="skills" aria-labelledby="skills-heading">
@@ -117,21 +124,26 @@ export default function MySkills() {
                   {group.map((id) => {
                     const s = byId(id);
                     return (
-                      <div key={s.id} className={styles.mobileItem}>
-                        <div className={styles.mobileIconCol}>
-                          <img
-                            className={styles.mobileIcon}
-                            src={s.icon}
-                            alt={s.name}
-                            width={s.iconW}
-                            height={s.iconH}
-                          />
-                          <span className={styles.mobileName}>{s.name}</span>
-                        </div>
-                        <ul className={styles.mobileList}>
-                          {s.description.map((line, i) => (<li key={i}>{line}</li>))}
-                        </ul>
-                      </div>
+       <div key={s.id} className={styles.mobileItem}>
+  <div className={styles.mobileIconCol}>
+    <img
+      className={styles.mobileIcon}
+      src={s.icon}
+      alt={s.name}
+      width={s.iconW}
+      height={s.iconH}
+    />
+    <span className={styles.mobileName}>{s.name}</span>
+  </div>
+
+  {/* kolumna tekstowa */}
+  <div className={styles.mobileTextCol}>
+    <h4 className={styles.mobileHowTitle}>How I used this skills</h4>
+    <ul className={styles.mobileList}>
+      {s.description.map((line, i) => (<li key={i}>{line}</li>))}
+    </ul>
+  </div>
+</div>
                     );
                   })}
                 </div>
