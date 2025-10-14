@@ -366,6 +366,45 @@
   .logo{ width: 70px; height: 70px; }  /* (jak miałeś) */
   .watermark{ font-size: 32px; }       /* (jak miałeś) */
 }
+/* SEE MORE — taki sam efekt jak w li */
+.moreProjects{
+  position: relative;
+  display: inline-block;   /* szerokość = szerokość tekstu */
+  color: #fff;
+  cursor: pointer;
+  padding-bottom: 2px;     /* miejsce na kreskę */
+  transition: color .15s ease;
+}
 
+/* SEE MORE — taki sam efekt jak w li */
+.moreProjects{
+  position: relative;
+  display: inline-block;   /* szerokość = szerokość tekstu */
+  color: #fff;
+  cursor: pointer;
+  padding-bottom: 2px;     /* miejsce na kreskę */
+  transition: color .15s ease;
+}
 
+/* bazowy wygląd + kreska */
+.projectList li{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  color: #fff;
+  cursor: pointer;              /* element traktowany jak klikalny */
+}
+.projectList li::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:0;
+  height:2px; width:0;
+  background:#fff;
+  transition: width .18s ease;
+}
+.projectList li:hover::after{ width:100%; }
 
+/* kliknięty (TYLKO gdy trzymasz przycisk) */
+.projectList li:active{
+  color:#262E34 !important;     /* nadpisuje inne kolory */
+}
