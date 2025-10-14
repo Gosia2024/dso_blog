@@ -1,8 +1,9 @@
-// src/components/contact/Contact.tsx  (dostosuj ścieżkę do swojego pliku)
+// src/components/contact/Contact.tsx
 import React from "react";
 import styles from "./contact.module.css";
 import { useTranslation } from "react-i18next";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import Link from "@docusaurus/Link";
 
 function Contact() {
   const { t } = useTranslation("contact");
@@ -22,10 +23,11 @@ function Contact() {
   return (
     <section className={styles.contactSection} id="contact">
       <div className={styles.inner}>
-
         {/* Mobile-only helper text + CTA */}
         <p className={styles.mobileHint}>{t("mobileHint")}</p>
-        <a href="#projects" className={styles.mobileCta}>{t("mobileCta")}</a>
+        <a href="#projects" className={styles.mobileCta}>
+          {t("mobileCta")}
+        </a>
 
         {/* Headlines */}
         <div className={styles.headlines}>
@@ -43,7 +45,9 @@ function Contact() {
           <div className={styles.left}>
             <p className={styles.bodyIntro}>{t("bodyIntro")}</p>
             <ul className={styles.bodyList}>
-              {bullets.map((b, i) => <li key={i}>{b}</li>)}
+              {bullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
             </ul>
           </div>
 
@@ -51,14 +55,24 @@ function Contact() {
           <div className={styles.right}>
             <div className={styles.contacts}>
               <div className={styles.contactItem}>
-                <img src={emailIcon} alt="" aria-hidden="true" className={styles.iconImg} />
+                <img
+                  src={emailIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.iconImg}
+                />
                 <a className={styles.link} href={emailHref}>
                   {emailLabel}
                 </a>
               </div>
 
               <div className={styles.contactItem}>
-                <img src={linkedIcon} alt="" aria-hidden="true" className={styles.iconImg} />
+                <img
+                  src={linkedIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.iconImg}
+                />
                 <a className={styles.link} href={profileHref}>
                   {profileLabel}
                 </a>
@@ -76,12 +90,21 @@ function Contact() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label={t("backToTopAria")}
         >
-          <img src={arrowIcon} alt="" aria-hidden="true" className={styles.arrowIcon} />
+          <img
+            src={arrowIcon}
+            alt=""
+            aria-hidden="true"
+            className={styles.arrowIcon}
+          />
         </button>
 
         <p className={styles.copy}>{t("copyright")}</p>
+
+        {/* Jeden paragraf + jeden link */}
         <p className={styles.legal}>
-          <a className={styles.legalLink} href="#">{t("legal")}</a>
+          <Link className={styles.legalLink} to={useBaseUrl("/legal-notice")}>
+            {t("legal")}
+          </Link>
         </p>
       </div>
     </section>
@@ -89,3 +112,4 @@ function Contact() {
 }
 
 export default Contact;
+
