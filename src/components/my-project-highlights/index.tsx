@@ -51,7 +51,12 @@ const MyProjectHighlights: React.FC = () => {
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <div className={styles.moreProjects}>{t("seeMore")}</div>
+           <Link
+    className={styles.moreProjects}
+    to={useBaseUrl("docs/projects/overview")}
+  >
+    {t("seeMore")}
+  </Link>
           </nav>
 
           {/* prawa kolumna – karty */}
