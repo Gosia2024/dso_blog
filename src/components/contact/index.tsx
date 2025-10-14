@@ -25,9 +25,9 @@ function Contact() {
       <div className={styles.inner}>
         {/* Mobile-only helper text + CTA */}
         <p className={styles.mobileHint}>{t("mobileHint")}</p>
-        <a href="#projects" className={styles.mobileCta}>
-          {t("mobileCta")}
-        </a>
+       <Link className={styles.mobileCta} to={useBaseUrl("docs/projects/overview")}>
+  {t("mobileCta")}
+</Link>
 
         {/* Headlines */}
         <div className={styles.headlines}>
