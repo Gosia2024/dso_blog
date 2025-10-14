@@ -138,7 +138,7 @@ export default function MySkills() {
 
   {/* kolumna tekstowa */}
   <div className={styles.mobileTextCol}>
-    <h4 className={styles.mobileHowTitle}>How I used this skills</h4>
+   
     <ul className={styles.mobileList}>
       {s.description.map((line, i) => (<li key={i}>{line}</li>))}
     </ul>
