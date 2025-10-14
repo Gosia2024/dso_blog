@@ -114,7 +114,7 @@ const MyProjectHighlights: React.FC = () => {
                   <p className={styles.desc}>{t("firstCard.desc")}</p>
 
                   <div className={styles.buttons}>
-                    <Link to={useBaseUrl("docs/projects")}>
+                    <Link to={useBaseUrl("docs/projects/overview")}>
                       {t("buttons.docs")}
                     </Link>
                     <a
@@ -173,7 +173,7 @@ const MyProjectHighlights: React.FC = () => {
                 <div className={styles.info}>
                   <p className={styles.desc}>{t("secondCard.desc")}</p>
                   <div className={styles.buttons}>
-                    <Link to={useBaseUrl("docs/projects")}>
+                    <Link to={useBaseUrl("docs/projects/overview")}>
                       {t("buttons.docs")}
                     </Link>
                     <a
@@ -231,7 +231,7 @@ const MyProjectHighlights: React.FC = () => {
                 <div className={styles.info}>
                   <p className={styles.desc}>{t("thirdCard.desc")}</p>
                   <div className={styles.buttons}>
-                    <Link to={useBaseUrl("docs/projects")}>
+                    <Link to={useBaseUrl("docs/projects/overview")}>
                       {t("buttons.docs")}
                     </Link>
                     <a
