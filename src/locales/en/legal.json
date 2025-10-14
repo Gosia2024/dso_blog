@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Legal notice (Impressum)",
+    "description": "Legal and contact information of the site owner."
+  },
+  "heading": "Legal notice (Impressum)",
+  "body": {
+    "p1": "Site owner:",
+    "p2": "Name / Company: [Your full name or company name]",
+    "p3": "Address: [Street and number], [ZIP] [City], [Country]",
+    "p4": "Email: [email address]",
+    "p5": "Phone: [phone number]",
+    "p6": "Registration (optional): VAT ID: [number], Company ID: [numbers]",
+    "p7": "Hosting:",
+    "p8": "Hosting provider: [provider name], address: [address], website: [URL]",
+    "p9": "Copyright:",
+    "p10": "Unless stated otherwise, all content on this website is protected by copyright and owned by the site owner. Any reuse requires permission.",
+    "p11": "Disclaimer:",
+    "p12": "We strive for accuracy but cannot guarantee completeness or timeliness. External links lead to third-party sites; we have no influence over their content and accept no liability.",
+    "p13": "Privacy & cookies:",
+    "p14": "See our Privacy Policy for details: [link to /privacy-policy].",
+    "p15": "Trademarks and images:",
+    "p16": "All trademarks are property of their respective owners. Photos/graphics: [sources/licenses]."
+  }
+}

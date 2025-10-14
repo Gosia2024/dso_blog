@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "title": "Impressum",
+    "description": "Rechtliche Hinweise der Website"
+  },
+  "heading": "Impressum",
+  "body": {
+    "p1": "Ihr Rechtstext kommt hier hinein."
+  }
+}

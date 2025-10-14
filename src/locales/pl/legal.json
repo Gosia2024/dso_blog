@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "title": "Informacja prawna",
+    "description": "Informacja prawna serwisu"
+  },
+  "heading": "Informacja prawna",
+  "body": {
+    "p1": "Tu Twoja treść…"
+  }
+}

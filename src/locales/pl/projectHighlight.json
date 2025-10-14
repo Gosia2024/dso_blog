@@ -1,20 +1,26 @@
 {
-  "sectionTitle": "Moje najciekawsze projekty",
+  "sectionTitle": "Moje wyróżnione projekty",
   "seeMore": "↳ zobacz więcej projektów",
   "list": [
     "1. Baby Tools",
     "2. Truck Signs API",
     "3. Juice Shop Meister",
     "4. Minecraft",
-    "5. Hosting WordPressa"
+    "5. WordPress hosting"
   ],
   "firstCard": {
     "title": "1. Minecraft",
     "h3": "Projekt Minecraft",
-    "desc": "Produkcyjny serwer Minecraft Java w Dockerze i Compose. Trwałe światy, konfiguracja przez zmienne środowiskowe i proste testy — mój pierwszy build w chmurze z kursu DevSecOps, przygotowany tak, by był niezawodny i powtarzalny."
+    "desc": "Gotowy do produkcji serwer Minecraft Java spakowany w Dockerze i Compose. Trwałe światy, konfiguracja oparta na zmiennych środowiskowych oraz proste testy — moja pierwsza chmurowa budowa z kursu DevSecOps, wykonana tak, by była niezawodna i powtarzalna."
   },
-  "secondCard": { "title": "2. Klon (Container)" },
-  "thirdCard":  { "title": "3. Hosting WordPressa" },
+  "secondCard": {
+    "title": "2. Klon (kontener)",
+    "desc": "Lekka kopia aplikacji uruchamiana w Dockerze. Wieloetapowy build, Docker Compose i konfiguracja przez zmienne środowiskowe — szybkie starty, powtarzalne wdrożenia i proste kontrole kondycji."
+  },
+  "thirdCard": {
+    "title": "3. Hosting WordPress",
+    "desc": "WordPress na Docker/Compose. Trwałe wolumeny dla bazy i uploadów, konfiguracja sterowana plikiem .env oraz bezproblemowe aktualizacje bez utraty danych."
+  },
   "buttons": { "docs": "Dokumentacja", "github": "GitHub" },
   "alts": {
     "yaml": "YAML",
@@ -22,8 +28,8 @@
     "security": "Bezpieczeństwo IT",
     "container": "Kontener",
     "minecraft": "Projekt Minecraft",
-    "wp": "Hosting WordPressa",
-    "minecraftLogo": "Logo Minecraft"
+    "wp": "Hosting WordPress",
+    "minecraftLogo": "Logo Minecrafta"
   },
   "watermark": "MINECRAFT"
 }

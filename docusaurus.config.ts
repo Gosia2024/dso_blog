@@ -110,6 +110,14 @@ clientModules: [path.resolve(__dirname, 'src/clientModules/i18n-init.ts')],
           position: 'left',
           label: 'Docs',
         },
+         // <<< DODAJ TO
+   // {
+     // type: 'localeDropdown',
+      //position: 'right',
+      // opcjonalnie:
+      // dropdownItemsAfter: [{to: 'pathname:///', label: 'Reset language'}],
+      // className: 'my-locale-dropdown',
+    //},
         {
           href: 'https://github.com/spmse/dev-blog-template',
           label: 'Github',
