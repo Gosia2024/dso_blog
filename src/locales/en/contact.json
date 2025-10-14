@@ -13,8 +13,8 @@
   "links": {
     "emailLabel": "info@malgorzata-lingenfelder.de",
     "emailHref": "mailto:info@malgorzata-lingenfelder.de",
-    "profileLabel": "Profile Page",
-    "profileHref": "#"
+    "profileLabel": "LinkedIn",
+    "profileHref": "https://www.linkedin.com/"
   },
   "backToTopAria": "Back to top",
   "legal": "Legal notice",
