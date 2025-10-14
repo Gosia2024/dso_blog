@@ -8,6 +8,8 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 function Hero() {
   const { t } = useTranslation("homepage");
+    const { t: tContact } = useTranslation("contact");   // <— dodane
+  const emailHref = tContact("links.emailHref");        // <— dodane
   const profileUrl = useBaseUrl("./img/profile.jpg");
 
   return (
@@ -26,7 +28,9 @@ function Hero() {
 
         <p>{t("bio")}</p>
 
-        <button className={styles.contactButton}>{t("contact")}</button>
+        <a className={styles.contactButton} href={emailHref}>
+  {t("contact")}
+</a>
       </div>
 
       {/* desktop-only side image */}
