@@ -26,12 +26,13 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
 
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/guides/intro"
-          >
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+         
+  {/* <Link
+      className="button button--secondary button--lg"
+      to="/docs/guides/intro"
+    >
+      Docusaurus Tutorial - 5min ⏱️
+    </Link> */}
 
           {/* spacer placeholder (kept from original; remove if not needed) */}
           <></>
@@ -40,7 +41,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/projects/overview"
           >
-            To my Projects Gosia
+            To my Projects 
           </Link>
 
           {/* NEW: direct link to the Portfolio page */}
