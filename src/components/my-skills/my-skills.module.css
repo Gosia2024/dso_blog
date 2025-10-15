@@ -600,3 +600,30 @@
     display: none !important;
   }
 }
+/* usuwamy tło z samego komponentu */
+
+
+/* desktop */
+.content{
+  max-width: 1176px;        /* 3 kafle + 2 przerwy */
+  margin: 0 auto;           /* wycentruj całość */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.skillCard{
+  flex: 0 0 376px;          /* stała szerokość kafla */
+  height: 200px;
+}
+
+/* tablet = 2 kolumny */
+@media (max-width: 900px){
+  .content{ max-width: none; }
+  .skillCard{ flex: 0 0 calc((100% - 24px)/2); }
+}
+
+/* mobile = 1 kolumna */
+@media (max-width: 600px){
+  .skillCard{ flex: 0 0 100%; }
+}
