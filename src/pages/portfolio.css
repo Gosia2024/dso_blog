@@ -18,9 +18,9 @@ body { background: #fff; }
 }*/
 
 /* Farbiger Streifen (z. B. Header/Hero) */
-.edgePrimary {
+/*.edgePrimary {
   background: var(--ifm-color-primary-contrast-background);
-}
+}'/
 
 /* Spacer unter einer ggf. sticky Navbar (0 wenn nicht nötig) */
 .navbarSpacer { height: 0; }
