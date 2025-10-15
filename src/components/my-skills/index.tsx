@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./my-skills.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,15 +32,15 @@ type SkillData = {
 };
 
 const skillsBase: SkillData[] = [
-  { id: "html",      icon: "./img/html.png",     iconW: 22.19, iconH: 49.9 },
-  { id: "css",       icon: "./img/css.png",      iconW: 22.19, iconH: 49.9 },
-  { id: "static",    icon: "./img/static.png",   iconW: 22.19, iconH: 49.9 },
-  { id: "python",    icon: "./img/python.png",   iconW: 22.19, iconH: 49.9 },
-  { id: "shell",     icon: "./img/shell.png",    iconW: 22.19, iconH: 49.9 },
-  { id: "yaml",      icon: "./img/yaml.png",     iconW: 22.19, iconH: 49.9 },
-  { id: "container", icon: "./img/docker.png",   iconW: 22.19, iconH: 49.9 },
-  { id: "cicd",      icon: "./img/ci.png",       iconW: 22.19, iconH: 49.9 },
-  { id: "security",  icon: "./img/sec.png",      iconW: 22.19, iconH: 49.9 },
+  { id: "html",      icon: "/img/html.png",     iconW: 22.19, iconH: 49.9 },
+  { id: "css",       icon: "/img/css.png",      iconW: 22.19, iconH: 49.9 },
+  { id: "static",    icon: "/img/static.png",   iconW: 22.19, iconH: 49.9 },
+  { id: "python",    icon: "/img/python.png",   iconW: 22.19, iconH: 49.9 },
+  { id: "shell",     icon: "/img/shell.png",    iconW: 22.19, iconH: 49.9 },
+  { id: "yaml",      icon: "/img/yaml.png",     iconW: 22.19, iconH: 49.9 },
+  { id: "container", icon: "/img/docker.png",   iconW: 22.19, iconH: 49.9 },
+  { id: "cicd",      icon: "/img/ci.png",       iconW: 22.19, iconH: 49.9 },
+  { id: "security",  icon: "/img/sec.png",      iconW: 22.19, iconH: 49.9 },
 ];
 
 const groupsMobileIds: SkillId[][] = [
@@ -66,11 +67,12 @@ export default function MySkills() {
   const isMobile = useIsMobile(600);
   const { t } = useTranslation("mySkills");
 
-  const skillsAll = skillsBase.map((s) => ({
-    ...s,
-    name: t(`skills.${s.id}.name`) as string,
-    description: t(`skills.${s.id}.desc`, { returnObjects: true }) as string[],
-  }));
+ const skillsAll = skillsBase.map((s) => ({
+  ...s,
+  icon: useBaseUrl(s.icon), // ← nadpisuje poprawnie
+  name: t(`skills.${s.id}.name`) as string,
+  description: t(`skills.${s.id}.desc`, { returnObjects: true }) as string[],
+}));
 
   const byId = (id: SkillId) => skillsAll.find((s) => s.id === id)!;
 
