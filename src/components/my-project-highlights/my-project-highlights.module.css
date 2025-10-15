@@ -408,3 +408,70 @@
 .projectList li:active{
   color:#262E34 !important;     /* overrides other colors */
 }
+
+
+
+
+
+
+/* FONT (na samej górze pliku, jeśli jeszcze nie ma) */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+/* === LEWA KOLUMNA – NUMEROWANA LISTA === */
+.projectListOl{
+  list-style: none;              /* własna numeracja */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.projectItem{
+  position: relative;
+  color: #fff;                   /* biały */
+}
+
+.projectLink{
+  color: #fff;                   /* biały tekst linku */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 2px;           /* miejsce na podkreślenie */
+}
+
+/* Numer 01., 02., ... — biały i pogrubiony */
+.projectNum{
+  font-family: 'Quicksand', system-ui, sans-serif;
+  font-weight: 700;
+  color: #fff;                   /* biały numer */
+  min-width: 3ch;                /* wyrównanie */
+  text-align: right;
+}
+
+/* Tytuł projektu (tekst) */
+.projectTitle{
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+/* Animowane podkreślenie na hover (tak jak miałaś wcześniej) */
+.projectItem::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: #fff;
+  transition: width .18s ease;
+}
+.projectItem:hover::after{ width: 100%; }
+
+/* Na mobile – odrobinę mniejsze */
+@media (max-width: 768px){
+  .projectTitle{ font-size: 18px; }
+  .projectNum{ min-width: 2.5ch; }
+}
