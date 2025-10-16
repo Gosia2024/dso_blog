@@ -30,8 +30,7 @@ export default function Portfolio() {
       </Head>
 
       <div className="navbarSpacer" />
-
-      {/* Tymczasowo client-only, żeby wyciszyć hydration na tej stronie */}
+{/* Temporarily client-only to suppress hydration on this page */}
       <BrowserOnly fallback={<div />}>
         {() => (
           <>

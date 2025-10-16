@@ -19,7 +19,7 @@ function useIsMobile(breakpoint = 600) {
   return isMobile;
 }
 
-// ───────────── Typy + dane ─────────────
+// 
 type SkillId =
   | "html" | "css" | "static" | "python" | "shell"
   | "yaml" | "container" | "cicd" | "security";
@@ -49,7 +49,7 @@ const groupsMobileIds: SkillId[][] = [
   ["container", "cicd", "security"],
 ];
 
-// ustawienia slick (proste, stabilne)
+// 
 const mobileSettings = {
   dots: true,
   arrows: false,
@@ -62,14 +62,14 @@ const mobileSettings = {
   adaptiveHeight: true,
 } as const;
 
-// ───────────── Komponent ─────────────
+
 export default function MySkills() {
   const isMobile = useIsMobile(600);
   const { t } = useTranslation("mySkills");
 
  const skillsAll = skillsBase.map((s) => ({
   ...s,
-  icon: useBaseUrl(s.icon), // ← nadpisuje poprawnie
+  icon: useBaseUrl(s.icon), 
   name: t(`skills.${s.id}.name`) as string,
   description: t(`skills.${s.id}.desc`, { returnObjects: true }) as string[],
 }));
@@ -101,7 +101,7 @@ export default function MySkills() {
 
   return (
     <section className={styles.skillsSection} id="skills" aria-labelledby="skills-heading">
-      {/* brak .inner – sekcja może być na 100% szerokości */}
+      
       <header className={styles.headline}>
         <h2 id="skills-heading">{t("sectionTitle")}</h2>
       </header>
@@ -110,7 +110,7 @@ export default function MySkills() {
         {isMobile ? (
           <BrowserOnly>
             {() => {
-              // ładujemy react-slick tylko w przeglądarce
+              
               const Slider = require("react-slick").default as typeof import("react-slick").default;
               return (
                 <Slider {...mobileSettings}>

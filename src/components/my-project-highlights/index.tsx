@@ -4,18 +4,18 @@ import { useTranslation } from "react-i18next";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-/** Lista projektów do podlinkowania (7 szt.) */
+
 const PROJECT_LINKS = [
-  { id: "conduit",         url: "/docs/projects/conduit" },
-  { id: "truck_sings_api", url: "/docs/projects/truck_sings_api" },
-  { id: "juice",           url: "/docs/projects/juice" },
-  { id: "baby",            url: "/docs/projects/baby" },
-  { id: "wordpress",       url: "/docs/projects/wordpress" },
-  { id: "minecraft",       url: "/docs/projects/mindecarft" },
-  { id: "vserver-setup",   url: "/docs/projects/vserver-setup" },
+  { id: "Conduit",         url: "/docs/projects/conduit" },
+  { id: "Truck_sings_api", url: "/docs/projects/truck_sings_api" },
+  { id: "Juice-Shop-Master",url: "/docs/projects/juice" },
+  { id: "Baby-Tools-Shop",url: "/docs/projects/baby" },
+  { id: "Wordpress",       url: "/docs/projects/wordpress" },
+  { id: "Minecraft",       url: "/docs/projects/mindecarft" },
+  { id: "V-Server-Setup",   url: "/docs/projects/vserver-setup" },
 ] as const;
 
-/** Ikona w „pigułce” — desktop: biała, mobile: niebieska */
+
 const TagIcon: React.FC<{ desktop: string; mobile: string; alt: string }> = ({
   desktop,
   mobile,
@@ -71,7 +71,7 @@ const MyProjectHighlights: React.FC = () => {
 
         {/* ====== CONTENT WRAPPER ====== */}
         <div className={styles.content}>
-          {/* LEFT — numerowana lista z białymi numerami/tekstem */}
+          {/* LEFT */}
           <nav className={styles.projectList} aria-label="Project list">
             <ol className={styles.projectListOl}>
               {PROJECT_LINKS.map(({ id, url }, i) => (
@@ -94,7 +94,7 @@ const MyProjectHighlights: React.FC = () => {
             </Link>
           </nav>
 
-          {/* RIGHT — karty */}
+          {/* RIGHT */}
           <div className={styles.cards}>
             {/* 1) Minecraft */}
             <article className={styles.projectCard}>
