@@ -85,13 +85,13 @@ const META: Record<
     image: "/img/truck.png",
     alt: "Truck Signs API",
     textKey: "truck",
-    github: "https://github.com/Gosia2024/truck-science-api",
+    github: "https://github.com/Gosia2024/truck_signs_api",
   },
   "Juice-Shop-Master": {
     image: "/img/juice.png",
     alt: "OWASP Juice",
     textKey: "juice",
-    github: "https://github.com/Gosia2024/juice-shop",
+    github: "https://github.com/Gosia2024/juice-shop-meister",
   },
   "Baby-Tools-Shop": {
     image: "/img/baby.png",
