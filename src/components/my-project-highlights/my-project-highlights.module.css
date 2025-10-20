@@ -452,7 +452,7 @@
 
 /* Tytuł projektu (tekst) */
 .projectTitle{
-  color: #fff;
+  color: #f8f3f3;
   font-size: 22px;
   line-height: 1.4;
 }
@@ -474,4 +474,32 @@
 @media (max-width: 768px){
   .projectTitle{ font-size: 18px; }
   .projectNum{ min-width: 2.5ch; }
+}
+.projectLink.active {
+  background: rgba(255,255,255,.08);
+  border-radius: 12px;
+}
+
+.buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  align-self:flex-start;
+}
+.buttons a{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:52px; padding:0 18px;
+  background:#266AD9; border:1px solid rgba(255,255,255,.25);
+  color:#fff; text-decoration:none; font-weight:600;
+  border-radius:60px;
+}
+/* GitHub jako „outline” */
+.buttons a:last-child{
+  background:transparent;
+  border-color:#fff;
+  color:#fff;
+}
+.projectList button{
+  background: transparent;
+  border: 0;
 }
