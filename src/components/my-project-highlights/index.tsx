@@ -109,7 +109,7 @@ const META: Record<
     image: "/img/v-server.png",
     alt: "V-Server",
     textKey: "vserver",
-    github: "https://github.com/Gosia2024/vserver-setup",
+    github: "https://github.com/Gosia2024/v-server-setup",
   },
 };
 
