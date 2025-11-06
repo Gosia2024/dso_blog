@@ -10,7 +10,7 @@ function Hero() {
   const { t } = useTranslation("homepage");
     const { t: tContact } = useTranslation("contact");   // add
   const emailHref = tContact("links.emailHref");        // add
-  const profileUrl = useBaseUrl("./img/profile.jpg");
+  const profileUrl = useBaseUrl("./img/gosia.png");
 
   return (
     <section className={styles.hero}>
