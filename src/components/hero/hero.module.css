@@ -10,32 +10,21 @@
 
   color: #fff;
 
-  /* 🔹 baza pod ripples */
-  position: relative;
-  overflow: hidden;
+  /* oryginalny kolor jako fallback */
+  background-color: #266ad9;
 
-  /* 🔹 obrazek wody */
-  background-color: #0b316d;                 /* fallback */
-  background-image: url("/img/water.png");   /* static/img/water.png */
+  /* obrazek wody w tle (static/img/water.png) */
+  background-image: url("/img/kosmos.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  /* dla efektu ripples */
+  position: relative;
+  overflow: hidden;
 }
 
-/* 🔹 gradient jako overlay, NIE psuje ripples */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  /* delikatne światło/cień na wodzie */
-  background:
-    radial-gradient(circle at 20% 0%, rgba(255,255,255,0.18), transparent 60%),
-    radial-gradient(circle at 80% 0%, rgba(0,0,0,0.3), transparent 70%);
-  mix-blend-mode: soft-light;
-}
-
-/* treść zawsze nad efektami */
+/* zawartość ma być nad canvasem ripples */
 .textSection,
 .imageSection,
 .imageInline,
@@ -46,7 +35,7 @@
   z-index: 1;
 }
 
-/* Tekstowa kolumna na desktopie */
+/* ⬇️ Fixed text column size on desktop */
 .textSection {
   flex: 0 0 600px;
   width: 600px;
@@ -57,7 +46,7 @@
   text-align: left;
 }
 
-.heroTitle{
+.heroTitle {
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
   font-size: clamp(40px, 6vw, 88px);
@@ -65,14 +54,14 @@
   margin: 8px 0 12px;
 }
 
-.heroSubtitle{
+.heroSubtitle {
   font-weight: 700;
   font-size: clamp(20px, 3.2vw, 32px);
   line-height: 1.25;
   margin: 0 0 8px;
 }
 
-.textSection p{
+.textSection p {
   font-size: clamp(14px, 2.1vw, 18px);
   line-height: 1.6;
   margin: 8px 0 16px;
@@ -118,7 +107,9 @@
     padding: 36px 32px 44px;
   }
 
-  .textSection { max-width: 520px; }
+  .textSection {
+    max-width: 520px;
+  }
 
   .imageSection img {
     width: clamp(150px, 28vw, 300px);
@@ -134,8 +125,7 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    padding: 24px 24px 40px;
-    /* tło z wodą zostaje to samo */
+    padding: 24px 39px 40px 26px; /* jak w Twoim oryginale */
   }
 
   .textSection {
@@ -153,6 +143,27 @@
     width: 325px;
     border-radius: 16px;
     margin: 16px 0;
+  }
+
+  .contactButton {
+    align-self: center;
+  }
+}
+
+/* === MOBILE: ≤400px (precyzyjniejsze zachowanie) === */
+@media (max-width: 400px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 24px 40px;
+  }
+
+  .textSection {
+    width: 100%;
+    max-width: 325px;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .imageSection {
