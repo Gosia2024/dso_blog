@@ -79,7 +79,7 @@ const META: Record<
     image: "/img/conduit.png",
     alt: "Conduit",
     textKey: "conduit",
-    github: "https://github.com/Gosia2024/conduit",
+    github: "https://github.com/Gosia2024/conduit-deployment",
   },
   "Truck_sings_api": {
     image: "/img/truck.png",
