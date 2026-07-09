@@ -2,7 +2,7 @@ name: Deploy Docusaurus site to Pages
 
 on:
   push:
-    branches: [ "portfolio" ]  # 🔹 Run this workflow only when code is pushed to the "portfolio" branch
+    branches: [ "main" ]  # 🔹 Run this workflow only when code is pushed to the "main" branch
    
 permissions: 
   contents: write
