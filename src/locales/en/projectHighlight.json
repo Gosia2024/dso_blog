@@ -1,0 +1,79 @@
+{
+  "sectionTitle": "My project highlights",
+  "seeMore": "↳ see more projects",
+
+  "links": {
+    "Conduit": "Conduit",
+    "Truck_sings_api": "Truck Signs API",
+    "Juice-Shop-Master": "Juice Shop Master",
+    "Baby-Tools-Shop": "Baby Tools Shop",
+    "Wordpress": "WordPress Hosting",
+    "Minecraft": "Minecraft",
+    "V-Server-Setup": "V-Server Setup"
+  },
+
+  "buttons": {
+    "docs": "Documentation",
+    "github": "GitHub"
+  },
+
+  "alts": {
+    "yaml": "YAML",
+    "shell": "Shell scripting",
+    "security": "IT Security",
+    "container": "Container",
+    "minecraft": "Project Minecraft",
+    "wp": "WordPress hosting",
+    "minecraftLogo": "Minecraft logo"
+  },
+
+  "watermark": "MINECRAFT",
+
+  "common": { "defaultDesc": "Project details coming soon." },
+
+  "cards": {
+    "minecraft": {
+      "title": "Project Minecraft",
+      "desc": "A production-ready Minecraft Java server packaged with Docker & Compose. Persistent worlds, env-based config, and simple testing."
+    },
+    "conduit": {
+      "title": "Conduit",
+      "desc": "RealWorld Conduit clone showcasing API, auth, CI/CD and DevSecOps hardening."
+    },
+    "truck": {
+      "title": "Truck Signs API",
+      "desc": "REST API for truck signage data (CRUD, auth, tests), containerized deploy."
+    },
+    "juice": {
+      "title": "OWASP Juice Shop Master",
+      "desc": "Deliberately insecure app used to practice finding and fixing vulnerabilities."
+    },
+    "baby": {
+      "title": "Baby Tools Shop",
+      "desc": "Simple e-commerce demo with Dockerized runtime and CI pipelines."
+    },
+    "wordpress": {
+      "title": "WordPress hosting",
+      "desc": "WordPress on Docker/Compose with persistent volumes and env-driven config."
+    },
+    "vserver": {
+      "title": "V-Server Setup",
+      "desc": "Containerized server setup: reverse proxy, TLS, and compose orchestration."
+    }
+  },
+
+ 
+  "firstCard": {
+    "title": "1. Minecraft",
+    "h3": "Project Minecraft",
+    "desc": "A production-ready Minecraft Java server packaged with Docker & Compose. Persistent worlds, env-based config, and simple testing—my first cloud build from the DevSecOps course, made reliable and repeatable."
+  },
+  "secondCard": {
+    "title": "2. Clone (Container)",
+    "desc": "A lightweight app clone running in Docker. Multi-stage build, Docker Compose, and env-based config—fast spins, reproducible deploys, and simple health checks."
+  },
+  "thirdCard": {
+    "title": "3. WordPress hosting",
+    "desc": "WordPress on Docker/Compose. Persistent volumes for DB and uploads, .env-driven config, and hassle-free updates without data loss."
+  }
+}

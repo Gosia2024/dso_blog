@@ -1,0 +1,148 @@
+{
+  "sectionTitle": "My skills",
+  "skills": {
+    "html": {
+      "name": "HTML",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "User-friendly navigation menus",
+        "Responsive page structure",
+        "Contact and login forms",
+        "Transitions, animations, and hover effects"
+      ],
+      "how": [
+        "Built semantic, accessible layouts with ARIA.",
+        "Created landing pages and product pages.",
+        "Implemented client-side form validation.",
+        "Optimized markup for SEO."
+      ]
+    },
+    "css": {
+      "name": "CSS",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Responsive web design",
+        "Modern, accessible UI components",
+        "Form styling and interactive states",
+        "Transitions, animations, and hover effects"
+      ],
+      "how": [
+        "Designed responsive grids with Flexbox and CSS Grid.",
+        "Used BEM/utility-first approaches for scalable styling.",
+        "Added dark mode and theme support with CSS variables.",
+        "Created micro-animations to improve UX."
+      ]
+    },
+    "static": {
+      "name": "Static site",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Search functionality",
+        "Static website customization",
+        "Tags, categories, and RSS feeds",
+        "Multilingual support and translations"
+      ],
+      "how": [
+        "Built a portfolio/blog as a static site.",
+        "Configured content search (e.g., lunr-style).",
+        "Set up tags, categories, sitemap, and RSS.",
+        "Implemented language switcher and i18n."
+      ]
+    },
+    "python": {
+      "name": "Python",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Building RESTful APIs",
+        "Spam filtering and recommendation systems",
+        "Automating software testing",
+        "Creating GUIs with Tkinter, PyQt, or Kivy"
+      ],
+      "how": [
+        "Developed web APIs and background workers.",
+        "Wrote ETL scripts and task automations.",
+        "Created unit/integration tests with pytest.",
+        "Prototyped ML classifiers and recommenders."
+      ]
+    },
+    "shell": {
+      "name": "Shell scripting",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Automating builds and tests",
+        "Reusable scripts for common tasks",
+        "Cron-based scheduling",
+        "Deployment and maintenance scripts"
+      ],
+      "how": [
+        "Automated builds and artifact publishing.",
+        "Wrote deployment and rollback scripts.",
+        "Scheduled backups and cleanups with cron.",
+        "Parsed logs and managed files/processes."
+      ]
+    },
+    "yaml": {
+      "name": "YAML",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Kubernetes deployments",
+        "Storing settings like database connections",
+        "Environment-specific variables",
+        "Complex data structures with lists and maps"
+      ],
+      "how": [
+        "Defined Kubernetes Deployment/Service/Ingress.",
+        "Configured CI workflows in YAML (e.g., GitHub Actions).",
+        "Maintained environment configs (dev/stage/prod).",
+        "Modeled structured data in maps and lists."
+      ]
+    },
+    "container": {
+      "name": "Container",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "CI/CD pipelines",
+        "Automating build, test, and deploy",
+        "Microservices-based applications"
+      ],
+      "how": [
+        "Containerized apps and dependencies with Docker.",
+        "Built slim images using multi-stage builds.",
+        "Used docker-compose for local environments.",
+        "Prepared images for Kubernetes deployments."
+      ]
+    },
+    "cicd": {
+      "name": "CI/CD",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Automated builds and tests",
+        "Reusable workflows for common tasks",
+        "Triggers on push, pull request, or schedule",
+        "Automated deployments"
+      ],
+      "how": [
+        "Created pipelines for build/test/lint/release.",
+        "Implemented semantic versioning and changelogs.",
+        "Ran security scans and tests on PRs.",
+        "Enabled hands-off deployments to environments."
+      ]
+    },
+    "security": {
+      "name": "IT Security",
+      "howTitle": "How I used this skills",
+      "desc": [
+        "Simulating attacks and identifying vulnerabilities",
+        "Setting up multi-factor authentication",
+        "Login security hardening",
+        "Implementing authentication and authorization"
+      ],
+      "how": [
+        "Added 2FA/SSO and robust session management.",
+        "Integrated dependency scanning and SAST/DAST in CI.",
+        "Reviewed permissions and access policies (RBAC).",
+        "Performed basic threat modeling and hardening."
+      ]
+    }
+  }
+}

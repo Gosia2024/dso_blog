@@ -1,0 +1,10 @@
+{
+  "hello": "Hello!",
+  "cta": "Go next",
+  "nav": {
+    "about": "About me",
+    "skills": "My skills",
+    "projects": "My projects",
+    "contact": "Contact"
+  }
+}

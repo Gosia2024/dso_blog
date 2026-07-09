@@ -1,0 +1,22 @@
+{
+  "mobileHint": "Neugierig auf mehr? Hier zeige ich kleine Builds und Experimente.",
+  "mobileCta": "Mehr Projekte ansehen",
+  "title": "Kontaktiere mich",
+  "subtitle": "Ich freue mich auf deine Nachricht!",
+  "bodyIntro": "Kurze Infos reichen:",
+  "bullets": [
+    "Anfragen zu DevOps-Rollen oder kurzen Aufträgen sind willkommen.",
+    "Rolle: DevOps Engineer.",
+    "Ich unterstütze mit Docker, CI/CD, Security und Monitoring.",
+    "Verfügbarkeit: nur Remote."
+  ],
+  "links": {
+    "emailLabel": "info@malgorzata-lingenfelder.de",
+    "emailHref": "mailto:info@malgorzata-lingenfelder.de",
+    "profileLabel": "LinkedIn",
+    "profileHref": "https://www.linkedin.com/in/malgorzata-lingenfelder-a6268338b/"
+  },
+  "backToTopAria": "Nach oben",
+  "legal": "Impressum",
+  "copyright": "© Gosia 2025"
+}

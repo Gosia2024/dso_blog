@@ -1,0 +1,85 @@
+{
+  "sectionTitle": "Moje umiejętności",
+  "skills": {
+    "html": {
+      "name": "HTML",
+      "desc": [
+        "Przyjazne menu nawigacyjne",
+        "Responsywny web design",
+        "Formularze kontaktowe i logowania",
+        "Przejścia, animacje i efekty hover"
+      ]
+    },
+    "css": {
+      "name": "CSS",
+      "desc": [
+        "Przyjazne menu nawigacyjne",
+        "Responsywny web design",
+        "Formularze kontaktowe i logowania",
+        "Przejścia, animacje i efekty hover"
+      ]
+    },
+    "static": {
+      "name": "Strona statyczna",
+      "desc": [
+        "wyszukiwarka",
+        "strona statyczna i customizacja",
+        "tagi, kategorie i kanały RSS",
+        "tłumaczenia"
+      ]
+    },
+    "python": {
+      "name": "Python",
+      "desc": [
+        "Budowanie API",
+        "Filtracja spamu, systemy rekomendacji",
+        "Automatyzacja testów oprogramowania",
+        "Biblioteki: Tkinter, PyQt, Kivy"
+      ]
+    },
+    "shell": {
+      "name": "Skrypty powłoki",
+      "desc": [
+        "Automatyczne buildy i testy",
+        "Gotowe akcje do typowych zadań",
+        "Wyzwalanie: push, PR lub harmonogram",
+        "Automatyczne wdrożenia"
+      ]
+    },
+    "yaml": {
+      "name": "YAML",
+      "desc": [
+        "Wdrożenia Kubernetes",
+        "Przechowywanie ustawień (np. DB)",
+        "Zmienne per środowisko",
+        "Złożone struktury list i map"
+      ]
+    },
+    "container": {
+      "name": "Kontenery",
+      "desc": [
+        "Potoki CI/CD",
+        "Automatyzacja build/test/deploy",
+        "Aplikacje mikroserwisowe"
+      ]
+    },
+    "cicd": {
+      "name": "CI/CD",
+      "desc": [
+        "Automatyczne buildy i testy",
+        "Gotowe akcje do typowych zadań",
+        "Wyzwalanie: push, PR lub harmonogram",
+        "Automatyczne wdrożenia"
+      ]
+    },
+    "security": {
+      "name": "Bezpieczeństwo IT",
+      "desc": [
+        "Symulacja ataków i wykrywanie luk",
+        "Konfiguracja MFA",
+        "Zabezpieczenia logowania",
+        "Autentykacja i autoryzacja"
+      ]
+    }
+  }
+}

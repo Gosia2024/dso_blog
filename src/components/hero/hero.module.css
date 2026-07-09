@@ -1,0 +1,182 @@
+/* hero.module.css */
+
+/* --- Desktop (default) --- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 117px 72px;
+  gap: 115px;
+
+  color: #fff;
+
+  /* oryginalny kolor jako fallback */
+  background-color: #266ad9;
+
+  /* obrazek wody w tle (static/img/water.png) */
+  background-image: url("/img/kosmos.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* dla efektu ripples */
+  position: relative;
+  overflow: hidden;
+}
+
+/* zawartość ma być nad canvasem ripples */
+.textSection,
+.imageSection,
+.imageInline,
+.contactButton,
+.heroTitle,
+.heroSubtitle {
+  position: relative;
+  z-index: 1;
+}
+
+/* ⬇️ Fixed text column size on desktop */
+.textSection {
+  flex: 0 0 600px;
+  width: 600px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.heroTitle {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1.2;
+  margin: 8px 0 12px;
+}
+
+.heroSubtitle {
+  font-weight: 700;
+  font-size: clamp(20px, 3.2vw, 32px);
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.textSection p {
+  font-size: clamp(14px, 2.1vw, 18px);
+  line-height: 1.6;
+  margin: 8px 0 16px;
+}
+
+/* Obrazki */
+.imageSection img,
+.imageInline img {
+  width: 340px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Przycisk kontaktowy */
+.contactButton {
+  background: #fff;
+  color: #266ad9;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 20px;
+  height: 47px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  max-width: fit-content;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.contactButton:hover { transform: translateY(-1px); }
+.contactButton:active { transform: translateY(0); opacity: .9; }
+
+/* Visibility helpers */
+.desktopOnly { display: block; }
+.mobileOnly  { display: none; }
+
+/* === SMALL DESKTOP / TABLET: 900px → 431px === */
+@media (max-width: 900px) and (min-width: 431px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 36px 32px 44px;
+  }
+
+  .textSection {
+    max-width: 520px;
+  }
+
+  .imageSection img {
+    width: clamp(150px, 28vw, 300px);
+  }
+
+  .desktopOnly { display: block; }
+  .mobileOnly  { display: none; }
+}
+
+/* === MOBILE: ≤430px === */
+@media (max-width: 430px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 39px 40px 26px; /* jak w Twoim oryginale */
+  }
+
+  .textSection {
+    flex: 0 0 325px;
+    width: 325px;
+    max-width: 325px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .desktopOnly { display: none; }
+  .mobileOnly  { display: block; }
+
+  .imageInline img {
+    width: 325px;
+    border-radius: 16px;
+    margin: 16px 0;
+  }
+
+  .contactButton {
+    align-self: center;
+  }
+}
+
+/* === MOBILE: ≤400px (precyzyjniejsze zachowanie) === */
+@media (max-width: 400px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 24px 40px;
+  }
+
+  .textSection {
+    width: 100%;
+    max-width: 325px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .imageSection {
+    order: 2;
+    align-self: center;
+  }
+
+  .imageSection img {
+    width: 325px;
+    margin: 16px 0;
+  }
+
+  .contactButton {
+    align-self: center;
+  }
+}

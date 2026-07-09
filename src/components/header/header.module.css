@@ -1,0 +1,164 @@
+/* ===== Desktop header container ===== */
+.header {
+  display: flex;                     /* place items in a row */
+  justify-content: space-between;    /* space between nav and language switcher */
+  align-items: center;               /* vertically center items */
+  background-color: #266AD9;         /* blue background */
+  padding: 20px 30px;                /* inner spacing */
+  height: 80px;                      /* header height on desktop */
+  width: 100%;                       /* full width */
+  position: relative;                /* needed for z-index */
+  z-index: 1000;                     /* keep header above page content */
+}
+
+/* ===== Desktop navigation ===== */
+.nav {
+  display: flex;                     /* horizontal list */
+  gap: 40px;      
+  margin-left: 90px;         /* space between links */
+}
+
+.nav a {
+  color: white;                      /* white links on blue */
+  text-decoration: none;             /* no underline */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;/* smooth hover color change */
+}
+
+.nav a:hover {
+  color: #f1f1f1;                    /* lighter on hover */
+}
+
+/* ===== Desktop language switcher ===== */
+.langSwitcher {
+  display: flex;
+  gap: 15px;                         /* space between language buttons */
+}
+
+.langSwitcher button {
+  background: transparent;           /* no button background */
+  border: none;                      /* no border */
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.langSwitcher button:hover {
+  opacity: 0.8;                      /* subtle feedback on hover */
+}
+
+/* ===== Mobile trigger (burger button) — hidden on desktop ===== */
+.menuButton {
+  display: none;                     /* will be shown on small screens */
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===== Mobile full-screen overlay menu ===== */
+.mobileMenu {
+  position: fixed;                   /* stick to viewport */
+  top: 0;
+  left: 0;
+  width: 100%;                       /* full width */
+  height: 100%;                      /* full height */
+  background: white;                 /* white overlay */
+  display: flex;
+  flex-direction: column;            /* stack items vertically */
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 80px;                 /* space for close button/header */
+  gap: 25px;                         /* space between links */
+  z-index: 2000;                     /* above the header */
+}
+
+.mobileMenu a {
+  color: #266AD9;                    /* blue text on white */
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mobileMenu a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Language switcher inside mobile menu ===== */
+.mobileLangSwitcher {
+  display: flex;
+  gap: 15px;
+}
+
+.mobileLangSwitcher button {
+  background: transparent;
+  border: 1px solid #266AD9;
+  color: #266AD9;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== Close (X) button inside mobile menu ===== */
+.closeButton {
+  position: absolute;                /* position relative to the overlay */
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: #266AD9;
+  cursor: pointer;
+}
+
+/* ===== Responsive rules (phones & small tablets) ===== */
+@media (max-width: 768px) {
+  .nav,
+  .langSwitcher {
+    display: none;                   /* hide desktop nav and languages */
+  }
+
+  .menuButton {
+    display: block;                  /* show burger button */
+  }
+}
+
+/* Make sure the header is the anchor for absolute positioning */
+.header {
+  position: relative; /* important */
+}
+
+/* Burger hidden by default on desktop */
+.menuButton {
+  display: none;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  /* hide navigation and language switcher */
+  .nav,
+  .langSwitcher {
+    display: none !important;
+  }
+
+  /* burger always in the top-right corner of the header */
+  .menuButton {
+    display: block !important;
+    position: absolute !important;
+    top: 14px !important;
+    right: 16px !important;
+    left: auto !important;
+    margin: 0 !important;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+

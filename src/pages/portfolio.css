@@ -1,0 +1,66 @@
+/* ===== Mini reset ===== */
+html, body { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Sicher: kein horizontaler Scroll auf der Seite */
+html, body, #__docusaurus, .main-wrapper, main { overflow-x: clip; }
+
+/* neutrales Seitenthema (anpassbar) */
+body { background: #fff; }
+
+/* ===== Abschnitt-Layout (neu) ===== */
+.section { width: 100%; }  /* Abschnitt in voller Breite */
+
+/*.inner {
+  max-width: 1176px;       
+  margin: 0 auto;        
+  padding: 32px 16px;      
+}*/
+
+/* Farbiger Streifen (z. B. Header/Hero) */
+/*.edgePrimary {
+  background: var(--ifm-color-primary-contrast-background);
+}'/
+
+/* Spacer unter einer ggf. sticky Navbar (0 wenn nicht nötig) */
+.navbarSpacer { height: 0; }
+
+/* ===== Portfolio-Topbar (Back to Docs) ===== */
+.portfolioTopbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  padding: .6rem 1rem;
+}
+.backLink {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== Floating Back-Button ===== */
+.fabBack {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  box-shadow: var(--ifm-global-shadow-lw);
+  text-decoration: none;
+}
+.fabBack:hover { opacity: .9; }
+
+/* ===== Responsive ===== */
+@media (max-width: 996px) {
+  .portfolioTopbar { padding: .5rem .75rem; }
+}

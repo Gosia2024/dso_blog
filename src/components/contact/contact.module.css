@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Contact Section (Figma-accurate, flex-only)
+   ========================================================================== */
+
+/* Section background + padding */
+.contactSection {
+  background: #2a2f36;
+  color: #fff;
+  padding: 72px 110px;
+}
+
+/* Inner container (1220px working width on a 1440px canvas) */
+.inner {
+  max-width: 1220px; /* 1440 - 2*110 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* =========================
+   Headlines (single row)
+   ========================= */
+.headlines {
+  display: flex;
+  align-items: baseline;
+  gap: 280px;          /* Figma */
+  width: 100%;
+  max-width: 1200px;   /* Figma */
+  white-space: nowrap; /* keep both headings on one line */
+}
+
+/* Explicit typography to avoid global overrides */
+.title {
+  margin: 0;
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 64px;     /* Figma */
+  line-height: 120%;
+  color: #fff;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 24px;     /* Figma */
+  line-height: 120%;
+  color: #fff;
+  opacity: .96;
+}
+
+/* =========================
+   Content columns (left/right)
+   ========================= */
+.content {
+  display: flex;
+  gap: 50px;           /* Figma */
+  margin-top: 103px;   /* Figma */
+  width: 100%;
+  max-width: 1004px;   /* 706 + 50 + 248 */
+}
+
+.left  { flex: 0 0 706px; }  /* Figma */
+.right { flex: 0 0 248px; }  /* Figma */
+
+/* Body text (18 / 400 / 120%) */
+.bodyIntro { margin: 0 0 12px; }
+.bodyIntro,
+.bodyList li {
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+}
+.bodyList {
+  margin: 0;
+  padding-left: 22px;
+}
+
+/* Contacts stack on the right */
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;           /* Figma */
+}
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Links in the contacts column */
+.link {
+  color: #dce6f7;
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.link:hover { text-decoration: underline; }
+
+/* Simple round icons (28x28) */
+.iconMail,
+.iconProfile {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #266ad9;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+}
+
+/* =========================
+   Section footer (arrow + text)
+   ========================= */
+
+/* Vertical stack with tight spacing under the arrow */
+.footerArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;           /* compact spacing like in Figma */
+  padding: 120px 0;
+}
+
+/* Arrow button: using your PNG that already includes the capsule */
+.scrollTop {
+  border: none;        /* avoid double outline (PNG has its own capsule) */
+  background: transparent;
+  padding: 0;
+  width: 28px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* The PNG itself */
+.arrowIcon {
+  width: 28px;
+  height: 60px;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;        /* clicks go to the button */
+  -webkit-user-drag: none;
+}
+
+/* Footer text directly beneath the arrow */
+.footerArea p {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.copy {
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #bfc6ce;              /* light gray on dark bg */
+}
+
+.legal { margin-top: 4px; }
+.legalLink {
+  font-family: Quicksand, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #bfc6ce;
+  text-decoration: none;
+}
+.legalLink:hover { text-decoration: underline; }
+
+/* =========================
+   Responsive (flex-only)
+   ========================= */
+@media (max-width: 900px) {
+  .contactSection { padding: 40px 24px; }
+  .headlines { flex-direction: column; gap: 16px; white-space: normal; }
+  .title { font-size: 42px; }
+  .subtitle { font-size: 18px; }
+  .content { flex-direction: column; gap: 24px; margin-top: 40px; max-width: 100%; }
+  .left, .right { flex: 1 1 auto; }
+}
+
+/* Hidden by default (desktop/tablet) */
+.mobileHint { display: none; }
+
+/* Mobile 390px (Figma) – show and style */
+@media (max-width: 420px) {
+  .mobileHint {
+    display: block;
+    max-width: 335px;
+    margin: 24px 0 32px;      /* spacing above/below, per design */
+    font-family: Quicksand, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #ffffff;
+  }
+}
+
+/* Hidden by default (desktop/tablet) */
+.mobileCta { display: none; }
+
+/* Mobile 390px – Figma spec (Hug 180px, 47px height, radius 30px) */
+@media (max-width: 420px) {
+  .mobileCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;       /* Top/Bottom 14, Left/Right 20 */
+    height: 47px;
+    border-radius: 30px;
+    background: #266ad9;
+    color: #fff;
+    text-decoration: none;
+    width: fit-content;       /* “Hug” width */
+    font-family: Quicksand, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;           /* as in Figma */
+    margin: 16px 0 32px;      /* spacing below the text block */
+  }
+  .mobileCta:hover  { filter: brightness(1.05); }
+  .mobileCta:active { transform: translateY(1px); }
+}
+
+
+
+/* Hidden by default (desktop/tablet) */
+.mobileHint,
+.mobileCta {
+  display: none;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .mobileHint {
+    display: block;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .mobileCta {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    border-radius: 9999px;
+    text-decoration: none;
+  }
+}
+

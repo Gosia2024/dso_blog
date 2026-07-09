@@ -1,0 +1,519 @@
+/* ==========================================================================
+   Global theme overrides for Docusaurus (Infima/IFM tokens)
+   - Global reset + Quicksand font
+   - Full-bleed utility to bypass container width
+   - Background tokens (light/dark)
+   - Violet success/tip admonitions
+   - Cards (DocCardList & generated-index): white text, violet bg, thick white border
+   - Left sidebar & TOC: white text only (no background tweaks)
+   ========================================================================== */
+
+/* ----------------------- Font (Google Fonts) ------------------------ */
+/* TIP: Using a <link> tag in <head> is usually faster than @import. */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap");
+
+:root {
+  --font-body: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+/* ----------------------- Global browser reset ----------------------- */
+html, body {
+  margin: 0;                 /* remove default page margins */
+  padding: 0;                /* remove default page padding */
+  max-width: 100%;           /* prevent horizontal overflow */
+  font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;    /* include padding/border in element width/height */
+}
+
+/* ----------------------- Full-bleed utility ------------------------- */
+/* Make a section span the full viewport width (bypass Docusaurus container).
+   Usage in React/MDX:
+     <section className={`${styles.hero} fullBleed`}> ... </section>
+*/
+.fullBleed {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+}
+
+/* ----------------------- Background tokens -------------------------- */
+/* Page background (keep if you want the blue backdrop). */
+:root {
+  --ifm-background-color: #266AD9;
+  --ifm-background-surface-color: #ffffff;
+}
+[data-theme='dark'] {
+  --ifm-background-color: #0c1026;
+  --ifm-background-surface-color: #11183a;
+}
+/* Apply background token to main wrappers. */
+html, body, .main-wrapper { background: var(--ifm-background-color) !important; }
+
+/* ----------------------- Admonitions (success/tip) ------------------ */
+/* Make success/tip admonitions violet via IFM tokens. */
+:root {
+  --ifm-color-success: #a855f7; /* violet-500 */
+  --ifm-color-success-contrast-background: rgba(168,85,247,.10);
+  --ifm-color-success-dark: #7c3aed;
+}
+[data-theme='dark'] {
+  --ifm-color-success: #c084fc;
+  --ifm-color-success-contrast-background: rgba(192,132,252,.12);
+  --ifm-color-success-dark: #a855f7;
+}
+
+/* =====================  Cards (DocCardList & generated-index)  ===================== */
+/* Define card-related tokens at the page scope so children inherit. */
+.theme-doc-category-index-page,
+.theme-doc-markdown {
+  --ifm-card-background-color: #4c1d95;            /* violet tile background */
+  --ifm-card-border-color: rgba(255,255,255,.95);  /* white border */
+  --ifm-font-color-base: #fff;                     /* white text */
+  --ifm-heading-color: #fff;
+  --ifm-link-color: #fff;
+}
+
+/* Card chrome: white border + shadow */
+.theme-doc-category-index-page article.card,
+.theme-doc-markdown article.card {
+  background: var(--ifm-card-background-color) !important;
+  border: 4px solid var(--ifm-card-border-color) !important;
+  border-radius: 16px;
+  box-shadow: 0 16px 34px rgba(0,0,0,.28) !important;
+  color: var(--ifm-font-color-base) !important;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* Card hover: slightly brighter bg + deeper shadow + lift */
+.theme-doc-category-index-page article.card:hover,
+.theme-doc-markdown article.card:hover {
+  background: #5b21b6 !important;
+  box-shadow: 0 22px 48px rgba(0,0,0,.34) !important;
+  transform: translateY(-3px);
+}
+
+/* Card text/links/icons */
+.theme-doc-category-index-page article.card .card__header,
+.theme-doc-category-index-page article.card .card__body,
+.theme-doc-category-index-page article.card .card__link,
+.theme-doc-markdown article.card .card__header,
+.theme-doc-markdown article.card .card__body,
+.theme-doc-markdown article.card .card__link {
+  color: #fff !important;
+  background: transparent !important;
+  opacity: .98;
+}
+.theme-doc-category-index-page article.card .card__header svg,
+.theme-doc-markdown article.card .card__header svg {
+  fill: #fff !important;
+  opacity: .98;
+}
+.theme-doc-category-index-page article.card .card__footer,
+.theme-doc-markdown article.card .card__footer {
+  border-top: 0 !important;
+}
+
+/* =====================  Left sidebar (white text only)  ===================== */
+.theme-doc-sidebar-container { color: #fff; }
+
+/* Links (keep background intact) */
+.theme-doc-sidebar-container .menu__link {
+  color: #fff !important;
+  opacity: .95;
+  background: transparent !important;
+}
+.theme-doc-sidebar-container .menu__link:hover,
+.theme-doc-sidebar-container .menu__link--active {
+  color: #fff !important;
+  opacity: 1;
+  font-weight: 700;
+  background: transparent !important;
+}
+
+/* Caret/icons */
+.theme-doc-sidebar-container .menu__caret,
+.theme-doc-sidebar-container .menu__link svg {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Sublist headers */
+.theme-doc-sidebar-container .menu__list-item-collapsible .menu__link--sublist {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+/* =====================  TOC (right): white text only  ===================== */
+.theme-doc-toc-desktop,
+.theme-doc-toc-mobile { color: #fff; }
+
+.theme-doc-toc-desktop .table-of-contents__link,
+.theme-doc-toc-mobile  .table-of-contents__link {
+  color: #fff !important;
+  opacity: .95;
+  background: transparent !important;
+}
+
+.theme-doc-toc-desktop .table-of-contents__link:hover,
+.theme-doc-toc-mobile  .table-of-contents__link:hover,
+.theme-doc-toc-desktop .table-of-contents__link--active,
+.theme-doc-toc-mobile  .table-of-contents__link--active {
+  color: #fff !important;
+  opacity: 1;
+  background: transparent !important;
+}
+
+.theme-doc-toc-desktop .table-of-contents__left-border {
+  border-left: 1px solid rgba(255,255,255,.35) !important;
+}
+
+.theme-doc-toc-desktop .table-of-contents__title,
+.theme-doc-toc-mobile  .table-of-contents__title {
+  color: #fff !important;
+}
+
+
+/* ==========================================================================
+   Docusaurus / Infima (IFM) custom theme overrides
+   - White text across docs, sidebars, TOC, hero & features
+   - Violet success/tip admonitions
+   - Cards: colored backgrounds, thick borders, soft shadows
+   - Code blocks: white boxes with bold black borders & shadows
+   - Inline code: white pill with black text & border
+   ========================================================================== */
+
+
+/* ========== 1) Admonitions: success/tip -> violet (IFM tokens) ========== */
+:root {
+  --ifm-color-success: #a855f7;
+  --ifm-color-success-contrast-background: rgba(168, 85, 247, .10);
+  --ifm-color-success-dark: #7c3aed;
+
+  /* Links: remove underline on hover globally */
+  --ifm-link-hover-decoration: none;
+}
+
+[data-theme='dark']{
+  --ifm-color-success: #c084fc;
+  --ifm-color-success-contrast-background: rgba(192,132,252,.12);
+  --ifm-color-success-dark: #a855f7;
+}
+
+
+/* ========== 2) Links — force white in docs + DocCard pages ========== */
+.theme-doc-markdown,
+.theme-doc-category-index-page {
+  --ifm-link-color: #fff;
+  --ifm-link-hover-color: #fff;
+}
+
+/* Card containers (theme’s CSS Modules: cardContainer_*) */
+.theme-doc-category-index-page :where([class^="cardContainer_"], [class*=" cardContainer_"]),
+.theme-doc-markdown :where([class^="cardContainer_"], [class*=" cardContainer_"]) {
+  --ifm-link-color: #fff;
+  --ifm-link-hover-color: #fff;
+  --ifm-link-hover-decoration: none;
+}
+
+
+/* ========== 3) Cards (generated-index & DocCardList) ========== */
+/* Base tokens for cards within docs & generated-index pages */
+.theme-doc-category-index-page,
+.theme-doc-markdown {
+  --ifm-card-background-color: #3d93e4;   /* tile background */
+  --ifm-card-border-color: #f0f0ea;       /* tile border color */
+  --ifm-font-color-base: #fff;            /* white text */
+  --ifm-heading-color: #fff;
+}
+
+/* Card chrome */
+.theme-doc-category-index-page article.card,
+.theme-doc-markdown article.card {
+  background: var(--ifm-card-background-color) !important;
+  color: var(--ifm-font-color-base) !important;
+
+  /* You set a very thick border; keeping your choice */
+  border: 100px solid var(--ifm-card-border-color) !important;
+  border-radius: 28px !important;
+
+  /* Soft elevation */
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.22),
+    0 2px 6px rgba(0,0,0,.12) !important;
+
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Card hover/focus lift */
+.theme-doc-category-index-page article.card:hover,
+.theme-doc-category-index-page article.card:focus-within,
+.theme-doc-markdown article.card:hover,
+.theme-doc-markdown article.card:focus-within {
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,.32),
+    0 6px 16px rgba(0,0,0,.18) !important;
+}
+
+/* Card text, links, icons */
+.theme-doc-category-index-page article.card :is(.card__header, .card__body, .card__link, .card__footer),
+.theme-doc-markdown            article.card :is(.card__header, .card__body, .card__link, .card__footer) {
+  color: #fff !important;
+  background: transparent !important;
+  opacity: .98;
+}
+.theme-doc-category-index-page article.card .card__header svg,
+.theme-doc-markdown            article.card .card__header svg {
+  fill: #fff !important;
+  opacity: .98;
+}
+
+/* Remove default card footer border */
+.theme-doc-category-index-page article.card .card__footer,
+.theme-doc-markdown            article.card .card__footer {
+  border-top: 0 !important;
+}
+
+
+/* ========== 4) Left sidebar — white labels only (no BG changes) ========== */
+.theme-doc-sidebar-container { color: #fff; }
+
+.theme-doc-sidebar-container .menu__link,
+.theme-doc-sidebar-container .menu__link--sublist {
+  color: #fff !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.45),
+    0 0 1px rgba(0,0,0,.60);
+}
+
+.theme-doc-sidebar-container .menu__link:hover,
+.theme-doc-sidebar-container .menu__link--active {
+  color: #fff !important;
+  font-weight: 700;
+  text-shadow:
+    0 3px 8px rgba(0,0,0,.50),
+    0 0 1px rgba(0,0,0,.65);
+}
+
+.theme-doc-sidebar-container .menu__caret,
+.theme-doc-sidebar-container .menu__link svg {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+
+/* ========== 5) TOC (right) — white links & subtle left border ========== */
+.theme-doc-toc-desktop,
+.theme-doc-toc-mobile { color: #fff; }
+
+.theme-doc-toc-desktop .table-of-contents__link,
+.theme-doc-toc-mobile  .table-of-contents__link {
+  color: #fff !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.45),
+    0 0 1px rgba(0,0,0,.60);
+}
+
+.theme-doc-toc-desktop .table-of-contents__link:hover,
+.theme-doc-toc-desktop .table-of-contents__link--active,
+.theme-doc-toc-mobile  .table-of-contents__link:hover,
+.theme-doc-toc-mobile  .table-of-contents__link--active {
+  color: #fff !important;
+  text-shadow:
+    0 3px 8px rgba(0,0,0,.50),
+    0 0 1px rgba(0,0,0,.65);
+}
+
+.theme-doc-toc-desktop .table-of-contents__left-border {
+  border-left: 1px solid rgba(255,255,255,.35) !important;
+}
+
+.theme-doc-toc-desktop .table-of-contents__title,
+.theme-doc-toc-mobile  .table-of-contents__title {
+  color: #fff !important;
+}
+
+
+/* ========== 6) Document content — force white text/links/headings ========== */
+.theme-doc-markdown.markdown {
+  color: #fff !important;
+  --ifm-font-color-base: #fff;
+  --ifm-heading-color: #fff;
+  --ifm-link-color: #fff;
+  --ifm-link-hover-color: #fff;
+}
+
+.theme-doc-markdown.markdown :is(h1,h2,h3,h4,h5,h6,p,li,ol,ul,span,small,a,strong,em,blockquote) {
+  color: #fff !important;
+  font-weight: 600 !important; /* match code semi-bold look */
+}
+
+/* Titles: add black-ish shadow */
+.theme-doc-title,
+.theme-doc-markdown.markdown h1,
+.theme-doc-markdown.markdown h2 {
+  color: #fff !important;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.45),
+    0 0 1px rgba(0,0,0,.6);
+  -webkit-text-stroke: 0.4px rgba(0,0,0,.15);
+}
+
+@media (max-width: 768px) {
+  .theme-doc-title,
+  .theme-doc-markdown.markdown h1,
+  .theme-doc-markdown.markdown h2 {
+    text-shadow:
+      0 3px 8px rgba(0,0,0,.5),
+      0 0 1px rgba(0,0,0,.65);
+  }
+}
+
+
+/* ========== 7) Code blocks (``` … ```) — white box + bold black border ========== */
+/* Prism container */
+.theme-doc-markdown pre.prism-code {
+  background: #ffffff !important;
+  color: #111; /* fallback */
+  border: 4px solid #000 !important; /* thick black frame */
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35) !important;
+  --ifm-code-font-size: 100%;
+  line-height: 1.5;
+}
+
+/* Hover depth */
+.theme-doc-markdown pre.prism-code:hover {
+  box-shadow: 0 22px 56px rgba(0,0,0,.40) !important;
+}
+
+/* Tokens & code — black + semi-bold */
+.theme-doc-markdown pre.prism-code code,
+.theme-doc-markdown pre.prism-code .token {
+  color: #111 !important;
+  font-weight: 600 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+/* Dark mode: keep white box + black tokens */
+[data-theme='dark'] .theme-doc-markdown pre.prism-code {
+  background: #ffffff !important;
+}
+[data-theme='dark'] .theme-doc-markdown pre.prism-code .token {
+  color: #111 !important;
+}
+
+
+/* ========== 8) Inline code (`foo`) — white pill + black text/border ========== */
+.theme-doc-markdown :not(pre) > code {
+  background: #ffffff;
+  color: #111 !important;
+  border: 3px solid #000 !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18) !important;
+  padding: .1rem .35rem;
+  font-weight: 600 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+[data-theme='dark'] .theme-doc-markdown :not(pre) > code {
+  background: #ffffff !important;
+  border-color: #000 !important;
+}
+
+
+/* ========== 9) Hero (homepage) — white text + pill buttons with shadow ========== */
+.hero h1,
+.hero h2,
+.hero p,
+.hero a,
+.hero .button {
+  color: #fff !important;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.55),
+    0 0 1px rgba(0,0,0,.75);
+}
+
+/* Buttons: dark pill + border + elevation */
+.hero .button {
+  background: #3d93e4 !important;
+  color: #fff !important;
+  border: 2px solid #000 !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35) !important;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.hero .button:hover,
+.hero .button:focus-visible {
+  background: #111 !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45) !important;
+  transform: translateY(-2px);
+}
+.hero .button svg { fill: currentColor !important; }
+
+/* If a “portfolio” link is plain <a>, style it like a button */
+.hero a:not(.button) {
+  display: inline-block;
+  padding: .55rem 1rem;
+  background: #2847af !important;
+  color: #fff !important;
+  border: 2px solid #dbcccc !important;
+  border-radius: 14px;
+  text-decoration: none !important;
+  box-shadow: 0 10px 24px rgba(60, 62, 163, 0.35) !important;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.hero a:not(.button):hover,
+.hero a:not(.button):focus-visible {
+  background: #111 !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45) !important;
+  transform: translateY(-2px);
+}
+
+
+/* ========== 10) Homepage Features — white text + subtle shadow ========== */
+/* Scope IFM color tokens into the section */
+section[class*="features"],
+section[class*="Features"],
+div[class*="HomepageFeatures"],
+div[class*="features"] {
+  --ifm-font-color-base: #fff;
+  --ifm-heading-color: #fff;
+  --ifm-link-color: #fff;
+}
+
+/* Hard color + shadow on typical elements */
+section[class*="features"] :is(h2,h3,h4,p,li,span,a),
+section[class*="Features"] :is(h2,h3,h4,p,li,span,a),
+div[class*="HomepageFeatures"] :is(h2,h3,h4,p,li,span,a),
+div[class*="features"] :is(h2,h3,h4,p,li,span,a) {
+  color: #fff !important;
+  font-weight: 600;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.55),
+    0 0 1px rgba(0,0,0,.75);
+}
+
+/* Links in features */
+section[class*="features"] a,
+div[class*="HomepageFeatures"] a {
+  color: #fff !important;
+  text-decoration: none;
+}
+section[class*="features"] a:hover,
+div[class*="HomepageFeatures"] a:hover {
+  text-decoration: underline;
+}

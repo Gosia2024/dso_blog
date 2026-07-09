@@ -1,0 +1,629 @@
+/* --- SECTION BACKGROUND & COLORS --- */
+.skillsSection {
+  background: #1f252e;            /* dark background */
+  color: #ffffff;                  /* white text */
+  padding: 72px 144px 72px 120px;  /* spacing per Figma */
+}
+
+/* --- CENTERED INNER CONTAINER --- */
+.inner {
+  max-width: 1176px;               /* content width */
+  margin: 0 auto;                  /* center horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;                       /* space between headline and cards */
+}
+
+/* --- HEADLINE --- */
+.headline {
+  max-width: 504px;                /* width for the title block */
+}
+.headline h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+/* --- CARD LIST (FLEX instead of grid) --- */
+.content {
+  display: flex;
+  flex-wrap: wrap;                  /* wrap onto new rows */
+  gap: 24px;                        /* space between cards (both axes) */
+  justify-content: center;          /* keep rows centered */
+}
+
+/* --- SINGLE SKILL CARD --- */
+.skillCard {
+  flex: 0 0 376px;                  /* fixed column width: 376px */
+  height: 200px;
+  background: #2a303b;              /* card color */
+  border-radius: 30px;
+  padding: 42px 71px;               /* inner spacing */
+  box-sizing: border-box;
+
+  display: flex;                    /* center inner stack */
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.15s ease; /* subtle hover animation */
+}
+.skillCard:hover {
+  transform: translateY(-4px);      /* slight lift on hover */
+}
+
+/* --- INNER STACK: ICON ABOVE LABEL --- */
+.skillStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;                         /* space between icon and label */
+  height: 105px;                    /* matches Figma */
+}
+
+/* --- ICON --- */
+.skillIcon {
+  height: 80px;                     /* default icon height */
+  width: auto;                      /* keep aspect ratio */
+  object-fit: contain;              /* no distortion */
+  display: block;
+  margin-top: 20px;
+}
+
+/* --- LABEL UNDER ICON (if used) --- */
+.skillName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* --- RESPONSIVE --- */
+/* medium screens: 2 columns */
+@media (max-width: 900px) {
+  .skillsSection { padding: 56px 48px; }                 /* smaller outer spacing */
+  .inner { max-width: 100%; }                            /* allow full width */
+  .skillCard { flex: 0 0 calc((100% - 24px) / 2); }      /* two cards per row */
+}
+
+/* small screens: 1 column */
+@media (max-width: 600px) {
+  .headline h2 { font-size: 32px; }                      /* smaller title */
+  .skillCard { flex: 0 0 100%; }                         /* one card per row */
+}
+
+/* === OVERLAY (no effect on card layout) === */
+.content .skillCard {
+  position: relative;      /* container positioning only */
+  overflow: hidden;        /* hide overlay overflow */
+}
+
+.content .skillCard .skillOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #79b8FF;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;              /* hidden by default */
+  transition: opacity 0.3s ease;
+  pointer-events: none;    /* don’t intercept when hidden */
+  border-radius: inherit;  /* 30px like the card */
+  padding: 20px 24px;
+}
+
+.content .skillCard .skillOverlay h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+.content .skillCard .skillOverlay ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 22rem;
+}
+
+.content .skillCard:hover .skillOverlay,
+.content .skillCard:focus-within .skillOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === HOTFIX: mobile (≤600px) content MUST NOT disappear === */
+@media (max-width: 600px) {
+
+  /* 1) Slick – stable slide layout */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: flex; align-items: stretch; }
+  .content :global(.slick-slide) { padding: 0 8px; }
+  .content :global(.slick-slide)        { height: auto !important; }
+  .content :global(.slick-slide > div)  { height: auto !important; display: block; }
+  .content :global(.slick-track)        { display: block; } /* avoid flexing height */
+
+  /* 2) Force desktop overlay off on mobile — ALWAYS visible on mobile */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: none !important;    /* key: disable opacity animation */
+  }
+
+  /* 3) If you use mobile cards (.mobileCard/.mobileItem), keep this: */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px; /* T R B L */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; margin-top: 16px }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+
+  /* 4) Ensure desktop tile doesn’t interfere on mobile */
+  .skillCard { height: auto; }
+}
+
+/* === FIX: slick + height/visibility on mobile (≤600px) === */
+@media (max-width: 600px) {
+  /* Let slick control height, but prevent 0px */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block; } /* slick default */
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
+
+  /* Remove the previous:  .content :global(.slick-slide > div) { height: 100%; }  */
+
+  /* Slide = your card 340 × ~388 */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+
+  /* Disable hover/hidden overlay on mobile (when rendering .skillCard) */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* === MOBILE FINAL FIX (≤600px) === */
+@media (max-width: 600px) {
+  /* 0) Don’t make .content a flex container on mobile — slick prefers block */
+  .content { display: block; }
+
+  /* 1) slick — classes stabilizing height/visibility */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block !important; }
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
+
+  /* 2) slide card (Figma: 340 × ~388, radius 30, padding 16/8/16/12) */
+  .mobileCard {
+    width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+
+  /* 3) disable desktop overlay on mobile so content is static */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* --------------------------------------------------------- */
+/* (second section — duplicate rules cleaned and translated) */
+/* --------------------------------------------------------- */
+
+/* --- SECTION BACKGROUND & COLORS --- */
+.skillsSection {
+  background: #1f252e;
+  color: #ffffff;
+  padding: 72px 144px 72px 120px; /* desktop */
+}
+
+/* --- CENTERED INNER CONTAINER --- */
+.inner {
+  max-width: 1176px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --- HEADLINE --- */
+.headline { max-width: 504px; }
+.headline h2 {
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.2;
+}
+
+/* --- CARD LIST --- */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* --- SINGLE SKILL CARD (responsive column) --- */
+.skillCard {
+  /* flexible column: min 280, ideal 376, can shrink to ~33% */
+  flex: 1 1 clamp(280px, 33%, 376px);
+  max-width: 376px;
+  min-width: 280px;
+
+  min-height: 200px;                 /* instead of fixed height */
+  background: #2a303b;
+  border-radius: 30px;
+  padding: 42px 71px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .15s ease;
+}
+.skillCard:hover { transform: translateY(-4px); }
+
+/* --- INNER STACK --- */
+.skillStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 105px;
+}
+
+.skillIcon {
+  height: 80px;                     /* default icon height */
+  width: auto;                      /* keep aspect ratio */
+  object-fit: contain;              /* no distortion */
+  display: block;
+  margin-top: 20px;
+}
+
+.skillName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* === OVERLAY (desktop hover) === */
+.content .skillCard { position: relative; overflow: hidden; }
+.content .skillCard .skillOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #79b8ff;
+  color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 20px 24px;
+}
+.content .skillCard .skillOverlay h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+.content .skillCard .skillOverlay ul {
+  margin: 0; padding: 0; list-style: none;
+  font-size: 14px; line-height: 1.5; max-width: 22rem;
+}
+.content .skillCard:hover .skillOverlay,
+.content .skillCard:focus-within .skillOverlay {
+  opacity: 1; pointer-events: auto;
+}
+
+/* ============================= */
+/* ======= BREAKPOINTS ========= */
+/* ============================= */
+
+/* Small desktop / wide tablet (900–1179px) */
+@media (max-width: 1179px) and (min-width: 900px) {
+  .skillsSection { padding: 64px 72px; }
+  .inner { max-width: 100%; }
+  .content { justify-content: center; }
+  .skillCard {
+    /* aim for 3 per row if they fit; otherwise 2 */
+    flex: 1 1 clamp(280px, 30%, 340px);
+    max-width: 340px;
+    padding: 36px 48px;
+  }
+}
+
+/* Tablet (601–899px): 2 columns */
+@media (max-width: 899px) and (min-width: 601px) {
+  .skillsSection { padding: 56px 48px; }
+  .headline h2 { font-size: clamp(26px, 4.5vw, 40px); }
+  .skillCard {
+    flex: 1 1 calc((100% - 24px) / 2);
+    max-width: none;
+    padding: 32px 36px;
+  }
+}
+
+/* Mobile (≤600px): 1 column + static overlay + slick fix */
+@media (max-width: 600px) {
+  .skillsSection { padding: 40px 20px; }
+  .headline { max-width: 100%; }
+  .headline h2 { font-size: 32px; }
+
+  /* one tile per row */
+  .content { display: block; } /* important when using slick */
+  .skillCard {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  /* overlay becomes part of content (no hover) */
+  .content .skillCard .skillOverlay,
+  .content .skillCard:hover .skillOverlay,
+  .content .skillCard:focus-within .skillOverlay {
+    position: static !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    color: inherit !important;
+    transition: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Slick – stabilize height (only if you use slick) */
+  .content :global(.slick-list) { overflow: hidden; }
+  .content :global(.slick-track) { display: block !important; }
+  .content :global(.slick-initialized .slick-slide) { display: block !important; }
+  .content :global(.slick-slide) { height: auto !important; }
+  .content :global(.slick-slide > div) { height: auto !important; padding: 0 8px; }
+
+  /* Mobile “tile” variant (if rendering different markup) */
+  .mobileCard {
+    width: 100%;
+    max-width: 340px;
+    min-height: 388px;
+    background: #2a303b;
+    border-radius: 30px;
+    padding: 16px 8px 16px 12px;
+    margin: 0 auto 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobileItem { display: flex; gap: 16px; align-items: flex-start; }
+  .mobileIconCol { width: 72px; flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .mobileIcon { height: 56px; width: auto; display: block; }
+  .mobileName { font-size: 14px; line-height: 20px; font-weight: 600; text-align: center; }
+  .mobileList { list-style: disc; padding-left: 18px; margin: 0; font-size: 14px; line-height: 1.45; }
+}
+
+/* --- Base “design” dimensions for the mobile card --- (added last) */
+:root{
+  --mc-w: 340;      /* width */
+  --mc-h: 388;      /* height */
+  --mc-br: 30;      /* border-radius */
+  --mc-pad-t: 16;   /* padding-top */
+  --mc-pad-r: 8;    /* padding-right */
+  --mc-pad-b: 16;   /* padding-bottom */
+  --mc-pad-l: 12;   /* padding-left */
+  --mc-gap: 16;     /* inner gap */
+  --mc-icon: 56;    /* icon height */
+  --mc-name: 14;    /* name font-size */
+  --mc-line: 20;    /* name line-height (px) */
+  --mc-list: 14;    /* list font-size */
+}
+
+/* Card at “full” size (≥401px) */
+.mobileCard{
+  width: calc(var(--mc-w)*1px);
+  height: calc(var(--mc-h)*1px);
+  background: #2a303b;
+  border-radius: calc(var(--mc-br)*1px);
+  padding: calc(var(--mc-pad-t)*1px) calc(var(--mc-pad-r)*1px)
+           calc(var(--mc-pad-b)*1px) calc(var(--mc-pad-l)*1px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--mc-gap)*1px);
+  overflow: hidden; /* keep content inside radius */
+}
+
+.mobileItem{ display:flex; gap:16px; align-items:flex-start; }
+.mobileIconCol{ width:72px; flex:0 0 72px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.mobileIcon{ height: calc(var(--mc-icon)*1px); width:auto; display:block; }
+.mobileName{ font-size: calc(var(--mc-name)*1px); line-height: calc(var(--mc-line)*1px); font-weight:600; text-align:center; }
+.mobileList{ list-style:disc; padding-left:18px; margin:0; font-size: calc(var(--mc-list)*1px); line-height:1.45; }
+
+/* --- Below 400px: same card, proportionally scaled down --- */
+@media (max-width: 400px){
+  /* Scale — adjust the base “360” to real column space if container paddings differ */
+  :root{ --mc-scale: clamp(0.70, 100vw / 360, 1); }
+
+  .mobileCard{
+    width:  calc(var(--mc-w)  * var(--mc-scale) * 1px);
+    height: calc(var(--mc-h)  * var(--mc-scale) * 1px);
+    border-radius: calc(var(--mc-br) * var(--mc-scale) * 1px);
+    padding: calc(var(--mc-pad-t) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-r) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-b) * var(--mc-scale) * 1px)
+             calc(var(--mc-pad-l) * var(--mc-scale) * 1px);
+    gap: calc(var(--mc-gap) * var(--mc-scale) * 1px);
+  }
+
+  .mobileIcon{
+    height: calc(var(--mc-icon) * var(--mc-scale) * 1px);
+  }
+  .mobileName{
+    font-size:  calc(var(--mc-name) * var(--mc-scale) * 1px);
+    line-height: calc(var(--mc-line) * var(--mc-scale) * 1px);
+  }
+  .mobileList{
+    font-size:  calc(var(--mc-list) * var(--mc-scale) * 1px);
+  }
+}
+
+/* globally hide the small label under icons */
+.skillName { display: none; }
+
+/* or only on mobile */
+@media (max-width: 600px) {
+  .skillName { display: none; }
+}
+
+/* REPLACE THIS BLOCK */
+.content .skillCard .skillOverlay ul {
+  margin: 0;
+  /* padding: 0;            <-- remove */
+  /* list-style: none;      <-- remove */
+  padding-left: 18px;        /* indent like in Figma */
+  list-style: disc;          /* bullets */
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 22rem;
+}
+
+/* overlay: left-aligned content */
+.content .skillCard .skillOverlay {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Title ALIGNED WITH BULLETS (shifted by the UL padding) */
+.content .skillCard .skillOverlay h3 {
+  margin: 0 0 8px;      /* space above list like in mockup */
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-left: -18px; */   /* = -padding-left of UL -> start aligned with bullets */
+  margin-bottom: 30px;
+}
+
+/* LIST exactly like in Figma */
+.content .skillCard .skillOverlay ul {
+  width: 332px;         /* Figma width */
+  margin: 0;
+  padding-left: 18px;   /* gutter for bullet */
+  list-style: disc outside;
+  font-size: 16px;
+  line-height: 1.2;     /* 120% */
+}
+
+/* spacing between lines and (optional) nudge text toward bullet */
+.content .skillCard .skillOverlay li {
+  margin: 0 0 6px 0;
+  /* to tighten near the bullet, uncomment below: */
+  /* padding-left: 0.3em;     */
+  /* text-indent: -0.3em;     */
+}
+
+@media (max-width: 600px) {
+  .mobileHowTitle { 
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobileName { 
+    display: none !important;
+  }
+}
+/* usuwamy tło z samego komponentu */
+
+
+/* desktop */
+.content{
+  max-width: 1176px;        /* 3 kafle + 2 przerwy */
+  margin: 0 auto;           /* wycentruj całość */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.skillCard{
+  flex: 0 0 376px;          /* stała szerokość kafla */
+  height: 200px;
+}
+
+/* tablet = 2 kolumny */
+@media (max-width: 900px){
+  .content{ max-width: none; }
+  .skillCard{ flex: 0 0 calc((100% - 24px)/2); }
+}
+
+/* mobile = 1 kolumna */
+@media (max-width: 600px){
+  .skillCard{ flex: 0 0 100%; }
+}

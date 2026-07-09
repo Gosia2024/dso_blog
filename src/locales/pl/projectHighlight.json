@@ -1,0 +1,29 @@
+{
+  "sectionTitle": "Moje wyróżnione projekty",
+  "seeMore": "↳ zobacz więcej projektów",
+  "list": [
+    "1. Baby Tools",
+    "2. Truck Signs API",
+    "3. Juice Shop Meister",
+    "4. Minecraft",
+    "5. Hosting WordPress"
+  ],
+  "firstCard": {
+    "title": "1. Minecraft",
+    "h3": "Projekt Minecraft",
+    "desc": "Produkcyjny serwer Minecraft Java w Dockerze i Compose. Trwałe światy, konfiguracja oparta na zmiennych środowiskowych oraz prosty health-check — mój pierwszy chmurowy build z kursu DevSecOps, niezawodny i powtarzalny."
+  },
+  "secondCard": { "title": "2. Klon (Container)" },
+  "thirdCard": { "title": "3. Hosting WordPress" },
+  "buttons": { "docs": "Dokumentacja", "github": "GitHub" },
+  "alts": {
+    "yaml": "YAML",
+    "shell": "Skrypty shell",
+    "security": "Bezpieczeństwo IT",
+    "container": "Kontenery",
+    "minecraft": "Projekt Minecraft",
+    "wp": "Hosting WordPress",
+    "minecraftLogo": "Logo Minecrafta"
+  },
+  "watermark": "MINECRAFT"
+}

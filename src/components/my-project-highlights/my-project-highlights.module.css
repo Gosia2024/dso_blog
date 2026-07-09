@@ -1,0 +1,505 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+/* ===== SECTION WRAPPER ===== */
+.projectsSection{
+  background:#266AD9;
+  color:#fff;
+  width:100%;
+  margin:0;
+  padding:72px 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* Inner content wrapper */
+.inner{
+  max-width:1440px;
+  margin:0 auto;
+  padding:0 110px;
+  box-sizing:border-box;
+}
+
+/* Section title */
+.sectionTitle{
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:700;
+  font-size:64px;
+  line-height:120%;
+  margin:0 0 64px 0;
+}
+
+/* ===== LAYOUT (desktop baseline) ===== */
+.content{
+  display:grid;
+  grid-template-columns:256px 1fr; /* left sidebar + right cards */
+  gap:48px;
+  align-items:start;
+  width:100%;
+}
+
+/* LEFT: project list */
+.projectList{ width:256px; }
+.projectList ul{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; gap:24px;
+}
+.projectList li{ font-size:22px; line-height:1.4; }
+.moreProjects{ margin-top:24px; opacity:.9; }
+
+/* RIGHT: column with stacked cards */
+.cards{
+  display:flex;
+  flex-direction:column;
+  gap:48px;
+  flex:1 1 auto;
+  min-width:0;
+}
+
+/* Project “card” */
+.projectCard{
+  width:100%;
+  background:#2F4563;
+  border-radius:30px;
+  padding:32px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+
+  /* Prevent content from bleeding through rounded corners */
+  overflow:hidden;
+  padding-bottom:48px;
+}
+
+/* Card header row */
+.header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:nowrap;
+}
+.cardTitle{
+  margin:0;
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:700;
+  font-size:40px;
+  line-height:120%;
+  color:#fff;
+  white-space:normal;      /* allow title to wrap */
+  margin-right:auto;
+  flex:0 0 auto;
+}
+.tags{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+  min-width:0;
+}
+.tag{
+  background:#FFFFFF;
+  color:#2F4563;
+  border-radius:12px;
+  padding:8px 12px;
+  font-size:13px;
+  line-height:1;
+  white-space:nowrap;
+  border:1px solid rgba(0,0,0,.08);
+}
+.icon{ width:55px; height:30px; display:block; }
+
+/* Card body row (image + text) */
+.row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  width:100%;
+  gap:32px;               /* spacing between columns */
+}
+
+/* Media (image) column */
+.media{
+  position: relative;
+  flex:0 0 355px;         /* fixed column */
+  width:355px;
+  height:240px;
+  border-radius:16px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.thumb{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* Big translucent watermark text over the image */
+.watermark{
+  position:absolute; top:8px; left:16px;
+  font-weight:800; font-size:48px; letter-spacing:2px;
+  color:rgba(0,0,0,.5);
+  z-index:2; pointer-events:none; user-select:none;
+}
+
+/* Centered logo overlay */
+.logo{
+  position:absolute; width:82px; height:82px; left:134px; top:133px;
+  border-radius:30px; z-index:3; box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+
+/* Text/info column */
+.info{
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  padding-bottom:8px;      /* small bottom breathing room */
+}
+.desc{
+  margin:0;
+  font-family:'Quicksand',system-ui,sans-serif;
+  font-weight:400; font-size:20px; line-height:1.5;
+  color:rgba(255,255,255,.9);
+}
+
+/* Buttons group */
+.buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;          /* prevent layout overflow */
+  align-self:flex-start;
+}
+.buttons a{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:52px; padding:0 18px; border-radius:16px; /* 16px instead of 20px */
+  background:#266AD9; border:1px solid rgba(255,255,255,.25);
+  color:#fff; text-decoration:none; font-weight:600;
+  border-radius: 60px;
+}
+/* GitHub = outline (second/last in .buttons) */
+.buttons a:last-child{
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Visibility helpers */
+.mobileOnly { display:none !important; }
+.desktopOnly { display:block !important; }
+.mobileHidden { display:block; }
+
+/* Separator bar (mobile only) */
+.sepBar { display:none; }
+
+/* ===== ≤1240px — slightly tighter, still 2 columns ===== */
+@media (max-width: 1240px){
+  .inner{ padding:0 48px; max-width:1100px; }
+
+  .content{ grid-template-columns:220px 1fr; gap:32px; }
+  .projectList{ width:220px; }
+
+  .projectCard{ padding:24px; border-radius:24px; gap:24px; padding-bottom:40px; }
+  .row{ gap:24px; }
+
+  .media{ flex:0 0 300px; width:300px; height:200px; border-radius:14px; }
+
+  .cardTitle{ font-size:34px; }
+  .desc{ font-size:18px; }
+
+  .tags{ flex-wrap:wrap; gap:6px; }
+  .buttons{ gap:12px; }
+  .buttons a{ height:46px; padding:0 16px; border-radius:14px; }
+
+  .logo{
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:74px; height:74px;
+  }
+}
+
+/* ===== ≤1049px — tighter again, 2 columns ===== */
+@media (max-width: 1049px){
+  .inner{ padding:0 32px; max-width:980px; }
+
+  .content{ grid-template-columns:200px 1fr; gap:24px; }
+  .projectList{ width:200px; }
+
+  .projectCard{ padding:20px; border-radius:20px; gap:20px; padding-bottom:36px; }
+  .row{ gap:20px; }
+
+  .media{ flex:0 0 280px; width:280px; height:190px; border-radius:12px; }
+
+  .cardTitle{ font-size:30px; }
+  .desc{ font-size:17px; }
+
+  .tags{ gap:6px; }
+  .tag{ padding:8px 10px; border-radius:10px; font-size:12px; }
+
+  .buttons{ gap:10px; }
+  .buttons a{ height:42px; padding:0 14px; border-radius:12px; }
+
+  .logo{
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:68px; height:68px;
+  }
+}
+
+/* ===== ≤900px — even tighter, still 2 columns ===== */
+@media (max-width: 900px){
+  .inner{ padding: 0 24px; max-width: 860px; }
+
+  .content{ grid-template-columns: 180px 1fr; gap: 20px; }
+  .projectList{ width: 180px; }
+
+  .projectCard{ padding: 18px; border-radius: 18px; gap: 18px; padding-bottom:32px; }
+  .row{ gap: 18px; }
+
+  .media{ flex:0 0 260px; width:260px; height:180px; border-radius:12px; }
+
+  .cardTitle{ font-size: 28px; }
+  .desc{ font-size: 16px; }
+
+  .tags{ gap: 6px; flex-wrap: wrap; }
+  .tag{ padding: 7px 10px; border-radius: 10px; font-size: 12px; }
+
+  .buttons{ gap: 10px; }
+  .buttons a{ height: 40px; padding: 0 14px; border-radius: 12px; }
+
+  .logo{
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 62px; height: 62px;
+  }
+}
+
+/* ===== ≤768px — mobile mode: single column ===== */
+@media (max-width: 768px){
+
+  .projectsSection{ padding:32px 0; }
+  .inner{ padding:0 20px; max-width:100%; }
+
+  .sectionTitle{ font-size:36px; line-height:1.2; margin:0 0 24px; }
+
+  .content{
+    grid-template-columns:1fr;
+    gap:20px;
+    width:100%;
+    max-width:100%;
+  }
+
+  .projectList{ display:none; }
+
+  .cards{ gap:20px; }
+
+  .projectCard{
+    width:100%; max-width:100%;
+    background:transparent; padding:0; gap:16px;
+    box-shadow:none; overflow:visible; padding-bottom:0;
+  }
+
+  .header{ flex-direction:column; align-items:flex-start; gap:12px; padding:0; }
+  .cardTitle{ font-size:24px; line-height:1.2; color:#fff; }
+
+  .tags{ flex-wrap:wrap; justify-content:flex-start; gap:8px; margin:0 0 8px 0; }
+ 
+  .tag{
+    padding:10px 14px;
+    border-radius:12px;
+    /* white background at 20% — like in Figma */
+    background: rgba(255, 255, 255, 0.20);   /* = #FFFFFF33 */
+    border: 1px solid rgba(255, 255, 255, 0.35);   color:#fff;
+  }
+  .row{ width:100%; flex-direction:column; align-items:flex-start; gap:16px; }
+
+  .media{ width:355px; height:240px; border-radius:24px; }
+  .thumb{ width:100%; height:100%; object-fit:cover; }
+
+  .watermark{
+    top:12px; left:16px; font-size:40px; letter-spacing:2px;
+    color:rgba(0,0,0,.5);
+  }
+  .logo{
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:82px; height:82px; border-radius:30px; box-shadow:0 4px 16px rgba(0,0,0,.25);
+  }
+
+  .info{ width:100%; max-width:100%; gap:16px; }
+  .desc{ font-size:16px; line-height:1.5; color:rgba(255,255,255,.9); }
+
+  .buttons{ gap:16px; justify-content:flex-start; align-items:center; }
+  .buttons a{
+    height:44px; padding:0 18px; border-radius:16px; font-weight:700;
+    border:1px solid rgba(255,255,255,.6); background:transparent; color:#fff;
+  }
+  .buttons a:first-child{ background:#fff; color:#266AD9; border:1px solid #fff; }
+  .buttons a:last-child{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.6); }
+
+  /* Visibility toggles for mobile */
+  .mobileOnly { display:block !important; }
+  .desktopOnly { display:none !important; }
+  .mobileHidden { display:none !important; }
+
+  /* Decorative bar inside the card — mobile only */
+  .sepBar{
+    display:block;
+    width:100%;
+    height:50px;
+    background:#262E34;
+    margin-top:12px;
+    border-radius:12px;
+  }
+}
+
+/*** images ***/
+
+@media (max-width: 400px){
+  .media{ width: min(100%, 260px); }  /* ~260×146 */
+  /* if you want the logo slightly smaller too: */
+  .logo{ width: 70px; height: 70px; }
+  /* softer watermark: */
+  .watermark{ font-size: 32px; }
+}
+@media (max-width: 400px){
+  /* center the image */
+  .row { align-items: center; }        /* column centers children */
+  .media{
+    width: min(100%, 260px);
+    margin: 0 auto;                    /* horizontal centering */
+    /* or instead of margin: align-self: center; */
+  }
+
+  .logo{ width: 70px; height: 70px; }  /* (as you had) */
+  .watermark{ font-size: 32px; }       /* (as you had) */
+}
+/* SEE MORE — same effect as on li */
+.moreProjects{
+  position: relative;
+  display: inline-block;   /* width = text width */
+  color: #fff;
+  cursor: pointer;
+  padding-bottom: 2px;     /* space for the underline */
+  transition: color .15s ease;
+}
+
+/* SEE MORE — same effect as on li */
+.moreProjects{
+  position: relative;
+  display: inline-block;   /* width = text width */
+  color: #fff;
+  cursor: pointer;
+  padding-bottom: 2px;     /* space for the underline */
+  transition: color .15s ease;
+}
+
+/* base look + underline */
+.projectList li{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  color: #fff;
+  cursor: pointer;              /* treat as a clickable element */
+}
+.projectList li::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:0;
+  height:2px; width:0;
+  background:#fff;
+  transition: width .18s ease;
+}
+.projectList li:hover::after{ width:100%; }
+
+/* clicked (ONLY while holding the mouse button) */
+.projectList li:active{
+  color:#262E34 !important;     /* overrides other colors */
+}
+
+
+
+
+
+
+/* FONT (na samej górze pliku, jeśli jeszcze nie ma) */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+/* === LEWA KOLUMNA – NUMEROWANA LISTA === */
+.projectListOl{
+  list-style: none;              /* własna numeracja */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.projectItem{
+  position: relative;
+  color: #fff;                   /* biały */
+}
+
+.projectLink{
+  color: #fff;                   /* biały tekst linku */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 2px;           /* miejsce na podkreślenie */
+}
+
+/* Numer 01., 02., ... — biały i pogrubiony */
+.projectNum{
+  font-family: 'Quicksand', system-ui, sans-serif;
+  font-weight: 700;
+  color: #fff;                   /* biały numer */
+  min-width: 3ch;                /* wyrównanie */
+  text-align: right;
+}
+
+/* Tytuł projektu (tekst) */
+.projectTitle{
+  color: #f8f3f3;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+/* Animowane podkreślenie na hover (tak jak miałaś wcześniej) */
+.projectItem::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: #fff;
+  transition: width .18s ease;
+}
+.projectItem:hover::after{ width: 100%; }
+
+/* Na mobile – odrobinę mniejsze */
+@media (max-width: 768px){
+  .projectTitle{ font-size: 18px; }
+  .projectNum{ min-width: 2.5ch; }
+}
+.projectLink.active {
+  background: rgba(255,255,255,.08);
+  border-radius: 12px;
+}
+
+.buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  align-self:flex-start;
+}
+.buttons a{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:52px; padding:0 18px;
+  background:#266AD9; border:1px solid rgba(255,255,255,.25);
+  color:#fff; text-decoration:none; font-weight:600;
+  border-radius:60px;
+}
+/* GitHub jako „outline” */
+.buttons a:last-child{
+  background:transparent;
+  border-color:#fff;
+  color:#fff;
+}
+.projectList button{
+  background: transparent;
+  border: 0;
+}

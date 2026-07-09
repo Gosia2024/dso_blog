@@ -1,6 +1,5 @@
-label: "Projects"
+
+label: Projects
 link:
-  type: generated-index
-  title: Projects
-  slug: /projects   # => /docs/projects
-position: 2
+  type: doc
+  id: projects/overview
