@@ -10,7 +10,7 @@ This page documents how I configured my very first cloud server instance in the 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
 
 <GithubLinkAdmonition
-  link="https://github.com/Gosia2024/conduit-deployment/tree/ci-cd-ghcr-deployment"
+  link="https://github.com/Gosia2024/conduit-deployment"
   title="Github Tip"
   type="tip"
 />
